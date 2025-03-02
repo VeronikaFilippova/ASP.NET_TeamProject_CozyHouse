@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35122.118
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CozyHouse.UI", "CozyHouse.UI\CozyHouse.UI.csproj", "{664738E1-7879-4722-8DDA-40A16759000F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{664738E1-7879-4722-8DDA-40A16759000F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{664738E1-7879-4722-8DDA-40A16759000F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{664738E1-7879-4722-8DDA-40A16759000F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{664738E1-7879-4722-8DDA-40A16759000F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B321E155-8446-4E33-B04E-AEDB734E9BB7}
+	EndGlobalSection
+EndGlobal
