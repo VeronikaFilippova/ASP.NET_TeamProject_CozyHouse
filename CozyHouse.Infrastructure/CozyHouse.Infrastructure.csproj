@@ -8,7 +8,10 @@
 
   <ItemGroup>
     <Folder Include="Database\" />
-    <Folder Include="Repositories\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CozyHouse.Core\CozyHouse.Core.csproj" />
   </ItemGroup>
 
 </Project>
