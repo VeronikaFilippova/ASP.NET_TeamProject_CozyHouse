@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35122.118
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CozyHouse.UI", "CozyHouse.UI\CozyHouse.UI.csproj", "{664738E1-7879-4722-8DDA-40A16759000F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CozyHouse.UI", "CozyHouse.UI\CozyHouse.UI.csproj", "{664738E1-7879-4722-8DDA-40A16759000F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C93D21E4-D3F6-4B87-A42F-7344E6F4BA6F}"
 	ProjectSection(SolutionItems) = preProject
@@ -11,16 +11,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Assets\CozyHouse_UseCase_English_V2.drawio = Assets\CozyHouse_UseCase_English_V2.drawio
 		Assets\CozyHouse_UseCase_English_V2.png = Assets\CozyHouse_UseCase_English_V2.png
 	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "source", "source", "{CE9C4C41-2923-4A61-A516-8DEDB41A5155}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{0E325F19-A889-4F72-85A4-7A80235D6720}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CozyHouse.Core", "CozyHouse.Core\CozyHouse.Core.csproj", "{F459D5D2-E75E-497C-AB47-C23F40C5151F}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CozyHouse.Infrastructure", "Infrastructure\CozyHouse.Infrastructure.csproj", "{A8145BD6-D6D2-4232-AB80-5C7A382DB260}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CozyHouse.ServiceTests", "CozyHouse.ServiceTests\CozyHouse.ServiceTests.csproj", "{0CC117D0-242D-4440-995F-3E3592DBC0E6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,27 +22,9 @@ Global
 		{664738E1-7879-4722-8DDA-40A16759000F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{664738E1-7879-4722-8DDA-40A16759000F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{664738E1-7879-4722-8DDA-40A16759000F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F459D5D2-E75E-497C-AB47-C23F40C5151F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F459D5D2-E75E-497C-AB47-C23F40C5151F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F459D5D2-E75E-497C-AB47-C23F40C5151F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F459D5D2-E75E-497C-AB47-C23F40C5151F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A8145BD6-D6D2-4232-AB80-5C7A382DB260}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A8145BD6-D6D2-4232-AB80-5C7A382DB260}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A8145BD6-D6D2-4232-AB80-5C7A382DB260}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A8145BD6-D6D2-4232-AB80-5C7A382DB260}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0CC117D0-242D-4440-995F-3E3592DBC0E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0CC117D0-242D-4440-995F-3E3592DBC0E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0CC117D0-242D-4440-995F-3E3592DBC0E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0CC117D0-242D-4440-995F-3E3592DBC0E6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{664738E1-7879-4722-8DDA-40A16759000F} = {CE9C4C41-2923-4A61-A516-8DEDB41A5155}
-		{F459D5D2-E75E-497C-AB47-C23F40C5151F} = {CE9C4C41-2923-4A61-A516-8DEDB41A5155}
-		{A8145BD6-D6D2-4232-AB80-5C7A382DB260} = {CE9C4C41-2923-4A61-A516-8DEDB41A5155}
-		{0CC117D0-242D-4440-995F-3E3592DBC0E6} = {0E325F19-A889-4F72-85A4-7A80235D6720}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B321E155-8446-4E33-B04E-AEDB734E9BB7}

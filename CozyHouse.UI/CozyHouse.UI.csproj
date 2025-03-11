@@ -6,13 +6,4 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\CozyHouse.Core\CozyHouse.Core.csproj" />
-    <ProjectReference Include="..\Infrastructure\CozyHouse.Infrastructure.csproj" />
-  </ItemGroup>
-
 </Project>
