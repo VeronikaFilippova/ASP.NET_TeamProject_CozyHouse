@@ -1,8 +1,15 @@
+using CozyHouse.Core.RepositoryInterfaces;
+using CozyHouse.Core.ServiceContracts;
+using CozyHouse.Core.Services;
+using CozyHouse.Infrastructure.Repositories;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddSingleton<IListingService, ListingService>();
+builder.Services.AddSingleton<IListingRepository, FakeDbListingRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
