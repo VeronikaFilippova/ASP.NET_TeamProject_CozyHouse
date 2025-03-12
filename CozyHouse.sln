@@ -7,20 +7,24 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CozyHouse.UI", "CozyHouse.U
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C93D21E4-D3F6-4B87-A42F-7344E6F4BA6F}"
 	ProjectSection(SolutionItems) = preProject
+		Assets\Authentication.png = Assets\Authentication.png
 		Assets\CozyHouse_Table_English_V2.xlsx = Assets\CozyHouse_Table_English_V2.xlsx
 		Assets\CozyHouse_UseCase_English_V2.drawio = Assets\CozyHouse_UseCase_English_V2.drawio
 		Assets\CozyHouse_UseCase_English_V2.png = Assets\CozyHouse_UseCase_English_V2.png
+		Assets\Data Access.png = Assets\Data Access.png
+		Assets\DiagramOfClasses.drawio = Assets\DiagramOfClasses.drawio
+		Assets\Entities.png = Assets\Entities.png
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "source", "source", "{28700611-EB38-4D83-B53D-F2F50301B673}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CozyHouse.Core", "CozyHouse.Core\CozyHouse.Core.csproj", "{8957F38E-7F1A-4DD7-9541-8E7AF263F316}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CozyHouse.Core", "CozyHouse.Core\CozyHouse.Core.csproj", "{8957F38E-7F1A-4DD7-9541-8E7AF263F316}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CozyHouse.Infrastructure", "CozyHouse.Infrastructure\CozyHouse.Infrastructure.csproj", "{C0CF92ED-108D-470E-B865-ED7FC9A3E08D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CozyHouse.Infrastructure", "CozyHouse.Infrastructure\CozyHouse.Infrastructure.csproj", "{C0CF92ED-108D-470E-B865-ED7FC9A3E08D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{4C1EBFE6-9B89-4103-BE90-6A806531B0F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CozyHouse.ServiceTests", "CozyHouse.ServiceTests\CozyHouse.ServiceTests.csproj", "{ED4DB18C-A438-4D7D-897F-11324943DDB7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CozyHouse.ServiceTests", "CozyHouse.ServiceTests\CozyHouse.ServiceTests.csproj", "{ED4DB18C-A438-4D7D-897F-11324943DDB7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

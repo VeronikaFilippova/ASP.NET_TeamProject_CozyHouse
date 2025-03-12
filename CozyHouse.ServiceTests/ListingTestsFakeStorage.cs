@@ -4,10 +4,10 @@ using CozyHouse.Infrastructure.Repositories;
 
 namespace CozyHouse.ServiceTests
 {
-    public class ListingTests
+    public class ListingTestsFakeStorage
     {
         ListingService listingService;
-        public ListingTests()
+        public ListingTestsFakeStorage()
         {
             listingService = new ListingService(new FakeDbListingRepository());
         }
