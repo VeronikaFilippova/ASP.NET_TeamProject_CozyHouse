@@ -12,8 +12,14 @@ Additionally, the application provides an opportunity for regular users to post 
 ## Use Case Diagram
 ![Use Case Diagram](Assets/CozyHouse_UseCase_English_V2.png)
 
-## Data Access Classes
+## Data Access
 ![Data Access](Assets/DataAccess.png)
+
+## Authentication
+![Authentication](Assets/Authentication.png)
+
+## Entities
+![Entities](Assets/Entities.png)
 
 ## Downloadable Resources
 - [Table](Assets/CozyHouse_Table_English_V2.xlsx)
