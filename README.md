@@ -5,9 +5,9 @@ CozyHouse is a web application designed to connect animal shelters and individua
 Additionally, the application provides an opportunity for regular users to post profiles of stray animals that need a home, contributing to the solution of the stray animal problem.
 
 ## Features
-- **Animal Shelter Owners** can create and manage profiles for animals available for adoption.
-- **Users** can browse available animal profiles and submit adoption requests.
-- **Public users** can also post profiles of animals needing a home.
+- **Animal Shelter Owners** can create and manage profiles for animals available for adoption. Can delete User accounts.
+- **Users** can browse available animal profiles and submit adoption requests. User can also post profiles of animals needing a home.
+- **Guest** can browse available animal profiles.
   
 ## Use Case Diagram
 ![Use Case Diagram](Assets/CozyHouse_UseCase_English_V2.png)
