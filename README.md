@@ -16,7 +16,7 @@ Additionally, the application provides an opportunity for regular users to post 
 ![Data Access](Assets/DataAccess.png)
 
 ## Authentication
-![Authentication](Assets/Authentication.png)
+![Identity](Assets/Identity.png)
 
 ## Entities
 ![Entities](Assets/Entities.png)
