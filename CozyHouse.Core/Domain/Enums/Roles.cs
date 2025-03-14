@@ -1,4 +1,4 @@
 ﻿namespace CozyHouse.Core.Domain.Enums
 {
-    public enum Roles { User, Manager }
+    public enum Roles { Guest, User, Manager }
 }

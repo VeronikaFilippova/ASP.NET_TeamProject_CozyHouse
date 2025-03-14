@@ -11,7 +11,7 @@ namespace CozyHouse.Infrastructure.Helpers
         public static async Task SeedRolesAsync(IServiceProvider serviceProvider)
         {
             RoleManager<ApplicationRole> roleManager = serviceProvider.GetRequiredService<RoleManager<ApplicationRole>>();
-            string[] roles = { Roles.User.ToString(), Roles.Manager.ToString() };
+            string[] roles = { Roles.Guest.ToString(), Roles.User.ToString(), Roles.Manager.ToString() };
             foreach (string role in roles)
             {
                 if (await roleManager.RoleExistsAsync(role) == false)
@@ -36,10 +36,18 @@ namespace CozyHouse.Infrastructure.Helpers
                     PhoneNumber = "+380-63-72-19499",
                     UserName = "CozyHouseApp",
                     Email = "cozyHouse@notRealEmail.com",
+                    SecurityStamp = Guid.NewGuid().ToString(),
                 };
             }
 
-            await userManager.CreateAsync(defaultManagerUser, "CozyHouseStrongPassword");
+            IdentityResult result = await userManager.CreateAsync(defaultManagerUser, "CozyHouseStrongPassword");
+            if (!result.Succeeded)
+            {
+                foreach (var error in result.Errors)
+                {
+                    Console.WriteLine(result.Errors);
+                }
+            }
             await userManager.AddToRoleAsync(defaultManagerUser, Roles.Manager.ToString());
         }
     }

@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace CozyHouse.UI.Controllers
+namespace CozyHouse.UI.Areas.Guest.Controllers
 {
     public class HomeController : Controller
     {

@@ -5,7 +5,9 @@ using CozyHouse.Core.Services;
 using CozyHouse.Infrastructure.Database;
 using CozyHouse.Infrastructure.Helpers;
 using CozyHouse.Infrastructure.Repositories;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,17 +17,21 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddSingleton<IListingService, ListingService>();
 builder.Services.AddSingleton<IListingRepository, FakeDbListingRepository>();
 
-/*
- * Розкоментувати, коли реалізовуватимемо базу даних
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
-    options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
+    options.UseSqlite(builder.Configuration.GetConnectionString("SqliteConnectionString"));
 });
-*/
 
-builder.Services.AddIdentity<ApplicationUser, ApplicationRole>()
-    .AddEntityFrameworkStores<ApplicationDbContext>().
-    AddUserStore<UserStore<ApplicationUser, ApplicationRole, ApplicationDbContext, Guid>>()
+
+builder.Services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
+{
+    options.Password.RequireDigit = false;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireUppercase = false;
+})  
+    .AddEntityFrameworkStores<ApplicationDbContext>()
+    .AddDefaultTokenProviders()
+    .AddUserStore<UserStore<ApplicationUser, ApplicationRole, ApplicationDbContext, Guid>>()
     .AddRoleStore<RoleStore<ApplicationRole, ApplicationDbContext, Guid>>();
 
 var app = builder.Build();
@@ -54,7 +60,7 @@ app.UseAuthorization();
 app.UseAuthentication(); // Необхідне для того, щоб не давати доступу до контроллерів менеджерів
 
 app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    name: "areas",
+    pattern: "{area=Guest}/{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
