@@ -15,9 +15,6 @@ Additionally, the application allows regular users to post profiles of stray ani
 ## Data Access
 ![Data Access](Assets/DataAccess.png)
 
-## Authentication
-![Identity](Assets/Identity.png)
-
 ## Entities
 ![Entities](Assets/Entities.png)
 
