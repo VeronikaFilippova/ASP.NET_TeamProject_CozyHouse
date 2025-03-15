@@ -34,5 +34,25 @@ namespace CozyHouse.Infrastructure.Repositories
             PetStorage.Pets.Add(petToUpdate);
             return true;
         }
+
+        public Pet? GetByName(string name)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Pet? GetByAge(uint age)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Pet> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Pet> SortBy(string property)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

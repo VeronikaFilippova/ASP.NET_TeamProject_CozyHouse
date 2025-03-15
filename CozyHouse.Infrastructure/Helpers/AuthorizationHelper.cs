@@ -38,17 +38,9 @@ namespace CozyHouse.Infrastructure.Helpers
                     Email = "cozyHouse@notRealEmail.com",
                     SecurityStamp = Guid.NewGuid().ToString(),
                 };
+                await userManager.CreateAsync(defaultManagerUser, "CozyHouseStrongPassword");
+                await userManager.AddToRoleAsync(defaultManagerUser, Roles.Manager.ToString());
             }
-
-            IdentityResult result = await userManager.CreateAsync(defaultManagerUser, "CozyHouseStrongPassword");
-            if (!result.Succeeded)
-            {
-                foreach (var error in result.Errors)
-                {
-                    Console.WriteLine(result.Errors);
-                }
-            }
-            await userManager.AddToRoleAsync(defaultManagerUser, Roles.Manager.ToString());
         }
     }
 }
