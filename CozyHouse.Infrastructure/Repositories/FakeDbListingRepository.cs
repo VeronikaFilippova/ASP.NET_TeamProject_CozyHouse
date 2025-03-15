@@ -30,8 +30,6 @@ namespace CozyHouse.Infrastructure.Repositories
             ListingStorage.Listings.Remove(listingToUpdate);
             listingToUpdate.Title = listing.Title;
             listingToUpdate.Content = listing.Content;
-            listingToUpdate.Topic = listing.Topic;
-            listingToUpdate.Rating = listing.Rating;
             ListingStorage.Listings.Add(listingToUpdate);
             return listingToUpdate;
         }
