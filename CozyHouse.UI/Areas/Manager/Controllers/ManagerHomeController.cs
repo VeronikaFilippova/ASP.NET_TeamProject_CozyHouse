@@ -2,6 +2,7 @@
 
 namespace CozyHouse.UI.Areas.Manager.Controllers
 {
+    [Area("Manager")]
     public class ManagerHomeController : Controller
     {
         public IActionResult Index()

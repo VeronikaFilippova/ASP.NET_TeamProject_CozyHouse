@@ -1,5 +1,15 @@
-﻿@{
+﻿@model ApplicationUser
+@{
     ViewBag.Title = "Authorization";
 }
-<h1>Login Form</h1>
-<h1>Register Form</h1>
+<form method="post">
+    <div>
+        <input placeholder="User Name: CozyHouseApp" style="width:400px" />
+    </div>
+    <div>
+        <input placeholder="Password: CozyHouseStrongPassword" style="width:400px"  />
+    </div>
+    <div>
+        <button type="submit">Login</button>
+    </div>
+</form>
