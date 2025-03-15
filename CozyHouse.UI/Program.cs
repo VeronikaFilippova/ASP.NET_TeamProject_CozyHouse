@@ -2,7 +2,6 @@ using CozyHouse.Core.Domain.IdentityEntities;
 using CozyHouse.Core.RepositoryInterfaces;
 using CozyHouse.Infrastructure.Database;
 using CozyHouse.Infrastructure.Helpers;
-using CozyHouse.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -11,8 +10,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
-builder.Services.AddSingleton<IListingRepository, FakeDbListingRepository>();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
@@ -58,6 +55,6 @@ app.UseAuthentication(); // Необхідне для того, щоб не давати доступу до контрол
 
 app.MapControllerRoute(
     name: "areas",
-    pattern: "{area=Guest}/{controller=Home}/{action=Index}/{id?}");
+    pattern: "{area=Guest}/{controller=GuestHome}/{action=Index}/{id?}");
 
 app.Run();
