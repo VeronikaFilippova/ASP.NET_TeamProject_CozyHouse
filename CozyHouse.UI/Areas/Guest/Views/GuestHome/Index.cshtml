@@ -1,26 +1,16 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shelter</title>
-    <link rel="stylesheet" href="./style.css">
-    <link rel="shortcut icon" href="./img/favicon-32x32.png" type="image/x-icon">
-    
-</head>
-<body>
-    <div class="background">
+<div class="background">
         <div class="start-screen" style="background: url('./img/start-screen-gradient-background.png') no-repeat center;">
             <div class="start-screen-content">
                 <div class="not-only">
                     <h2>Not only people <br> need a house</h2>
                     <p>We offer to give a chance to a little and nice puppy with an extremely wide and open heart. He or she will love you more than anybody else in the world, you will see!</p>
-                    <button class="make-a-friend">Make a friend</button>
+                    <a class="make-a-friend" asp-area="Guest" asp-controller="Authorization" asp-action="Index">Make a friend</a>
                 </div>
                 <div class="start-screen-puppy">
-                    <img src="./img/puppy.png" alt="Puppy" width="698" height="728">
+                    <img src="/img/puppy.png" alt="Puppy" width="698" height="728">
                 </div>
             </div>
         </div>
@@ -38,25 +28,25 @@
             <div class="pets-content">
                 <h3>Our friends who <br> are looking for a house</h3>
                 <div class="slider">
-                    <button class="arrow"><img src="./img/arrow-right.svg" alt="arrow left"></button>
+                    <button class="arrow"><img src="/img/arrow-right.svg" alt="arrow left"></button>
                     <div class="pet">
-                        <img src="./img/pets-katrine.png" alt="katrine">
+                        <img src="/img/pets-katrine.png" alt="katrine">
                         <h4>Katrine</h4>
                         <button class="learn-more">Learn more</button>
                     </div>
                     <div class="pet">
-                        <img src="./img/pets-jennifer.png" alt="jennifer">
+                        <img src="/img/pets-jennifer.png" alt="jennifer">
                         <h4>Jennifer</h4>
                         <button class="learn-more">Learn more</button>
                     </div>
                     <div class="pet">
-                        <img src="./img/pets-woody.png" alt="woody">
+                        <img src="/img/pets-woody.png" alt="woody">
                         <h4>Woody</h4>
                         <button class="learn-more">Learn more</button>
                     </div>
-                    <button class="arrow"><img src="./img/arrow-left.svg" alt="arrow-right"></button>
+                    <button class="arrow"><img src="/img/arrow-left.svg" alt="arrow-right"></button>
                 </div>
-                <div class="button-2">Get to know the rest</div>
+                <div class="button-2"><a asp-area="Guest" asp-controller="OurPets" asp-action="Index">Get to know the rest</a></div>
             </div>
         </div>
         <div class="help" id="help-container">
@@ -67,41 +57,41 @@
                 <div class="list">
                     <ol class="first-column">
                         <li>
-                            <img src="./img/icon-pet-food.svg" alt="icon-pet-food">
+                            <img src="/img/icon-pet-food.svg" alt="icon-pet-food">
                             <h4>Pet food</h4>
                         </li>
                         <li>
-                            <img src="./img/icon-transportation.svg" alt="icon-transportation">
+                            <img src="/img/icon-transportation.svg" alt="icon-transportation">
                             <h4>Transportation</h4>
                         </li>
                         <li>
-                            <img src="./img/icon-toys.svg" alt="icon-toys">
+                            <img src="/img/icon-toys.svg" alt="icon-toys">
                             <h4>Toys</h4>
                         </li>
                         <li>
-                            <img src="./img/icon-bowls-and-cups.svg" alt="icon-bowls-and-cups">
+                            <img src="/img/icon-bowls-and-cups.svg" alt="icon-bowls-and-cups">
                             <h4>Bowl and cups</h4>
                         </li>
                         <li>
-                            <img src="./img/icon-shampoos.svg" alt="icon-shampoos">
+                            <img src="/img/icon-shampoos.svg" alt="icon-shampoos">
                             <h4>Shampoos</h4>
                         </li>
                     </ol>
                     <ol class="second-column">
                         <li>
-                            <img src="./img/icon-vitamins.svg" alt="icon-vitamins">
+                            <img src="/img/icon-vitamins.svg" alt="icon-vitamins">
                             <h4>Vitamins</h4>
                         </li>
                         <li>
-                            <img src="./img/icon-medicines.svg" alt="icon-medicines">
+                            <img src="/img/icon-medicines.svg" alt="icon-medicines">
                             <h4>Medicines</h4>
                         </li>
                         <li>
-                            <img src="./img/icon-collars-leashes.svg" alt="icon-collars-leashes">
+                            <img src="/img/icon-collars-leashes.svg" alt="icon-collars-leashes">
                             <h4>Collar / leashes </h4>
                         </li>
                         <li>
-                            <img src="./img/icon-sleeping-area.svg" alt="icon-sleeping-area">
+                            <img src="/img/icon-sleeping-area.svg" alt="icon-sleeping-area">
                             <h4>Sleeping area</h4>
                         </li>
                     </ol>
@@ -110,18 +100,18 @@
         </div>
         <div class="in-addition">
             <div class="donation-content">
-                <img src="./img/donation-dog.svg" alt="donation-dog">
+                <img src="/img/donation-dog.svg" alt="donation-dog">
                 <div class="content">
                     <h3>You can also make a donation</h3>
                     <h5>Name of the bank / Type of bank account</h5>
                     <div class="credit-cart">
                         <a>
-                            <img src="./img/credit-card.svg" alt="credit-card">
+                            <img src="/img/credit-card.svg" alt="credit-card">
                             <h4>8380 2880 8028 8791 7435</h4>
                         </a>
                     </div>
                     <p>Legal information and lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas a ipsum at libero sagittis dignissim sed ac diam. Praesent ultrices maximus tortor et vulputate. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
                 </div>
             </div>
-    </div>
-</body>
+        </div>
+</div>
