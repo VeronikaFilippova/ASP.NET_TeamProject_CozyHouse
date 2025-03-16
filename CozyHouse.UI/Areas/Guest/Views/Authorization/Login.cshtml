@@ -1,0 +1,23 @@
+﻿@model LoginDTO
+@{
+    ViewBag.Title = "Login";
+}
+
+<form method="post" asp-area="Guest" asp-controller="Authorization" asp-action="LoginCommand">
+    <label>Якщо треба на акаунт користувача, то </label><br />
+    <label>Login: TestUserLogin</label><br />
+    <label>Password: TestUserPassword</label><br />
+    <br />
+    <label>Якщо треба на акаунт менеджера, то </label><br />
+    <label>Login: CozyHouseApp</label><br />
+    <label>Password: CozyHouseStrongPassword</label><br />
+    <div>
+        <input placeholder="Login" style="width:400px" asp-for="UserLogin" />
+    </div>
+    <div>
+        <input placeholder="Password" style="width:400px" asp-for="UserPassword" />
+    </div>
+    <div>
+        <button type="submit">Login</button>
+    </div>
+</form>

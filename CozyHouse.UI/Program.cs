@@ -2,6 +2,8 @@ using CozyHouse.Core.Domain.IdentityEntities;
 using CozyHouse.Core.RepositoryInterfaces;
 using CozyHouse.Infrastructure.Database;
 using CozyHouse.Infrastructure.Helpers;
+using CozyHouse.Infrastructure.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -16,6 +18,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("SqliteConnectionString"));
 });
 
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 builder.Services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
 {
@@ -27,6 +30,20 @@ builder.Services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
     .AddDefaultTokenProviders()
     .AddUserStore<UserStore<ApplicationUser, ApplicationRole, ApplicationDbContext, Guid>>()
     .AddRoleStore<RoleStore<ApplicationRole, ApplicationDbContext, Guid>>();
+
+// Всі action методи тепер не доступні, якщо не залогінитись
+builder.Services.AddAuthorization(options =>
+{
+    options.FallbackPolicy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
+});
+
+// Якщо не залогінений, то перекинь його на сторінку логування
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.LoginPath = "/Guest/Authorization/Login";
+    options.ExpireTimeSpan = TimeSpan.FromSeconds(30); // Cookie, що використовується для аунтентифікації, не будуть дійсні через 30 секунд 
+    options.SlidingExpiration = false; // Чи оновлювати cookie при новому запиті
+});
 
 var app = builder.Build();
 
@@ -50,8 +67,8 @@ using (var scope = app.Services.CreateScope())
     await AuthorizationHelper.SeedDefaultManagerAsync(services);
 }
 
-app.UseAuthorization();
-app.UseAuthentication(); // Необхідне для того, щоб не давати доступу до контроллерів менеджерів
+app.UseAuthentication(); // Перевірка, чи користувач залогінений
+app.UseAuthorization(); // Перевірка, чи користувач може доступитись до сторінок
 
 app.MapControllerRoute(
     name: "areas",

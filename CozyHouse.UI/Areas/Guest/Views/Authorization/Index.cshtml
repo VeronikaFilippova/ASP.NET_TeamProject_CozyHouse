@@ -1,15 +1,25 @@
-﻿@model ApplicationUser
+﻿@model RegisterDTO
 @{
-    ViewBag.Title = "Authorization";
+    ViewBag.Title = "Register";
 }
-<form method="post">
+<form method="post" asp-area="Guest" asp-controller="Authorization" asp-action="RegisterCommand">
     <div>
-        <input placeholder="User Name: CozyHouseApp" style="width:400px" />
+        <input placeholder="Login" style="width:400px" asp-for="Login" />
     </div>
     <div>
-        <input placeholder="Password: CozyHouseStrongPassword" style="width:400px"  />
+        <input placeholder="User Name" style="width:400px" asp-for="UserName" />
     </div>
     <div>
-        <button type="submit">Login</button>
+        <input placeholder="Email" style="width:400px" asp-for="Email" />
+    </div>
+    <div>
+        <input placeholder="Phone Number" style="width:400px" asp-for="PhoneNumber" />
+    </div>
+    <div>
+        <input placeholder="Password" style="width:400px" asp-for="Password" />
+    </div>
+
+    <div>
+        <button type="submit">Register</button>
     </div>
 </form>
