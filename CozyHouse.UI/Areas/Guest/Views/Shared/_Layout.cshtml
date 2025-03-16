@@ -16,10 +16,8 @@
         </div>
         <div class="nav-menu">
             <ul>
-                <li><a>About the shelter</a></li>
+                <li><a asp-area="Guest" asp-controller="GuestHome" asp-action="About">About the shelter</a></li>
                 <li><a asp-area="Guest" asp-controller="OurPets" asp-action="Index">Our Pets</a></li>
-                <li><a href="#help-container">Help the shelter</a></li>
-                <li><a href="#footer">Contacts</a></li>
                 <li><a asp-area="Guest" asp-controller="Authorization" asp-action="Login">Login</a></li>
                 <li><a asp-area="Guest" asp-controller="Authorization" asp-action="Index">Register</a></li>
             </ul>
