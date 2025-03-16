@@ -13,10 +13,10 @@ Additionally, the application allows regular users to post profiles of stray ani
 ![Use Case Diagram](Assets/CozyHouse_UseCase_English_V2.png)
 
 ## Data Access
-![Data Access](Assets/DataAccess.png)
+![Data Access](Assets/CozyHouse.DataAccess.png)
 
-## Entities
-![Entities](Assets/Entities.png)
+## Identity & Entities
+![Identity & Entities](Assets/CozyHouseSystem.IdentityWithEntites.png)
 
 ## Downloadable Resources
 - [Table](Assets/CozyHouse_Table_English_V2.xlsx)
