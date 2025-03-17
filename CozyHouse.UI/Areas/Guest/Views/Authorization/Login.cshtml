@@ -3,21 +3,94 @@
     ViewBag.Title = "Login";
 }
 
-<form method="post" asp-area="Guest" asp-controller="Authorization" asp-action="LoginCommand">
-    <label>Якщо треба на акаунт користувача, то </label><br />
-    <label>Login: TestUserLogin</label><br />
-    <label>Password: TestUserPassword</label><br />
-    <br />
-    <label>Якщо треба на акаунт менеджера, то </label><br />
-    <label>Login: CozyHouseApp</label><br />
-    <label>Password: CozyHouseStrongPassword</label><br />
-    <div>
-        <input placeholder="Login" style="width:400px" asp-for="UserLogin" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f8f8f8;
+    }
+
+    .form-container {
+        width: 400px;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    .tabs {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+
+    .tab {
+        cursor: pointer;
+        font-weight: bold;
+        padding: 10px;
+        border-bottom: 2px solid transparent;
+    }
+
+        .tab.active {
+            border-bottom: 2px solid #D8A48F;
+        }
+
+    input {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #D8A48F;
+        border-radius: 5px;
+    }
+
+    button {
+        width: 100%;
+        padding: 10px;
+        background: #D8A48F;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    .google-btn {
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #D8A48F;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+</style>
+
+<div class="form-container">
+    <div class="tabs">
+        <div class="tab active" onclick="showLogin()">ENTRANCE</div>
+        <div class="tab" onclick="showRegister()">REGISTRATION</div>
     </div>
-    <div>
-        <input placeholder="Password" style="width:400px" asp-for="UserPassword" />
-    </div>
-    <div>
-        <button type="submit">Login</button>
-    </div>
-</form>
+
+    <form id="login-form" method="post" asp-area="Guest" asp-controller="Authorization" asp-action="LoginCommand">
+        <input type="text" placeholder="E-mail" asp-for="UserLogin" required>
+        <input type="password" placeholder="Password" asp-for="UserPassword" required>
+        <button type="submit">Entrance</button>
+        <div class="google-btn">
+            <i class="fab fa-google"></i> Continue with <b>Google</b>
+        </div>
+    </form>
+</div>
+
+<script>
+    function showLogin() {
+        document.getElementById('login-form').style.display = 'block';
+    }
+    function showRegister() {
+        window.location.href = '/Guest/Authorization/Register';
+    }
+</script>
