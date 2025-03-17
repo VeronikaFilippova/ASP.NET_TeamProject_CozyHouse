@@ -1,0 +1,138 @@
+﻿/*LOGIN*/
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8f8f8;
+}
+
+.form-container {
+    width: 400px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.tabs {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.tab {
+    cursor: pointer;
+    font-weight: bold;
+    padding: 10px;
+    border-bottom: 2px solid transparent;
+}
+
+.tab.active {
+    border-bottom: 2px solid #D8A48F;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #D8A48F;
+    border-radius: 5px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background: #D8A48F;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.google-btn {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #D8A48F;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/*REGISTRATION*/
+
+.container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    text-align: center;
+}
+
+.tabs {
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 2px solid #ddd;
+    margin-bottom: 20px;
+}
+
+.tab {
+    padding: 10px;
+    text-decoration: none;
+    color: #555;
+    font-weight: bold;
+}
+
+.tab.active {
+    border-bottom: 3px solid #d9a38a;
+    color: black;
+}
+
+.form input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9e7dd;
+}
+
+.form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #d9a38a;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.form button:hover {
+    background-color: #c4876a;
+}
+
+.google-login {
+    margin-top: 20px;
+}
+
+.google-btn {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: white;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.google-btn strong {
+    margin-left: 5px;
+}

@@ -5,9 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - CozyHouse</title>
     <link rel="stylesheet" href="~/css/main/header_footer.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/content/content.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/content/loginr.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/content/indexr.css" asp-append-version="true" />
     <link rel="shortcut icon" href="./img/favicon-32x32.png" type="image/x-icon">
 </head>
 <body>
@@ -20,8 +17,7 @@
             <ul>
                 <li><a asp-area="Guest" asp-controller="GuestHome" asp-action="About">About the shelter</a></li>
                 <li><a asp-area="Guest" asp-controller="Pets" asp-action="Index">Pets</a></li>
-                <li><a asp-area="Guest" asp-controller="Authorization" asp-action="Login">Login</a></li>
-                <li><a asp-area="Guest" asp-controller="Authorization" asp-action="Index">Register</a></li>
+                <li><a asp-area="Guest" asp-controller="Authorization" asp-action="Index">Authorization</a></li>
             </ul>
         </div>
     </header>

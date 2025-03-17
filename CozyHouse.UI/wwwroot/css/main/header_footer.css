@@ -23,6 +23,13 @@
 body {
     padding-top: 100px; /* Adjust based on header height + margin */
     font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center; /* Centers content horizontally */
+    align-items: center; /* Centers content vertically */
+    min-height: 100vh; /* Ensures full height of viewport */
+    margin: 0; /* Removes default margin */
+    line-height: 1;
+    flex-direction: column;
 }
 
 /*HEADER CONFIGURATIONS*/

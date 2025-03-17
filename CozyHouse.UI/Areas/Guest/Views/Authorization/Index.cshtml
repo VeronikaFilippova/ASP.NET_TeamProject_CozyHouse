@@ -1,107 +1,53 @@
-﻿@model RegisterDTO
+﻿@model AuthorizationDTO
 @{
-    ViewBag.Title = "Register";
+    ViewBag.Title = "Authorization";
 }
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f4f4f4;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-    }
 
-    .container {
-        background: white;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        width: 400px;
-        text-align: center;
-    }
+<link rel="stylesheet" href="~/css/authorization/authorization.css" asp-append-version="true" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
 
-    .tabs {
-        display: flex;
-        justify-content: space-around;
-        border-bottom: 2px solid #ddd;
-        margin-bottom: 20px;
-    }
+<div class="tabs">
+    <div class="tab active" onclick="showLogin()">LOGIN</div>
+    <div class="tab" onclick="showRegister()">REGISTER</div>
+</div>
 
-    .tab {
-        padding: 10px;
-        text-decoration: none;
-        color: #555;
-        font-weight: bold;
-    }
-
-        .tab.active {
-            border-bottom: 3px solid #d9a38a;
-            color: black;
-        }
-
-    .form input {
-        width: 100%;
-        padding: 10px;
-        margin: 10px 0;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        background-color: #f9e7dd;
-    }
-
-    .form button {
-        width: 100%;
-        padding: 10px;
-        background-color: #d9a38a;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 16px;
-    }
-
-        .form button:hover {
-            background-color: #c4876a;
-        }
-
-    .google-login {
-        margin-top: 20px;
-    }
-
-    .google-btn {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        background-color: white;
-        cursor: pointer;
-        font-size: 16px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-        .google-btn strong {
-            margin-left: 5px;
-        }
-</style>
-
-<div class="container">
-    <div class="tabs">
-        <a href="@Url.Action("Login", "Authorization", new { area = "Guest" })" class="tab">ENTRANCE</a>
-        <a href="@Url.Action("Register", "Authorization", new { area = "Guest" })" class="tab active">REGISTRATION</a>
-    </div>
+<div class="form-container" id="RegistrationForm">
     <form method="post" asp-area="Guest" asp-controller="Authorization" asp-action="RegisterCommand" class="form">
-        <input type="text" placeholder="Name/Last name" asp-for="UserName" required>
-        <input type="email" placeholder="E-mail" asp-for="Email" required>
-        <input type="password" placeholder="Password" asp-for="Password" required>
-        <button type="submit">REGISTRATION</button>
+        <input type="text" placeholder="Name/Last name" asp-for="RegisterDTO.UserName" required>
+        <input type="email" placeholder="E-mail" asp-for="RegisterDTO.Email" required>
+        <input type="password" placeholder="Password" asp-for="RegisterDTO.Password" required>
+        <button type="submit">Register</button>
     </form>
     <div class="google-login">
-        <button class="google-btn">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" alt="Google" width="20">
-            <strong>Continue with Google</strong>
-        </button>
     </div>
 </div>
+
+<div class="form-container" id="LoginForm">
+    <form method="post" asp-area="Guest" asp-controller="Authorization" asp-action="LoginCommand" class="form">
+        <input type="text" placeholder="E-mail" asp-for="LoginDTO.UserLogin" required>
+        <input type="password" placeholder="Password" asp-for="LoginDTO.UserPassword" required>
+        <button type="submit">Login</button>
+
+    </form>
+</div>
+
+<div class="google-btn">
+    <i class="fab fa-google"></i>  Continue with  <b>Google</b>
+</div>
+<br />
+<br />
+
+<script>
+    const registrationForm = document.getElementById('RegistrationForm');
+    const loginForm = document.getElementById('LoginForm');
+    loginForm.style.display = "none";
+
+    function showLogin() {
+        loginForm.style.display = "flex";
+        registrationForm.style.display = "none";
+    }
+    function showRegister() {
+        loginForm.style.display = "none";
+        registrationForm.style.display = "flex";
+    }
+</script>

@@ -18,48 +18,43 @@ namespace CozyHouse.UI.Areas.Guest.Controllers
             _userManager = userManager;
             _signInManager = signInManager;
         }
-        public IActionResult Index(RegisterDTO register)
+        public IActionResult Index(AuthorizationDTO authorization)
         {
-            return View(register);
+            return View(authorization);
         }
 
         [HttpPost]
-        public async Task<IActionResult> RegisterCommand(RegisterDTO register)
+        public async Task<IActionResult> RegisterCommand(AuthorizationDTO data)
         {
             // TODO: Error handling
             ApplicationUser user = new ApplicationUser()
             {
-                UserName = register.Login,
-                PersonName = register.UserName,
-                Email = register.Email,
-                PhoneNumber = register.PhoneNumber,
+                UserName = data.RegisterDTO.Login,
+                PersonName = data.RegisterDTO.UserName,
+                Email = data.RegisterDTO.Email,
+                PhoneNumber = data.RegisterDTO.PhoneNumber,
             };
 
-            IdentityResult result = await _userManager.CreateAsync(user, register.Password);
+            IdentityResult result = await _userManager.CreateAsync(user, data.RegisterDTO.Password);
             await _userManager.AddToRoleAsync(user, "User");
 
             if (result.Succeeded == true)
             {
-                return RedirectToAction("Login", new LoginDTO() { UserLogin = register.Login, UserPassword = register.Password });
+                return RedirectToAction("Login", new LoginDTO() { UserLogin = data.RegisterDTO.Login, UserPassword = data.RegisterDTO.Password });
             }
-            return RedirectToAction("Index", register);
-        }
-
-        public IActionResult Login(LoginDTO login)
-        {
-            return View(login);
+            return RedirectToAction("Index", data);
         }
 
         [HttpPost]
-        public async Task<IActionResult> LoginCommand(LoginDTO login)
+        public async Task<IActionResult> LoginCommand(AuthorizationDTO data)
         {
-            if (login.UserLogin == null || login.UserPassword == null) return RedirectToAction("Login", login);
+            if (data.LoginDTO.UserLogin == null || data.LoginDTO.UserPassword == null) return RedirectToAction("Index", data);
 
-            var result = await _signInManager.PasswordSignInAsync(login.UserLogin, login.UserPassword, false, false);
+            var result = await _signInManager.PasswordSignInAsync(data.LoginDTO.UserLogin, data.LoginDTO.UserPassword, false, false);
 
             if (result.Succeeded)
             {
-                ApplicationUser? user = await _userManager.FindByNameAsync(login.UserLogin);
+                ApplicationUser? user = await _userManager.FindByNameAsync(data.LoginDTO.UserLogin);
                 if (await _userManager.IsInRoleAsync(user!, "User"))
                 {
                     return RedirectToAction("Index", "UserHome", new { area = "User" });
@@ -69,7 +64,7 @@ namespace CozyHouse.UI.Areas.Guest.Controllers
                     return RedirectToAction("Index", "ManagerHome", new { area = "Manager" });
                 }
             }
-            return RedirectToAction("Login", login);
+            return RedirectToAction("Index", data);
         }
     }
 }

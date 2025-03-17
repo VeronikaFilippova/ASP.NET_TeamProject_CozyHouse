@@ -13,11 +13,10 @@
     font-family: 'Arial-italic';
     src: url(./fonts/arial/arial-italic.ttf);
 }
-
+/*
 http://meyerweb.com/eric/tools/css/reset/
 v2.0 | 20110126
-License: none (public domain)
-
+License: none (public domain)*/
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -38,16 +37,6 @@ time, mark, audio, video {
     font-size: 100%;
     font: inherit;
     vertical-align: baseline;
-}
-
-body {
-    display: flex;
-    justify-content: center; /* Centers content horizontally */
-    align-items: center; /* Centers content vertically */
-    min-height: 100vh; /* Ensures full height of viewport */
-    margin: 0; /* Removes default margin */
-    line-height: 1;
-    flex-direction: column;
 }
 
 ol, ul {
