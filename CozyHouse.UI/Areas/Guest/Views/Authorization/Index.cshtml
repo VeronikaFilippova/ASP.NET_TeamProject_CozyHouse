@@ -2,24 +2,106 @@
 @{
     ViewBag.Title = "Register";
 }
-<form method="post" asp-area="Guest" asp-controller="Authorization" asp-action="RegisterCommand">
-    <div>
-        <input placeholder="Login" style="width:400px" asp-for="Login" />
-    </div>
-    <div>
-        <input placeholder="User Name" style="width:400px" asp-for="UserName" />
-    </div>
-    <div>
-        <input placeholder="Email" style="width:400px" asp-for="Email" />
-    </div>
-    <div>
-        <input placeholder="Phone Number" style="width:400px" asp-for="PhoneNumber" />
-    </div>
-    <div>
-        <input placeholder="Password" style="width:400px" asp-for="Password" />
-    </div>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
 
-    <div>
-        <button type="submit">Register</button>
+    .container {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 400px;
+        text-align: center;
+    }
+
+    .tabs {
+        display: flex;
+        justify-content: space-around;
+        border-bottom: 2px solid #ddd;
+        margin-bottom: 20px;
+    }
+
+    .tab {
+        padding: 10px;
+        text-decoration: none;
+        color: #555;
+        font-weight: bold;
+    }
+
+        .tab.active {
+            border-bottom: 3px solid #d9a38a;
+            color: black;
+        }
+
+    .form input {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background-color: #f9e7dd;
+    }
+
+    .form button {
+        width: 100%;
+        padding: 10px;
+        background-color: #d9a38a;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+        .form button:hover {
+            background-color: #c4876a;
+        }
+
+    .google-login {
+        margin-top: 20px;
+    }
+
+    .google-btn {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background-color: white;
+        cursor: pointer;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+        .google-btn strong {
+            margin-left: 5px;
+        }
+</style>
+
+<div class="container">
+    <div class="tabs">
+        <a href="@Url.Action("Login", "Authorization", new { area = "Guest" })" class="tab">ENTRANCE</a>
+        <a href="@Url.Action("Register", "Authorization", new { area = "Guest" })" class="tab active">REGISTRATION</a>
     </div>
-</form>
+    <form method="post" asp-area="Guest" asp-controller="Authorization" asp-action="RegisterCommand" class="form">
+        <input type="text" placeholder="Name/Last name" asp-for="UserName" required>
+        <input type="email" placeholder="E-mail" asp-for="Email" required>
+        <input type="password" placeholder="Password" asp-for="Password" required>
+        <button type="submit">REGISTRATION</button>
+    </form>
+    <div class="google-login">
+        <button class="google-btn">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" alt="Google" width="20">
+            <strong>Continue with Google</strong>
+        </button>
+    </div>
+</div>
