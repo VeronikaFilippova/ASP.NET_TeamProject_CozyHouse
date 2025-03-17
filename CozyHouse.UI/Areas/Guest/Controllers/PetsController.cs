@@ -5,7 +5,7 @@ namespace CozyHouse.UI.Areas.Guest.Controllers
 {
     [Area("Guest")]
     [AllowAnonymous]
-    public class OurPetsController : Controller
+    public class PetsController : Controller
     {
         public IActionResult Index()
         {
