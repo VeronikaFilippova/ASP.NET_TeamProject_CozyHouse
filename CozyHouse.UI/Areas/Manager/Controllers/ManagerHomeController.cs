@@ -1,10 +1,13 @@
-﻿using CozyHouse.Core.Domain.IdentityEntities;
+﻿using CozyHouse.Core.Domain.Enums;
+using CozyHouse.Core.Domain.IdentityEntities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CozyHouse.UI.Areas.Manager.Controllers
 {
     [Area("Manager")]
+    [Authorize(Roles = "Manager")]
     public class ManagerHomeController : Controller
     {
         SignInManager<ApplicationUser> _signInManager;
