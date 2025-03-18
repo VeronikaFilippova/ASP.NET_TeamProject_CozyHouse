@@ -2,7 +2,7 @@
 
 namespace CozyHouse.Core.RepositoryInterfaces
 {
-    public interface IListingRepository // Можна не розбивати по класах, а зробити один загальний для роботи з базою даних. Краще розбивати на менші.
+    public interface IListingRepository
     {
         /// <summary>
         /// Adds new listing to data storage.
@@ -14,10 +14,9 @@ namespace CozyHouse.Core.RepositoryInterfaces
         /// <summary>
         /// Updates existing listing in data storage.
         /// </summary>
-        /// <param name="id">Id of the listing to change.</param>
         /// <param name="listing">Updated version of the listing.</param>
         /// <returns>Updated listing if updated successfully. Null otherwise.</returns>
-        public Listing? Update(Guid id, Listing listing);
+        public Listing? Update(Listing listing);
         
         /// <summary>
         /// Deletes existing listing.
@@ -33,6 +32,5 @@ namespace CozyHouse.Core.RepositoryInterfaces
         /// <returns>Listing of found. Null otherwise.</returns>
         public Listing? GetListing(Guid id);
 
-        // Можна дописувати інші методи. Наприклад пошук за іменем, рейтингом. Вивести усі дописи, і так далі. Необмежені можливості.
     }
 }
