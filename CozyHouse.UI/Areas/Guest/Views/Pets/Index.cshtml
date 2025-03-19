@@ -1,7 +1,23 @@
-﻿@{
+﻿@model List<Listing>
+@{
     ViewBag.Title = "Pets";
 }
-<div>
-    <h1>Pets From Shelter</h1>
-    <h1>Pets From Users</h1>
-</div>
+
+<h1>Our Pets</h1>
+
+@{
+    foreach (Listing listing in Model)
+    {
+        <div>
+        <br />
+            <div style="background-color: gray;">
+                <h1>@listing.Title</h1>
+                <br />
+                <h3>Name: @listing.Pet.Name; Age: @listing.Pet.Age</h3>
+                <h4>@listing.Content</h4>
+            </div>
+        <br />
+        </div>
+
+    }
+}

@@ -11,15 +11,12 @@
     <header>
         <nav>
             <ul>
-                <li>
-                    <a asp-area="Manager" asp-controller="ManagerHome" asp-action="Index">Home</a>
-                </li>
-                <li>
-                    <a asp-area="Manager" asp-controller="ManagerHome" asp-action="Privacy">Privacy</a>
-                </li>
-                <li>
-                    <a asp-area="Manager" asp-controller="ManagerHome" asp-action="LogoutCommand">Logout</a>
-                </li>
+                <li><a asp-area="Manager" asp-controller="ManagerHome" asp-action="Index">Home</a></li>
+
+                <li><a asp-area="Manager" asp-controller="Listing" asp-action="Index">Manage Listings</a></li>
+                <li><a asp-area="Manager" asp-controller="Pet" asp-action="Index">Manage Pets</a></li>
+
+                <li><a asp-area="Manager" asp-controller="ManagerHome" asp-action="LogoutCommand">Logout</a></li>
             </ul>
         </nav>
     </header>

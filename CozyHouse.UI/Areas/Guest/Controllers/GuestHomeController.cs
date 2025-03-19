@@ -11,10 +11,5 @@ namespace CozyHouse.UI.Areas.Guest.Controllers
         {
             return View();
         }
-
-        public IActionResult About()
-        {
-            return View();
-        }
     }
 }

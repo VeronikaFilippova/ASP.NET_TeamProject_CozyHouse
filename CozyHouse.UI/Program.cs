@@ -19,6 +19,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 });
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IPetRepository, PetRepository>();
+builder.Services.AddScoped<IListingRepository, ListingRepository>();
 
 builder.Services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
 {
@@ -41,8 +43,6 @@ builder.Services.AddAuthorization(options =>
 builder.Services.ConfigureApplicationCookie(options =>
 {
     options.LoginPath = "/Guest/Authorization/Login";
-    options.ExpireTimeSpan = TimeSpan.FromSeconds(30); // Cookie, що використовується для аунтентифікації, не будуть дійсні через 30 секунд 
-    options.SlidingExpiration = false; // Чи оновлювати cookie при новому запиті
 });
 
 var app = builder.Build();

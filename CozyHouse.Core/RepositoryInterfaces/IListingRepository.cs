@@ -1,4 +1,5 @@
 ﻿using CozyHouse.Core.Domain.Entities;
+using CozyHouse.Core.Domain.Enums;
 
 namespace CozyHouse.Core.RepositoryInterfaces
 {
@@ -31,6 +32,26 @@ namespace CozyHouse.Core.RepositoryInterfaces
         /// <param name="id">Id of the listing to get.</param>
         /// <returns>Listing of found. Null otherwise.</returns>
         public Listing? GetListing(Guid id);
+
+        /// <summary>
+        /// Gets all listings from the data source.
+        /// </summary>
+        /// <returns>List of listings</returns>
+        public List<Listing> GetAll();
+
+        /// <summary>
+        /// Gets listings based on title.
+        /// </summary>
+        /// <param name="title">Title of the listings.</param>
+        /// <returns>List of listings</returns>
+        public List<Listing> GetByTitle(string title);
+
+        /// <summary>
+        /// Gets all listings based on the pet type.
+        /// </summary>
+        /// <param name="type">Type of the pets.</param>
+        /// <returns>All listings with specified pet type.</returns>
+        public List<Listing> GetByPetType(PetType type);
 
     }
 }

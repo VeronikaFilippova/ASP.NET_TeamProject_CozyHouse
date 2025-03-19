@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CozyHouse.Core.Domain.Entities
 {
@@ -8,10 +9,14 @@ namespace CozyHouse.Core.Domain.Entities
         public Guid Id { get; set; }
 
         [Required(ErrorMessage = "Title can't be null")]
-        public string? Title { get; set; }
-        public string? Content { get; set; }
-        public string? ImagePath { get; set; }
+        public string Title { get; set; } = null!;
 
-        public Pet? Pet { get; set; }
+        [Required(ErrorMessage = "Content can't be null")]
+        public string Content { get; set; } = null!;
+
+        [ForeignKey(nameof(Pet))]
+        public Guid PetId { get; set; }
+
+        public Pet Pet { get; set; } = null!;
     }
 }

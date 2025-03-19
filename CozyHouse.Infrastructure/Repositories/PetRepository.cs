@@ -40,7 +40,11 @@ namespace CozyHouse.Infrastructure.Repositories
             try
             {
                 Pet petToUpdate = _db.Pets.First(p => p.Id == pet.Id);
-                petToUpdate = pet;
+
+                petToUpdate.Name = pet.Name;
+                petToUpdate.Age = pet.Age;
+                petToUpdate.Type = pet.Type;
+                
                 _db.Pets.Update(petToUpdate);
                 _db.SaveChanges();
                 return true;

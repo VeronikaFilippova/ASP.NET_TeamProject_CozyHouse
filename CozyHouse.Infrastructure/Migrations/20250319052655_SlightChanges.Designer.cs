@@ -3,6 +3,7 @@ using System;
 using CozyHouse.Infrastructure.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CozyHouse.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250319052655_SlightChanges")]
+    partial class SlightChanges
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.3");
@@ -38,7 +41,7 @@ namespace CozyHouse.Infrastructure.Migrations
 
                     b.HasIndex("PetId");
 
-                    b.ToTable("Listings", (string)null);
+                    b.ToTable("Listings");
                 });
 
             modelBuilder.Entity("CozyHouse.Core.Domain.Entities.Pet", b =>
@@ -59,7 +62,7 @@ namespace CozyHouse.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Pets", (string)null);
+                    b.ToTable("Pets");
                 });
 
             modelBuilder.Entity("CozyHouse.Core.Domain.Entities.Request", b =>
@@ -88,7 +91,7 @@ namespace CozyHouse.Infrastructure.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Requests", (string)null);
+                    b.ToTable("Requests");
 
                     b.HasDiscriminator().HasValue("Request");
 
