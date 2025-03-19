@@ -1,0 +1,16 @@
+﻿@model Listing
+@{
+    ViewBag.Title = "Pet listing";
+}
+
+<form method="post" asp-area="User" asp-controller="Adoption" asp-action="Adopt" asp-route-id="@Model.Id">
+    <h1>@Model.Title</h1>
+
+    <h2>@Model.Content</h2>
+
+    <h2>Name: @Model.Pet.Name</h2>
+    <h2>Age: @Model.Pet.Age</h2>
+    <h2>PetType: @Model.Pet.Type.ToString()</h2>
+
+    <button type="submit">Adopt</button>
+</form>
