@@ -15,6 +15,9 @@
                 <div class="listing-container">
                     <h2>Name: @pet.Name</h2>
                     <h2>Age: @pet.Age</h2>
+                    <div>
+                        <img src="@pet.ImagePath" />
+                    </div>
                     <div class="pets-buttons">
                         <a asp-area="Manager" asp-controller="Pet" asp-action="Edit" asp-route-id="@pet.Id">Edit</a>
 

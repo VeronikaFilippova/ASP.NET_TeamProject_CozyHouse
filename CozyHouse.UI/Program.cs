@@ -1,5 +1,7 @@
 using CozyHouse.Core.Domain.IdentityEntities;
 using CozyHouse.Core.RepositoryInterfaces;
+using CozyHouse.Core.ServiceContracts;
+using CozyHouse.Core.Services;
 using CozyHouse.Infrastructure.Database;
 using CozyHouse.Infrastructure.Helpers;
 using CozyHouse.Infrastructure.Repositories;
@@ -18,13 +20,14 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("SqliteConnectionString"));
 });
 
-builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IPetRepository, PetRepository>();
 builder.Services.AddScoped<IListingRepository, ListingRepository>();
 builder.Services.AddScoped<IRequestRepository, RequestRepository>();
-builder.Services.AddScoped<IUserRequestRepository, UserRequestRepository>();
-builder.Services.AddScoped<IUserListingsRepository, UserListingsRepository>();
 builder.Services.AddScoped<IUserPetsRepository, UserPetsRepository>();
+builder.Services.AddScoped<IUserListingsRepository, UserListingsRepository>();
+builder.Services.AddScoped<IUserRequestRepository, UserRequestRepository>();
+
+builder.Services.AddScoped<IImageService, ImageService>();
 
 builder.Services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
 {

@@ -11,6 +11,6 @@ namespace CozyHouse.Core.Domain.Entities
         public string Name { get; set; } = null!;
         public PetType Type { get; set; }
         public uint Age { get; set; }
-        string? ImagePath { get; set; }
+        public string? ImagePath { get; set; }
     }
 }

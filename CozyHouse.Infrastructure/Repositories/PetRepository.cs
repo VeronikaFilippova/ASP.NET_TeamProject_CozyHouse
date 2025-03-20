@@ -44,6 +44,7 @@ namespace CozyHouse.Infrastructure.Repositories
                 petToUpdate.Name = pet.Name;
                 petToUpdate.Age = pet.Age;
                 petToUpdate.Type = pet.Type;
+                petToUpdate.ImagePath = pet.ImagePath;
                 
                 _db.Pets.Update(petToUpdate);
                 _db.SaveChanges();

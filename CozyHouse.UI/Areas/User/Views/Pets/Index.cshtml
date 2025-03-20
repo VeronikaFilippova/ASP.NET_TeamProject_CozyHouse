@@ -14,16 +14,19 @@
     {
         <div>
             <br />
-                <div class="listing-container">
+            <div class="listing-container">
                 <h2>Name: @pet.Name</h2>
                 <h2>Age: @pet.Age</h2>
-                    <div class="pets-buttons">
-                        <a asp-area="User" asp-controller="Pets" asp-action="Edit" asp-route-id="@pet.Id">Edit</a>
+                <div>
+                    <img src="@pet.ImagePath" />
+                </div>
+                <div class="pets-buttons">
+                    <a asp-area="User" asp-controller="Pets" asp-action="Edit" asp-route-id="@pet.Id">Edit</a>
 
-                        <form method="post" asp-area="User" asp-controller="Pets" asp-action="Delete" asp-route-id="@pet.Id">
-                            <button type="submit">Delete</button>
-                        </form>
-                    </div>
+                    <form method="post" asp-area="User" asp-controller="Pets" asp-action="Delete" asp-route-id="@pet.Id">
+                        <button type="submit">Delete</button>
+                    </form>
+                </div>
             </div>
             <br />
         </div>
