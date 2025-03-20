@@ -15,10 +15,25 @@
                     <a asp-area="User" asp-controller="UserHome" asp-action="Index">Home</a>
                 </li>
                 <li>
-                    <a asp-area="User" asp-controller="Pets" asp-action="ShelterPets">View Pets</a>
+                    <a asp-area="User" asp-controller="UserListings" asp-action="Index">Manage your listings</a>
+                </li>
+                <li>
+                    <a asp-area="User" asp-controller="Pets" asp-action="Index">Manage your pets</a>
+                </li>
+                <li>
+                    <a asp-area="User" asp-controller="UserHome" asp-action="ShelterPets">View pets in shelter</a>
+                </li>
+                <li>
+                    <a asp-area="User" asp-controller="UserHome" asp-action="UserPets">View pets from users</a>
+                </li>
+                <li>
+                    <a asp-area="User" asp-controller="UserHome" asp-action="SeeAdoptionRequests">See Requests</a>
                 </li>
                 <li>
                     <a asp-area="User" asp-controller="UserHome" asp-action="LogoutCommand">Logout</a>
+                </li>
+                <li>
+                    <a asp-area="User" asp-controller="UserHome" asp-action="DeleteAccount">Delete Account</a>
                 </li>
             </ul>
         </nav>
@@ -29,7 +44,7 @@
 
     <footer>
         <div>
-            &copy; 2025 - CozyHouse - <a asp-area="User" asp-controller="Home" asp-action="Privacy">Privacy</a>
+           
         </div>
     </footer>
     <script src="~/js/site.js" asp-append-version="true"></script>

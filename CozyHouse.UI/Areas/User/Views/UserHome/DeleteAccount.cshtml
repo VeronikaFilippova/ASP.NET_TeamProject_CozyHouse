@@ -1,0 +1,22 @@
+﻿@model ApplicationUser
+@{
+    ViewBag.Title = "Delete Account";
+}
+
+<h1>Are you sure you want to delete your account?</h1>
+
+
+
+<form method="post" asp-area="User" asp-controller="UserHome" asp-action="DeleteAccount">
+    <input asp-for="Id" hidden />
+    <input asp-for="Email" hidden />
+    <input asp-for="PersonName" hidden />
+    <input asp-for="PhoneNumber" hidden />
+    <input asp-for="UserName" hidden />
+
+    <h3>Login: @Model.UserName</h3>
+    <h3>Email: @Model.Email</h3>
+    <h3>Phone Number: @Model.PhoneNumber</h3>
+    <h3>Name: @Model.PersonName</h3>
+    <button type="submit">Delete</button>
+</form>

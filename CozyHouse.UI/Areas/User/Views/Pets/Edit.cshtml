@@ -1,0 +1,27 @@
+﻿@model UserPet
+@{
+    ViewBag.Title = "Edit";
+}
+
+<form method="post" enctype="multipart/form-data" asp-area="User" asp-controller="Pets" asp-action="Edit">
+    <input asp-for="Id" hidden /> @* Потрібно, щоб оновити, а не додати нову (Змінену) версію *@
+    <h2>Pet information</h2>
+    <div>
+        <input type="text" placeholder="Pet Name" asp-for="Name" />
+    </div>
+
+    <div>
+        <input type="text" placeholder="Pet Age" asp-for="Age" />
+    </div>
+
+    <div>
+        <label>Select Pet Type</label>
+        <select asp-for="Type">
+            @foreach (PetType type in Enum.GetValues(typeof(PetType)))
+            {
+                <option value="@type">@type.ToString()</option>
+            }
+        </select>
+    </div>
+    <button type="submit">Edit!!!</button>
+</form>

@@ -21,6 +21,10 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IPetRepository, PetRepository>();
 builder.Services.AddScoped<IListingRepository, ListingRepository>();
+builder.Services.AddScoped<IRequestRepository, RequestRepository>();
+builder.Services.AddScoped<IUserRequestRepository, UserRequestRepository>();
+builder.Services.AddScoped<IUserListingsRepository, UserListingsRepository>();
+builder.Services.AddScoped<IUserPetsRepository, UserPetsRepository>();
 
 builder.Services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
 {

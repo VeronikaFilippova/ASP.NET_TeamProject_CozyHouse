@@ -1,0 +1,22 @@
+﻿@model List<UserListing>
+@{
+    ViewBag.Title = "User Listings";
+}
+
+<h1>Your Listings</h1>
+<a asp-area="User" asp-controller="UserListings" asp-action="Create">Create New Listing</a>
+@foreach (UserListing listing in Model)
+{
+    <div>
+        <br />
+        <div style="background-color:gray">
+            <label>@listing.Title</label>
+            <a asp-area="User" asp-controller="UserListings" asp-action="Edit" asp-route-id="@listing.Id">Edit Existing Listing</a>
+
+            <form method="post" asp-area="User" asp-controller="UserListings" asp-action="Delete" asp-route-id="@listing.Id">
+                <button type="submit">Delete!!!</button>
+            </form>
+        </div>
+        <br />
+    </div>
+}

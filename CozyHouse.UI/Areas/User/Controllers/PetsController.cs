@@ -2,6 +2,7 @@
 using CozyHouse.Core.RepositoryInterfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace CozyHouse.UI.Areas.User.Controllers
 {
@@ -9,23 +10,52 @@ namespace CozyHouse.UI.Areas.User.Controllers
     [Authorize(Roles = "User")]
     public class PetsController : Controller
     {
-        IListingRepository _listingRepository;
-        public PetsController(IListingRepository listingRepository)
+        IUserPetsRepository _userPetsRepository;
+        public PetsController(IUserPetsRepository userPetsRepository)
         {
-            _listingRepository = listingRepository;
+            _userPetsRepository = userPetsRepository;
         }
-        public IActionResult ShelterPets()
+
+        #region CRUD
+        public IActionResult Index()
         {
-            return View(_listingRepository.GetAll());
+            Guid userId = Guid.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value!);
+            return View(_userPetsRepository.GetAll().Where(pet => pet.OwnerId == userId).ToList());
         }
-        // TODO: Create table for user listings. Create Repository, Implement this method.
-        public IActionResult UserPets()
+        public IActionResult Create(UserPet pet)
         {
-            return View();
+            return View(pet);
         }
-        public IActionResult SeeMore(Guid id)
+
+        [HttpPost]
+        public IActionResult CreatePet(UserPet pet)
         {
-            return View(_listingRepository.GetListing(id));
+            if (ModelState.IsValid)
+            {
+                _userPetsRepository.AddPet(pet);
+                return RedirectToAction("Index");
+            }
+            return RedirectToAction("Create", pet);
         }
+
+        public IActionResult Edit(Guid id)
+        {
+            return View(_userPetsRepository.GetPet(id));
+        }
+
+        [HttpPost]
+        public IActionResult Edit(UserPet pet)
+        {
+            _userPetsRepository.EditPet(pet);
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public IActionResult Delete(Guid id)
+        {
+            _userPetsRepository.DeletePet(id);
+            return RedirectToAction("Index");
+        }
+        #endregion
     }
 }

@@ -6,18 +6,18 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CozyHouse.Infrastructure.Repositories
 {
-    public class ListingRepository : IListingRepository
+    public class UserListingsRepository : IUserListingsRepository
     {
         private ApplicationDbContext _db;
-        public ListingRepository(ApplicationDbContext db)
+        public UserListingsRepository(ApplicationDbContext db)
         {
             _db = db;
         }
-        public bool Add(Listing listing)
+        public bool Add(UserListing listing)
         {
             try
             {
-                _db.Listings.Add(listing);
+                _db.UserListings.Add(listing);
                 _db.SaveChanges();
                 return true;
             }
@@ -30,8 +30,8 @@ namespace CozyHouse.Infrastructure.Repositories
         {
             try
             {
-                Listing listingToDelete = _db.Listings.First(listing => listing.Id == id);
-                _db.Listings.Remove(listingToDelete);
+                UserListing listingToDelete = _db.UserListings.First(listing => listing.Id == id);
+                _db.UserListings.Remove(listingToDelete);
                 _db.SaveChanges();
                 return true;
             }
@@ -41,36 +41,36 @@ namespace CozyHouse.Infrastructure.Repositories
             }
         }
 
-        public List<Listing> GetAll()
+        public List<UserListing> GetAll()
         {
-            return _db.Listings.Include(p => p.Pet).ToList();
+            return _db.UserListings.Include(p => p.Pet).ToList();
         }
 
-        public List<Listing> GetByPetType(PetType type)
+        public List<UserListing> GetByPetType(PetType type)
         {
-            return _db.Listings.Include(p => p.Pet).Where(listing => listing.Pet!.Type == type).ToList();
+            return _db.UserListings.Include(p => p.Pet).Where(listing => listing.Pet!.Type == type).ToList();
         }
 
-        public List<Listing> GetByTitle(string title)
+        public List<UserListing> GetByTitle(string title)
         {
-            return _db.Listings.Where(listing => listing.Title == title).Include(p => p.Pet).ToList();
+            return _db.UserListings.Where(listing => listing.Title == title).Include(p => p.Pet).ToList();
         }
 
-        public Listing? GetListing(Guid id)
+        public UserListing? GetListing(Guid id)
         {
-            return _db.Listings.Include(p => p.Pet).FirstOrDefault(listing => listing.Id == id);
+            return _db.UserListings.Include(p => p.Pet).FirstOrDefault(listing => listing.Id == id);
         }
 
-        public Listing? Update(Listing listing)
+        public UserListing? Update(UserListing listing)
         {
             try
             {
-                Listing listingToUpdate = _db.Listings.Where(list => list.Id == listing.Id).First();
+                UserListing listingToUpdate = _db.UserListings.Where(list => list.Id == listing.Id).First();
                 listingToUpdate.Title = listing.Title;
                 listingToUpdate.Content = listing.Content;
                 listingToUpdate.Pet = listing.Pet;
 
-                _db.Update(listingToUpdate);
+                _db.UserListings.Update(listingToUpdate);
                 _db.SaveChanges();
                 return listingToUpdate;
             }

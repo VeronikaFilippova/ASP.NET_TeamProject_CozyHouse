@@ -1,0 +1,31 @@
+﻿@model UserListing
+@inject IUserPetsRepository _petRepository
+@{
+    ViewBag.Title = "Edit";
+}
+
+<form method="post" asp-area="User" asp-controller="UserListings" asp-action="Edit">
+    <input asp-for="Id" hidden />
+    <h2>Listing information</h2>
+
+    <div>
+        <input type="text" placeholder="Listing Title" asp-for="Title" />
+    </div>
+
+    <div>
+        <textarea placeholder="Your pet description" asp-for="Content"></textarea>
+    </div>
+
+    <div>
+        <label>Select Pet To Publish</label>
+        <select asp-for="PetId">
+            @foreach (UserPet pet in _petRepository.GetAll())
+            {
+                <option value="@pet.Id">Name: @pet.Name; Age: @pet.Age; Type: @pet.Type.ToString()</option>
+            }
+        </select>
+    </div>
+    <div>
+        <button type="submit">Edit!!!</button>
+    </div>
+</form>

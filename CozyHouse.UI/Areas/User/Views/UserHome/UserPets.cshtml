@@ -1,12 +1,12 @@
-﻿@model List<Listing>
+﻿@model List<UserListing>
 @{
-    ViewBag.Title = "Shelter Pets";
+    ViewBag.Title = "User Pets";
 }
 
-<h1>Pets in our shelter</h1>
+<h1>Pets form users</h1>
 
 @{
-    foreach (Listing listing in Model)
+    foreach (UserListing listing in Model)
     {
         <div>
             <br />
@@ -14,7 +14,7 @@
                 <h1>@listing.Title</h1>
                 <h2>@listing.Content</h2>
                 <h3>Name: @listing.Pet.Name; Age: @listing.Pet.Age; @listing.Pet.Type.ToString()</h3>
-                <form method="post" asp-area="User" asp-controller="Pets" asp-action="SeeMore" asp-route-id="@listing.Id">
+                <form method="post" asp-area="User" asp-controller="UserHome" asp-action="SeeMoreUserPet" asp-route-id="@listing.Id">
                     <button type="submit">See More</button>
                 </form>
             </div>

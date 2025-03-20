@@ -29,8 +29,7 @@ namespace CozyHouse.UI.Areas.Guest.Controllers
             // TODO: Error handling
             ApplicationUser user = new ApplicationUser()
             {
-                UserName = data.RegisterDTO.Login,
-                PersonName = data.RegisterDTO.UserName,
+                UserName = data.RegisterDTO.UserName,
                 Email = data.RegisterDTO.Email,
                 PhoneNumber = data.RegisterDTO.PhoneNumber,
             };
@@ -40,7 +39,7 @@ namespace CozyHouse.UI.Areas.Guest.Controllers
 
             if (result.Succeeded == true)
             {
-                return RedirectToAction("Login", new LoginDTO() { UserLogin = data.RegisterDTO.Login, UserPassword = data.RegisterDTO.Password });
+                return RedirectToAction("Index", "GuestHome");
             }
             return RedirectToAction("Index", data);
         }

@@ -3,6 +3,7 @@ using System;
 using CozyHouse.Infrastructure.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CozyHouse.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250319161224_UserListingsTableCreated")]
+    partial class UserListingsTableCreated
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.3");
@@ -38,7 +41,7 @@ namespace CozyHouse.Infrastructure.Migrations
 
                     b.HasIndex("PetId");
 
-                    b.ToTable("Listings");
+                    b.ToTable("Listing");
                 });
 
             modelBuilder.Entity("CozyHouse.Core.Domain.Entities.Pet", b =>
@@ -68,7 +71,9 @@ namespace CozyHouse.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid>("AdopterId")
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasMaxLength(13)
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("IsClosed")
@@ -77,98 +82,20 @@ namespace CozyHouse.Infrastructure.Migrations
                     b.Property<Guid>("ListingId")
                         .HasColumnType("TEXT");
 
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("TEXT");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("AdopterId");
-
                     b.HasIndex("ListingId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Requests");
-                });
 
-            modelBuilder.Entity("CozyHouse.Core.Domain.Entities.UserListing", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
+                    b.HasDiscriminator().HasValue("Request");
 
-                    b.Property<string>("Content")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("OwnerId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("PetId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("OwnerId");
-
-                    b.HasIndex("PetId");
-
-                    b.ToTable("UserListings");
-                });
-
-            modelBuilder.Entity("CozyHouse.Core.Domain.Entities.UserPet", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
-
-                    b.Property<uint>("Age")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("ImagePath")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("OwnerId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("Type")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("UserPets");
-                });
-
-            modelBuilder.Entity("CozyHouse.Core.Domain.Entities.UserRequest", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("AdopterId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<bool>("IsClosed")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<Guid>("ListingId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("OwnerId")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AdopterId");
-
-                    b.HasIndex("ListingId");
-
-                    b.HasIndex("OwnerId");
-
-                    b.ToTable("UserRequests");
+                    b.UseTphMappingStrategy();
                 });
 
             modelBuilder.Entity("CozyHouse.Core.Domain.IdentityEntities.ApplicationRole", b =>
@@ -365,6 +292,18 @@ namespace CozyHouse.Infrastructure.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("CozyHouse.Core.Domain.Entities.UserRequest", b =>
+                {
+                    b.HasBaseType("CozyHouse.Core.Domain.Entities.Request");
+
+                    b.Property<Guid>("PetOwnerId")
+                        .HasColumnType("TEXT");
+
+                    b.HasIndex("PetOwnerId");
+
+                    b.HasDiscriminator().HasValue("UserRequest");
+                });
+
             modelBuilder.Entity("CozyHouse.Core.Domain.Entities.Listing", b =>
                 {
                     b.HasOne("CozyHouse.Core.Domain.Entities.Pet", "Pet")
@@ -378,67 +317,21 @@ namespace CozyHouse.Infrastructure.Migrations
 
             modelBuilder.Entity("CozyHouse.Core.Domain.Entities.Request", b =>
                 {
-                    b.HasOne("CozyHouse.Core.Domain.IdentityEntities.ApplicationUser", "Adopter")
-                        .WithMany()
-                        .HasForeignKey("AdopterId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("CozyHouse.Core.Domain.Entities.Listing", "Listing")
                         .WithMany()
                         .HasForeignKey("ListingId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Adopter");
-
-                    b.Navigation("Listing");
-                });
-
-            modelBuilder.Entity("CozyHouse.Core.Domain.Entities.UserListing", b =>
-                {
-                    b.HasOne("CozyHouse.Core.Domain.IdentityEntities.ApplicationUser", "Owner")
+                    b.HasOne("CozyHouse.Core.Domain.IdentityEntities.ApplicationUser", "User")
                         .WithMany()
-                        .HasForeignKey("OwnerId")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("CozyHouse.Core.Domain.Entities.UserPet", "Pet")
-                        .WithMany()
-                        .HasForeignKey("PetId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Owner");
-
-                    b.Navigation("Pet");
-                });
-
-            modelBuilder.Entity("CozyHouse.Core.Domain.Entities.UserRequest", b =>
-                {
-                    b.HasOne("CozyHouse.Core.Domain.IdentityEntities.ApplicationUser", "Adopter")
-                        .WithMany()
-                        .HasForeignKey("AdopterId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("CozyHouse.Core.Domain.Entities.UserListing", "Listing")
-                        .WithMany()
-                        .HasForeignKey("ListingId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("CozyHouse.Core.Domain.IdentityEntities.ApplicationUser", "Owner")
-                        .WithMany()
-                        .HasForeignKey("OwnerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Adopter");
 
                     b.Navigation("Listing");
 
-                    b.Navigation("Owner");
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
@@ -490,6 +383,17 @@ namespace CozyHouse.Infrastructure.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("CozyHouse.Core.Domain.Entities.UserRequest", b =>
+                {
+                    b.HasOne("CozyHouse.Core.Domain.IdentityEntities.ApplicationUser", "PetOwner")
+                        .WithMany()
+                        .HasForeignKey("PetOwnerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("PetOwner");
                 });
 #pragma warning restore 612, 618
         }

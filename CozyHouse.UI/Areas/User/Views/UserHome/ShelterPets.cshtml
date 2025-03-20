@@ -1,0 +1,24 @@
+﻿@model List<Listing>
+@{
+    ViewBag.Title = "Shelter Pets";
+}
+
+<h1>Pets in our shelter</h1>
+
+@{
+    foreach (Listing listing in Model)
+    {
+        <div>
+            <br />
+            <div style="background-color: gray;">
+                <h1>@listing.Title</h1>
+                <h2>@listing.Content</h2>
+                <h3>Name: @listing.Pet.Name; Age: @listing.Pet.Age; @listing.Pet.Type.ToString()</h3>
+                <form method="post" asp-area="User" asp-controller="UserHome" asp-action="SeeMore" asp-route-id="@listing.Id">
+                    <button type="submit">See More</button>
+                </form>
+            </div>
+            <br />
+        </div>
+    }
+}
