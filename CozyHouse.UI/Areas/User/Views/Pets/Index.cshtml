@@ -3,23 +3,30 @@
     ViewBag.Title = "Pets";
 }
 
+<link rel="stylesheet" href="~/css/content/PetsCard.css" asp-append-version="true" />
+
 <h1>Your Pets</h1>
 <a asp-area="User" asp-controller="Pets" asp-action="Create">Add New Pet</a>
+
+<div class="pets-container">
 @{
     foreach (UserPet pet in Model)
     {
         <div>
             <br />
-            <div style="background-color: gray;">
+                <div class="listing-container">
                 <h2>Name: @pet.Name</h2>
                 <h2>Age: @pet.Age</h2>
-                <a asp-area="User" asp-controller="Pets" asp-action="Edit" asp-route-id="@pet.Id">Edit</a>
+                    <div class="pets-buttons">
+                        <a asp-area="User" asp-controller="Pets" asp-action="Edit" asp-route-id="@pet.Id">Edit</a>
 
-                <form method="post" asp-area="User" asp-controller="Pets" asp-action="Delete" asp-route-id="@pet.Id">
-                    <button type="submit">Delete</button>
-                </form>
+                        <form method="post" asp-area="User" asp-controller="Pets" asp-action="Delete" asp-route-id="@pet.Id">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </div>
             </div>
             <br />
         </div>
     }
 }
+</div>

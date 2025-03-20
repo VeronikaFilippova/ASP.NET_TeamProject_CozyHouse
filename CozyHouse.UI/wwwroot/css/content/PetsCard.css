@@ -1,0 +1,108 @@
+﻿@font-face {
+    font-family: 'Georgia';
+    src: url(./fonts/georgia/georgia-regular.ttf);
+}
+
+@font-face {
+    font-family: 'Arial-regular';
+    src: url(./fonts/arial/arial-regular.ttf);
+}
+
+@font-face {
+    font-family: 'Arial-italic';
+    src: url(./fonts/arial/arial-italic.ttf);
+}
+/*
+http://meyerweb.com/eric/tools/css/reset/
+v2.0 | 20110126
+License: none (public domain)*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+.pets-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.listing-container {
+    width: 250px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    padding: 20px;
+    margin: 10px;
+}
+
+
+    .listing-container img {
+        width: 100%;
+        border-radius: 10px;
+    }
+
+    .listing-container h1 {
+        font-size: 20px;
+        color: #333;
+        margin: 10px 0;
+    }
+
+    .listing-container h3 {
+        font-size: 16px;
+        color: #666;
+    }
+
+    .listing-container h4 {
+        font-size: 14px;
+        color: #777;
+        margin: 10px 0;
+    }
+
+.pets-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+    .pets-buttons a,
+    .pets-buttons button {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 14px;
+        color: #b0855b;
+        border: 2px solid #b0855b;
+        border-radius: 20px;
+        text-decoration: none;
+        background: transparent;
+        cursor: pointer;
+        transition: 0.3s ease;
+    }
+
+        .pets-buttons a:hover,
+        .pets-buttons button:hover {
+            background: #b0855b;
+            color: white;
+        }
+
+

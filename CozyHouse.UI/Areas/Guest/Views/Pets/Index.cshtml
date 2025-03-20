@@ -3,14 +3,16 @@
     ViewBag.Title = "Pets";
 }
 
+<link rel="stylesheet" href="~/css/content/PetsCard.css" asp-append-version="true" />
 <h1>Our Pets</h1>iu8
 
+<div class="pets-container">
 @{
     foreach (Listing listing in Model)
     {
         <div>
         <br />
-            <div style="background-color: gray;">
+            <div class="listing-container">
                 <h1>@listing.Title</h1>
                 <br />
                 <h3>Name: @listing.Pet.Name; Age: @listing.Pet.Age</h3>
@@ -21,3 +23,5 @@
 
     }
 }
+</div>
+
