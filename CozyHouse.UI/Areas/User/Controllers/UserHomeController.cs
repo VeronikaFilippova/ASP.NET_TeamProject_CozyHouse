@@ -1,4 +1,5 @@
-﻿using CozyHouse.Core.Domain.IdentityEntities;
+﻿using CozyHouse.Core.Domain.Entities;
+using CozyHouse.Core.Domain.IdentityEntities;
 using CozyHouse.Core.RepositoryInterfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -68,6 +69,12 @@ namespace CozyHouse.UI.Areas.User.Controllers
         {
             Guid userId = Guid.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value!);
             return View(_userRequsetRepository.GetAllFor(userId));
+        }
+        [HttpPost]
+        public IActionResult CloseRequest(Guid id)
+        {
+            _userRequsetRepository.Remove(id);
+            return RedirectToAction("SeeAdoptionRequests");
         }
     }
 }

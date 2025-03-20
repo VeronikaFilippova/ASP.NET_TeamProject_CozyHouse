@@ -1,13 +1,13 @@
-﻿@model List<UserRequest>
+﻿@model List<Request>
 @{
-    ViewBag.Title = "User Requests";
+    ViewBag.Title = "See Requests";
 }
 
-<h1>See who wishes to adopt your pets</h1>
+<h1>Adoption Requests</h1>
 @{
-    foreach (UserRequest request in Model)
+    foreach (Request request in Model)
     {
-        <form method="post" asp-area="User" asp-controller="UserHome" asp-action="CloseRequest" asp-route-id="@request.Id">
+        <form method="post" asp-area="Manager" asp-controller="ManagerHome" asp-action="CloseRequest" asp-route-id="@request.Id">
             <div>
                 <br />
                 <div style="background-color: gray;">

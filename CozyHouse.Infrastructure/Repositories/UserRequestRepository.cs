@@ -43,6 +43,7 @@ namespace CozyHouse.Infrastructure.Repositories
             try
             {
                 _db.Remove(_db.UserRequests.First(request => request.Id == id));
+                _db.SaveChanges();
                 return true;
             }
             catch { return false; }

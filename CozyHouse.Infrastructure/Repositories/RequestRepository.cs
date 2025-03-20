@@ -25,12 +25,12 @@ namespace CozyHouse.Infrastructure.Repositories
 
         public Request? Get(Guid id)
         {
-            return _db.Requests.Include(r => r.Adopter).Include(r => r.Listing).FirstOrDefault(request => request.Id == id);
+            return _db.Requests.Include(r => r.Adopter).Include(r => r.Listing).Include(p => p.Listing.Pet).FirstOrDefault(request => request.Id == id);
         }
 
         public List<Request> GetAll()
         {
-            return _db.Requests.Include(r => r.Adopter).Include(r => r.Listing).ToList();
+            return _db.Requests.Include(r => r.Adopter).Include(r => r.Listing).Include(p => p.Listing!.Pet).ToList();
         }
 
         public List<Request> GetAllFrom(Guid id)
@@ -43,6 +43,7 @@ namespace CozyHouse.Infrastructure.Repositories
             try
             {
                 _db.Remove(_db.Requests.First(request => request.Id == id));
+                _db.SaveChanges();
                 return true;
             }
             catch { return false; }
