@@ -4,29 +4,25 @@
 }
 
 <link rel="stylesheet" href="~/css/content/PetsCard.css" asp-append-version="true" />
-<h1>Pets in shelter</h1>
+<h1>Pets in Shelter</h1>
 <a asp-area="Manager" asp-controller="Pet" asp-action="Create">Add New Pet</a>
-<div class="pets-container">
-    @{
-        foreach (Pet pet in Model)
+<div class="page-container">
+    <div class="pets-container">
+        @foreach (Pet pet in Model)
         {
-            <div>
-                <br />
-                <div class="listing-container">
-                    <h2>Name: @pet.Name</h2>
-                    <h2>Age: @pet.Age</h2>
-                    <div>
-                        <img src="@pet.ImagePath" />
-                    </div>
-                    <div class="pets-buttons">
-                        <a asp-area="Manager" asp-controller="Pet" asp-action="Edit" asp-route-id="@pet.Id">Edit</a>
-
-                        <form method="post" asp-area="Manager" asp-controller="Pet" asp-action="Delete" asp-route-id="@pet.Id">
-                            <button type="submit">Delete</button>
-                        </form>
-                    </div>
+            <div class="listing-container">
+                <h2>Name: @pet.Name</h2>
+                <h2>Age: @pet.Age</h2>
+                <div>
+                    <img src="@pet.ImagePath" alt="Pet Image" />
+                </div>
+                <div class="pets-buttons">
+                    <a asp-area="Manager" asp-controller="Pet" asp-action="Edit" asp-route-id="@pet.Id">Edit</a>
+                    <form method="post" asp-area="Manager" asp-controller="Pet" asp-action="Delete" asp-route-id="@pet.Id">
+                        <button type="submit">Delete</button>
+                    </form>
                 </div>
             </div>
         }
-    }
+    </div>
 </div>

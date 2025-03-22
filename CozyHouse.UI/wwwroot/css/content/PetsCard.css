@@ -38,6 +38,14 @@ time, mark, audio, video {
     vertical-align: baseline;
 }
 
+html, body {
+    display: flex;
+    justify-content: space-between; /* Розтягує контент, а футер опускає вниз */
+    align-items: center;
+    width: 100vw;
+}
+
+
 .pets-container {
     display: flex;
     flex-wrap: wrap;

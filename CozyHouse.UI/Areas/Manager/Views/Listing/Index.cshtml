@@ -7,13 +7,14 @@
 
 <div class="listing-container">
     <a asp-area="Manager" asp-controller="Listing" asp-action="Create">Create New Listing</a>
+    
     @foreach (Listing listing in Model)
     {
         <div class="listing-card">
             <label>@listing.Title</label>
-            <a asp-area="Manager" asp-controller="Listing" asp-action="Edit" asp-route-id="@listing.Id">Edit Existing Listing</a>
+            <a asp-area="Manager" asp-controller="Listing" asp-action="Edit" asp-route-id="@listing.Id">Edit</a>
             <form method="post" asp-area="Manager" asp-controller="Listing" asp-action="Delete" asp-route-id="@listing.Id">
-                <button type="submit">Delete!!!</button>
+                <button type="submit">Delete</button>
             </form>
         </div>
     }
