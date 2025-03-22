@@ -3,6 +3,8 @@
     ViewBag.Title = "Edit";
 }
 
+<link rel="stylesheet" href="~/css/content/EditForm.css" asp-append-version="true" />
+
 <form method="post" enctype="multipart/form-data" asp-area="User" asp-controller="Pets" asp-action="Edit">
     <input asp-for="Id" hidden /> @* Потрібно, щоб оновити, а не додати нову (Змінену) версію *@
     <h2>Pet information</h2>

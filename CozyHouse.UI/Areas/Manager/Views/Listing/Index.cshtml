@@ -3,19 +3,18 @@
     ViewBag.Title = "Manage Listings";
 }
 
-<a asp-area="Manager" asp-controller="Listing" asp-action="Create">Create New Listing</a>
-@foreach (Listing listing in Model)
-{
-    <div>
-        <br />
-        <div style="background-color:gray">
+<link rel="stylesheet" href="~/css/content/Listing.css" asp-append-version="true" />
+
+<div class="listing-container">
+    <a asp-area="Manager" asp-controller="Listing" asp-action="Create">Create New Listing</a>
+    @foreach (Listing listing in Model)
+    {
+        <div class="listing-card">
             <label>@listing.Title</label>
             <a asp-area="Manager" asp-controller="Listing" asp-action="Edit" asp-route-id="@listing.Id">Edit Existing Listing</a>
-
             <form method="post" asp-area="Manager" asp-controller="Listing" asp-action="Delete" asp-route-id="@listing.Id">
                 <button type="submit">Delete!!!</button>
             </form>
         </div>
-        <br />
-    </div>
-}
+    }
+</div>

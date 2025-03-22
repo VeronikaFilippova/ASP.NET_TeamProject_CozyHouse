@@ -3,6 +3,7 @@
     ViewBag.Title = "Create";
 }
 
+<link rel="stylesheet" href="~/css/content/EditForm.css" asp-append-version="true" />
 <form method="post" enctype="multipart/form-data" asp-area="Manager" asp-controller="Pet" asp-action="CreatePet">
     <h2>Pet information</h2>
     <div><input type="text" placeholder="Pet Name" asp-for="Name" /></div>
