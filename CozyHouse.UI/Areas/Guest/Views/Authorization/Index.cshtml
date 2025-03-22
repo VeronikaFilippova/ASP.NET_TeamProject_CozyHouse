@@ -13,11 +13,16 @@
 <div class="form-container" id="RegistrationForm">
     <form method="post" asp-area="Guest" asp-controller="Authorization" asp-action="RegisterCommand" class="form">
         <input type="text" placeholder="Name/Last name" asp-for="RegisterDTO.UserName" required>
+        <input type="number" placeholder="Age (from 18)" asp-for="RegisterDTO.Age" required min="1">
+        <input type="text" placeholder="Location" asp-for="RegisterDTO.Location" required>
+        <input type="number" placeholder="Phone number" asp-for="RegisterDTO.PhoneNumber" required min="10">
         <input type="email" placeholder="E-mail" asp-for="RegisterDTO.Email" required>
         <input type="password" placeholder="Password" asp-for="RegisterDTO.Password" required>
+        <input type="password" placeholder="Confirm password" asp-for="RegisterDTO.Password" required>
         <button type="submit">Register</button>
     </form>
     <div class="google-login">
+
     </div>
 </div>
 
@@ -25,9 +30,10 @@
     <form method="post" asp-area="Guest" asp-controller="Authorization" asp-action="LoginCommand" class="form">
         <input type="text" placeholder="E-mail" asp-for="LoginDTO.UserLogin" required>
         <input type="password" placeholder="Password" asp-for="LoginDTO.UserPassword" required>
+        <input type="number" placeholder="Phone number" asp-for="LoginDTO.PhoneNumber" required min="10">
         <button type="submit">Login</button>
-
     </form>
+    
 </div>
 
 <div class="google-btn">
