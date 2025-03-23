@@ -11,15 +11,14 @@
         <nav>
             <ul>
                 <li><a asp-area="Manager" asp-controller="ManagerHome" asp-action="Index">Home</a></li>
-
                 <li><a asp-area="Manager" asp-controller="Listing" asp-action="Index">Manage Listings</a></li>
                 <li><a asp-area="Manager" asp-controller="Pet" asp-action="Index">Manage Pets</a></li>
                 <li><a asp-area="Manager" asp-controller="ManagerHome" asp-action="SeeRequests">See Requests</a></li>
-
                 <li><a asp-area="Manager" asp-controller="ManagerHome" asp-action="LogoutCommand">Logout</a></li>
             </ul>
         </nav>
     </header>
+
     <div>
         @RenderBody()
     </div>
@@ -29,6 +28,7 @@
             &copy; 2025 - CozyHouse - <a asp-area="Manager" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
+
     <script src="~/js/site.js" asp-append-version="true"></script>
 </body>
 </html>

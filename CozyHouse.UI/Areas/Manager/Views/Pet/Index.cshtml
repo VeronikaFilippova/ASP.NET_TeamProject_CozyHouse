@@ -4,8 +4,10 @@
 }
 
 <link rel="stylesheet" href="~/css/content/PetsCard.css" asp-append-version="true" />
-<h1>Pets in Shelter</h1>
-<a asp-area="Manager" asp-controller="Pet" asp-action="Create">Add New Pet</a>
+<div class="header-container">
+    <h1>Pets in Shelter</h1>
+    <a asp-area="Manager" asp-controller="Pet" asp-action="Create" class="add-pet-button">Add New Pet</a>
+</div>
 <div class="page-container">
     <div class="pets-container">
         @foreach (Pet pet in Model)

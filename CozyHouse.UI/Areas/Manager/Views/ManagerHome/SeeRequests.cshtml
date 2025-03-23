@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "See Requests";
 }
+<link rel="stylesheet" href="~/css/content/EditForm.css" asp-append-version="true" />
 
 <h1>Adoption Requests</h1>
 @{
@@ -10,7 +11,7 @@
         <form method="post" asp-area="Manager" asp-controller="ManagerHome" asp-action="CloseRequest" asp-route-id="@request.Id">
             <div>
                 <br />
-                <div style="background-color: gray;">
+                <div>
                     <h2>Adopter: @request.Adopter!.UserName</h2>
                     <h3>Pet: @request.Listing!.Pet.Name</h3>
 

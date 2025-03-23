@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="~/css/content/Listing.css" asp-append-version="true" />
 
 <div class="listing-container">
-    <a asp-area="Manager" asp-controller="Listing" asp-action="Create">Create New Listing</a>
+    <div class="create"> <a asp-area="Manager" asp-controller="Listing" asp-action="Create">Create New Listing</a> </div>
     
     @foreach (Listing listing in Model)
     {

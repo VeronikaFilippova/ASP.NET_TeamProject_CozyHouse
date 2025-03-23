@@ -40,12 +40,52 @@ time, mark, audio, video {
 
 html, body {
     display: flex;
-    justify-content: space-between; /* Розтягує контент, а футер опускає вниз */
-    align-items: center;
+    justify-content: center; /* Центрує контент горизонтально */
+    align-items: center; /* Центрує контент вертикально */
     width: 100vw;
+    height: 100vh; /* Робить body на всю висоту вікна */
+}
+h2 {
+    font-family: 'Georgia', serif;
+    color: #333;
+    padding: 5px;
+}
+h1 {
+    font-family: 'Georgia', serif;
+    color: #333;
+    font-size: 36px; /* Робимо більшим */
+    font-weight: bold; /* Жирний */
+    text-align: center; /* Центруємо */
+    margin-bottom: 20px;
 }
 
+/* Центруємо контейнер заголовка і кнопки */
+.header-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
 
+/* Стилізація кнопки "Add New Pet" */
+.add-pet-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 14px;
+    color: #b0855b;
+    border: 2px solid #b0855b;
+    border-radius: 20px;
+    text-decoration: none;
+    background: transparent;
+    cursor: pointer;
+    transition: 0.3s ease;
+    text-align: center;
+}
+
+    .add-pet-button:hover {
+        background: #b0855b;
+        color: white;
+    }
 .pets-container {
     display: flex;
     flex-wrap: wrap;
