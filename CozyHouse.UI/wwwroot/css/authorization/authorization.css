@@ -187,3 +187,8 @@ button {
     .google-btn strong {
         margin-left: 5px;
     }
+
+.text-danger {
+    color: darkred;
+    font-size: 12px;
+}

@@ -32,13 +32,14 @@ namespace CozyHouse.Infrastructure.Helpers
                 defaultManagerUser = new ApplicationUser()
                 {
                     Id = Guid.Parse(DefaultManagerId),
-                    PersonName = "Cozy House Default Manager",
+                    UserName = "cozyHouse@gmail.com",
+                    Email = "cozyHouse@gmail.com",
+                    PersonName = "Default Manager",
                     PhoneNumber = "+380-63-72-19499",
-                    UserName = "CozyHouseApp",
-                    Email = "cozyHouse@notRealEmail.com",
+                    Location = "Not your business",
                     SecurityStamp = Guid.NewGuid().ToString(),
                 };
-                await userManager.CreateAsync(defaultManagerUser, "CozyHouseStrongPassword");
+                await userManager.CreateAsync(defaultManagerUser, "CozyHouse");
                 await userManager.AddToRoleAsync(defaultManagerUser, Roles.Manager.ToString());
             }
         }
