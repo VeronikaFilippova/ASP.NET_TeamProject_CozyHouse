@@ -2,21 +2,26 @@
 @{
     ViewBag.Title = "User Listings";
 }
+<link rel="stylesheet" href="~/css/content/Listing.css" asp-append-version="true" />
 
-<h1>Your Listings</h1>
-<a asp-area="User" asp-controller="UserListings" asp-action="Create">Create New Listing</a>
-@foreach (UserListing listing in Model)
-{
-    <div>
-        <br />
-        <div style="background-color:gray">
+
+
+<div class="listing-container">
+    <h1>Your Listings</h1>
+    <div class="create">
+        <a asp-area="User" asp-controller="UserListings" asp-action="Create" class="listing-card-button">Create New Listing</a>
+    </div>
+
+    @foreach (UserListing listing in Model)
+    {
+        <div class="listing-card">
             <label>@listing.Title</label>
-            <a asp-area="User" asp-controller="UserListings" asp-action="Edit" asp-route-id="@listing.Id">Edit Existing Listing</a>
+
+            <a asp-area="User" asp-controller="UserListings" asp-action="Edit" asp-route-id="@listing.Id" class="listing-card-button">Edit Existing Listing</a>
 
             <form method="post" asp-area="User" asp-controller="UserListings" asp-action="Delete" asp-route-id="@listing.Id">
-                <button type="submit">Delete!!!</button>
+                <button type="submit" class="listing-card-button">Delete!!!</button>
             </form>
         </div>
-        <br />
-    </div>
-}
+    }
+</div>

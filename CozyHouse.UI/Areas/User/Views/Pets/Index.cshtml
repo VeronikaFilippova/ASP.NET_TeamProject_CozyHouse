@@ -4,10 +4,10 @@
 }
 
 <link rel="stylesheet" href="~/css/content/PetsCard.css" asp-append-version="true" />
-
-<h1>Your Pets</h1>
-<a asp-area="User" asp-controller="Pets" asp-action="Create">Add New Pet</a>
-
+<div class="header-container">
+    <h1>Your Pets</h1>
+    <a asp-area="User" asp-controller="Pets" asp-action="Create" class="add-pet-button">Add New Pet</a>
+</div>
 <div class="pets-container">
 @{
     foreach (UserPet pet in Model)

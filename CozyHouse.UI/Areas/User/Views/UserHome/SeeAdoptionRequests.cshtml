@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "User Requests";
 }
-
+<link rel="stylesheet" href="~/css/content/EditForm.css" asp-append-version="true" />
 <h1>See who wishes to adopt your pets</h1>
 @{
     foreach (UserRequest request in Model)
@@ -10,7 +10,7 @@
         <form method="post" asp-area="User" asp-controller="UserHome" asp-action="CloseRequest" asp-route-id="@request.Id">
             <div>
                 <br />
-                <div style="background-color: gray;">
+                <div>
                     <h2>Adopter: @request.Adopter!.UserName</h2>
                     <h3>Pet: @request.Listing!.Pet.Name</h3>
 

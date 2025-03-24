@@ -3,7 +3,12 @@
     ViewBag.Title = "Pet listing";
 }
 
+<link rel="stylesheet" href="~/css/content/PetsCard.css" asp-append-version="true" />
+
+<div class="pets-container">
+    <div class="listing-container">
 <form method="post" asp-area="User" asp-controller="Adoption" asp-action="AdoptFromUser" asp-route-id="@Model.Id">
+
     <h1>@Model.Title</h1>
 
     <h2>@Model.Content</h2>
@@ -12,5 +17,10 @@
     <h2>Age: @Model.Pet.Age</h2>
     <h2>PetType: @Model.Pet.Type.ToString()</h2>
 
-    <button type="submit">Adopt</button>
+    <div class="pets-buttons">
+            <button type="submit">Adopt</button>
+    </div>
 </form>
+    </div>
+</div>
+

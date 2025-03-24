@@ -4,6 +4,7 @@
     ViewBag.Title = "Create";
     Guid userId = Guid.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value!);
 }
+<link rel="stylesheet" href="~/css/content/EditForm.css" asp-append-version="true" />
 <form method="post" asp-area="User" asp-controller="UserListings" asp-action="Create">
     <input asp-for="OwnerId" value="@userId" hidden />
     <h1>Listing Creation</h1>
