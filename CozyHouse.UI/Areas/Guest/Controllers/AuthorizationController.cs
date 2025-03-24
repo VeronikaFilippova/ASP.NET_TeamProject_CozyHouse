@@ -26,12 +26,13 @@ namespace CozyHouse.UI.Areas.Guest.Controllers
         [HttpPost]
         public async Task<IActionResult> RegisterCommand(AuthorizationDTO data)
         {
-            // TODO: Error handling
             ApplicationUser user = new ApplicationUser()
             {
-                UserName = data.RegisterDTO.UserName,
-                Email = data.RegisterDTO.Email,
+                UserName = data.RegisterDTO.Email,
+                PersonName = data.RegisterDTO.Login,
                 PhoneNumber = data.RegisterDTO.PhoneNumber,
+                Age = data.RegisterDTO.Age,
+                Location = data.RegisterDTO.Location,
             };
 
             IdentityResult result = await _userManager.CreateAsync(user, data.RegisterDTO.Password);
@@ -47,13 +48,11 @@ namespace CozyHouse.UI.Areas.Guest.Controllers
         [HttpPost]
         public async Task<IActionResult> LoginCommand(AuthorizationDTO data)
         {
-            if (data.LoginDTO.UserLogin == null || data.LoginDTO.UserPassword == null) return RedirectToAction("Index", data);
-
-            var result = await _signInManager.PasswordSignInAsync(data.LoginDTO.UserLogin, data.LoginDTO.UserPassword, false, false);
+            var result = await _signInManager.PasswordSignInAsync(data.LoginDTO.UserEmail, data.LoginDTO.UserPassword, false, false);
 
             if (result.Succeeded)
             {
-                ApplicationUser? user = await _userManager.FindByNameAsync(data.LoginDTO.UserLogin);
+                ApplicationUser? user = await _userManager.FindByNameAsync(data.LoginDTO.UserEmail);
                 if (await _userManager.IsInRoleAsync(user!, "User"))
                 {
                     return RedirectToAction("Index", "UserHome", new { area = "User" });

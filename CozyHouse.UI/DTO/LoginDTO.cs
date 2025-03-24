@@ -4,8 +4,11 @@ namespace CozyHouse.UI.DTO
 {
     public class LoginDTO
     {
-        public string? UserLogin { get; set; }
+        [Required]
+        [EmailAddress]
+        public string? UserEmail { get; set; }
+
+        [Required]
         public string? UserPassword { get; set; }
-        public string PhoneNumber { get; set; }
     }
 }

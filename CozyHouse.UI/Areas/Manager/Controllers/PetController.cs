@@ -46,12 +46,18 @@ namespace CozyHouse.UI.Areas.Manager.Controllers
         public IActionResult Edit(Pet pet, IFormFile? file)
         {
             if (ModelState.IsValid == false) return RedirectToAction("Edit", pet.Id);
+            Pet petFromDb = _petRepository.GetPet(pet.Id)!;
 
             if (file != null) 
             {
-                _imageService.DeleteImage(pet.ImagePath);
+                _imageService.DeleteImage(petFromDb.ImagePath);
                 pet.ImagePath = _imageService.SaveImage(file); 
             }
+            else if(petFromDb.ImagePath != null)
+            {
+                pet.ImagePath = petFromDb.ImagePath;
+            }
+            
             _petRepository.EditPet(pet);
             return RedirectToAction("Index");
         }
