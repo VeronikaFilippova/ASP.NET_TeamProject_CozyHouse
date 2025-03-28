@@ -9,11 +9,11 @@ namespace CozyHouse.Infrastructure.Database
     {
         public ApplicationDbContext(DbContextOptions options): base(options) {}
 
-        public DbSet<Pet> Pets { get; set; }
-        public DbSet<Listing> Listings { get; set; }
-        public DbSet<Request> Requests { get; set; }
-        public DbSet<UserPet> UserPets { get; set; }
-        public DbSet<UserListing> UserListings { get; set; }
-        public DbSet<UserRequest> UserRequests { get; set; }
+        public virtual DbSet<Pet> Pets { get; set; }
+        public virtual DbSet<Listing> Listings { get; set; }
+        public virtual DbSet<Request> Requests { get; set; }
+        public virtual DbSet<UserPet> UserPets { get; set; }
+        public virtual DbSet<UserListing> UserListings { get; set; }
+        public virtual DbSet<UserRequest> UserRequests { get; set; }
     }
 }

@@ -10,10 +10,10 @@ namespace CozyHouse.Core.Domain.Entities
         public Guid Id { get; set; }
 
         [Required(ErrorMessage = "Title can't be null")]
-        public string Title { get; set; } = null!;
+        public string? Title { get; set; }
 
         [Required(ErrorMessage = "Content can't be null")]
-        public string Content { get; set; } = null!;
+        public string? Content { get; set; }
 
         [ForeignKey(nameof(Pet))]
         public Guid PetId { get; set; }

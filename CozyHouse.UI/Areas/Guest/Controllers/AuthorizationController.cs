@@ -1,5 +1,4 @@
 ﻿using CozyHouse.Core.Domain.IdentityEntities;
-using CozyHouse.Core.RepositoryInterfaces;
 using CozyHouse.UI.DTO;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;

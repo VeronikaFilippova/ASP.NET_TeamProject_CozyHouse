@@ -17,11 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CozyHouse.Core\CozyHouse.Core.csproj" />
-    <ProjectReference Include="..\CozyHouse.Infrastructure\CozyHouse.Infrastructure.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Using Include="Xunit" />
   </ItemGroup>
 

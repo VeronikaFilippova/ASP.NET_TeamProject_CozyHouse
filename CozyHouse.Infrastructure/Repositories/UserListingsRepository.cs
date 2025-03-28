@@ -3,6 +3,7 @@ using CozyHouse.Core.Domain.Enums;
 using CozyHouse.Core.RepositoryInterfaces;
 using CozyHouse.Infrastructure.Database;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 
 namespace CozyHouse.Infrastructure.Repositories
 {
@@ -17,6 +18,8 @@ namespace CozyHouse.Infrastructure.Repositories
         {
             try
             {
+                var context = new ValidationContext(listing, serviceProvider: null, items: null);
+                Validator.ValidateObject(listing, context, validateAllProperties: true);
                 _db.UserListings.Add(listing);
                 _db.SaveChanges();
                 return true;
@@ -65,6 +68,8 @@ namespace CozyHouse.Infrastructure.Repositories
         {
             try
             {
+                var context = new ValidationContext(listing, serviceProvider: null, items: null);
+                Validator.ValidateObject(listing, context, validateAllProperties: true);
                 UserListing listingToUpdate = _db.UserListings.Where(list => list.Id == listing.Id).First();
                 listingToUpdate.Title = listing.Title;
                 listingToUpdate.Content = listing.Content;

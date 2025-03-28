@@ -38,7 +38,7 @@ namespace CozyHouse.Infrastructure.Migrations
 
                     b.HasIndex("PetId");
 
-                    b.ToTable("Listings");
+                    b.ToTable("Listings", (string)null);
                 });
 
             modelBuilder.Entity("CozyHouse.Core.Domain.Entities.Pet", b =>
@@ -62,7 +62,7 @@ namespace CozyHouse.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Pets");
+                    b.ToTable("Pets", (string)null);
                 });
 
             modelBuilder.Entity("CozyHouse.Core.Domain.Entities.Request", b =>
@@ -86,7 +86,7 @@ namespace CozyHouse.Infrastructure.Migrations
 
                     b.HasIndex("ListingId");
 
-                    b.ToTable("Requests");
+                    b.ToTable("Requests", (string)null);
                 });
 
             modelBuilder.Entity("CozyHouse.Core.Domain.Entities.UserListing", b =>
@@ -115,7 +115,7 @@ namespace CozyHouse.Infrastructure.Migrations
 
                     b.HasIndex("PetId");
 
-                    b.ToTable("UserListings");
+                    b.ToTable("UserListings", (string)null);
                 });
 
             modelBuilder.Entity("CozyHouse.Core.Domain.Entities.UserPet", b =>
@@ -142,7 +142,7 @@ namespace CozyHouse.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("UserPets");
+                    b.ToTable("UserPets", (string)null);
                 });
 
             modelBuilder.Entity("CozyHouse.Core.Domain.Entities.UserRequest", b =>
@@ -171,7 +171,7 @@ namespace CozyHouse.Infrastructure.Migrations
 
                     b.HasIndex("OwnerId");
 
-                    b.ToTable("UserRequests");
+                    b.ToTable("UserRequests", (string)null);
                 });
 
             modelBuilder.Entity("CozyHouse.Core.Domain.IdentityEntities.ApplicationRole", b =>

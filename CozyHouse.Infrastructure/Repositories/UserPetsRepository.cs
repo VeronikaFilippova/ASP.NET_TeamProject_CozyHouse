@@ -1,6 +1,8 @@
 ﻿using CozyHouse.Core.Domain.Entities;
 using CozyHouse.Core.RepositoryInterfaces;
 using CozyHouse.Infrastructure.Database;
+using System.ComponentModel.DataAnnotations;
+using System.Reflection;
 
 namespace CozyHouse.Infrastructure.Repositories
 {
@@ -15,6 +17,8 @@ namespace CozyHouse.Infrastructure.Repositories
         {
             try
             {
+                var context = new ValidationContext(pet, serviceProvider: null, items: null);
+                Validator.ValidateObject(pet, context, validateAllProperties: true);
                 _db.UserPets.Add(pet);
                 _db.SaveChanges();
                 return true;
@@ -38,6 +42,8 @@ namespace CozyHouse.Infrastructure.Repositories
         {
             try
             {
+                var context = new ValidationContext(pet, serviceProvider: null, items: null);
+                Validator.ValidateObject(pet, context, validateAllProperties: true);
                 UserPet petToUpdate = _db.UserPets.First(p => p.Id == pet.Id);
 
                 petToUpdate.Name = pet.Name;
