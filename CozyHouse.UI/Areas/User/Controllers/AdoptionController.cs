@@ -10,45 +10,43 @@ namespace CozyHouse.UI.Areas.User.Controllers
     [Authorize(Roles = "User")]
     public class AdoptionController : Controller
     {
-        IRequestRepository _requestRepository;
-        IUserRequestRepository _userRequestRepository;
-        IUserListingsRepository _userListingRepository;
-        public AdoptionController(IRequestRepository requestRepository, IUserRequestRepository userRequest, IUserListingsRepository userListings)
+        IShelterAdoptionRequestRepository _shelterRequestRepository;
+        IUserAdoptionRequestRepository _userRequestRepository;
+        IUserPetPublicationRepository _userPetRepository;
+        public AdoptionController(IShelterAdoptionRequestRepository shelterRequests, IUserAdoptionRequestRepository userRequests, IUserPetPublicationRepository userPets)
         {
-            _requestRepository = requestRepository;
-            _userRequestRepository = userRequest;
-            _userListingRepository = userListings;
+            _shelterRequestRepository = shelterRequests;
+            _userRequestRepository = userRequests;
+            _userPetRepository = userPets;
         }
         [HttpPost]
-        public IActionResult Adopt(Guid id)
+        public IActionResult AdoptFromShelter(Guid id)
         {
             string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value!;
-            Request request = new Request()
+            ShelterAdoptionRequest request = new ShelterAdoptionRequest()
             {
-                ListingId = id,
                 AdopterId = Guid.Parse(userId),
-                IsClosed = false,
+                PetPublicationId = id,
             };
 
-            _requestRepository.Add(request);
-
-            return RedirectToAction("Index", "UserHome");
+            _shelterRequestRepository.Create(request);
+            return RedirectToAction("Index", "Home", new { area = "User" });
         }
         [HttpPost]
         public IActionResult AdoptFromUser(Guid id)
         {
             string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value!;
 
-            UserRequest request = new UserRequest()
+            UserPetPublication publication = _userPetRepository.Read(id);
+            UserAdoptionRequest request = new UserAdoptionRequest()
             {
-                ListingId = id,
                 AdopterId = Guid.Parse(userId),
-                IsClosed = false,
-                OwnerId = _userListingRepository.GetListing(id)!.OwnerId
+                PetPublicationId = id,
+                OwnerId = publication.OwnerId,
             };
 
-            _userRequestRepository.Add(request);
-            return RedirectToAction("Index", "UserHome");
+            _userRequestRepository.Create(request);
+            return RedirectToAction("Index", "Home", new { area = "User" });
         }
     }
 }

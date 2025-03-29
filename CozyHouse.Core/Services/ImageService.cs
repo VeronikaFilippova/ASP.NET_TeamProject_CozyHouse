@@ -1,5 +1,4 @@
-﻿using CozyHouse.Core.Domain.Entities;
-using CozyHouse.Core.ServiceContracts;
+﻿using CozyHouse.Core.ServiceContracts;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 
