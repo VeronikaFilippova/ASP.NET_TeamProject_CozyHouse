@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CozyHouse.CoreTests
 {
-    public class UserPetPublicationTestEntitie
+    public class UserPetPublicationEntitieTest
     {
         private DbContextMock<ApplicationDbContext> _dbContextMock;
         private DbSetMock<UserPetPublication> _userPetPublicationsMock;
