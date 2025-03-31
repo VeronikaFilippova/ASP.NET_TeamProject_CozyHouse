@@ -1,12 +1,14 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using CozyHouse.Core.Domain.Entities;
+using System.ComponentModel.DataAnnotations;
 
 namespace CozyHouse.Core.Domain.IdentityEntities
 {
     public class ApplicationUser : IdentityUser<Guid>
     {
-        public string PersonName { get; set; }
+        [Required]
+        public required string PersonName { get; set; }
         public int Age { get; set; }
-        public string Location { get; set; }
+        [Required]
+        public required string Location { get; set; }
     }
 }

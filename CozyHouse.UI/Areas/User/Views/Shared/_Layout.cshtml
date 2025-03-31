@@ -10,30 +10,13 @@
     <header>
         <nav>
             <ul>
-                <li>
-                    <a asp-area="User" asp-controller="UserHome" asp-action="Index">Home</a>
-                </li>
-                <li>
-                    <a asp-area="User" asp-controller="UserListings" asp-action="Index">Manage your listings</a>
-                </li>
-                <li>
-                    <a asp-area="User" asp-controller="Pets" asp-action="Index">Manage your pets</a>
-                </li>
-                <li>
-                    <a asp-area="User" asp-controller="UserHome" asp-action="ShelterPets">View pets in shelter</a>
-                </li>
-                <li>
-                    <a asp-area="User" asp-controller="UserHome" asp-action="UserPets">View pets from users</a>
-                </li>
-                <li>
-                    <a asp-area="User" asp-controller="UserHome" asp-action="SeeAdoptionRequests">See Requests</a>
-                </li>
-                <li>
-                    <a asp-area="User" asp-controller="UserHome" asp-action="LogoutCommand">Logout</a>
-                </li>
-                <li>
-                    <a asp-area="User" asp-controller="UserHome" asp-action="DeleteAccount">Delete Account</a>
-                </li>
+                <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+                <li><a asp-controller="PetPublication" asp-action="Index">Manage your publications</a></li>
+                <li><a asp-controller="Home" asp-action="SeeShelterPublications">View pets in shelter</a></li>
+                <li><a asp-controller="Home" asp-action="SeeUserPublications">View pets from users</a></li>
+                <li><a asp-controller="UserRequest" asp-action="Index">See Adoption Requests</a></li>
+                <li><a asp-controller="Home" asp-action="LogoutCommand">Logout</a></li>
+                <li><a asp-controller="Home" asp-action="DeleteAccount">Delete Account</a></li>
             </ul>
         </nav>
     </header>

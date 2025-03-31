@@ -20,12 +20,11 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("SqliteConnectionString"));
 });
 
-builder.Services.AddScoped<IPetRepository, PetRepository>();
-builder.Services.AddScoped<IListingRepository, ListingRepository>();
-builder.Services.AddScoped<IRequestRepository, RequestRepository>();
-builder.Services.AddScoped<IUserPetsRepository, UserPetsRepository>();
-builder.Services.AddScoped<IUserListingsRepository, UserListingsRepository>();
-builder.Services.AddScoped<IUserRequestRepository, UserRequestRepository>();
+builder.Services.AddScoped<IShelterPetPublicationRepository, ShelterPetPublicationRepository>();
+builder.Services.AddScoped<IUserPetPublicationRepository, UserPetPublicationRepository>();
+builder.Services.AddScoped<IShelterAdoptionRequestRepository, ShelterAdoptionRequestRepository>();
+builder.Services.AddScoped<IUserAdoptionRequestRepository, UserAdoptionRequestRepository>();
+builder.Services.AddScoped<IPetImageRepository, PetImageRepository>();
 
 builder.Services.AddScoped<IImageService, ImageService>();
 
@@ -49,7 +48,7 @@ builder.Services.AddAuthorization(options =>
 // якщо не залог≥нений, то перекинь його на стор≥нку логуванн€
 builder.Services.ConfigureApplicationCookie(options =>
 {
-    options.LoginPath = "/Guest/Authorization/Login";
+    options.LoginPath = "/Authorization/Login";
 });
 
 var app = builder.Build();
@@ -79,6 +78,10 @@ app.UseAuthorization(); // ѕерев≥рка, чи користувач може доступитись до стор≥нок
 
 app.MapControllerRoute(
     name: "areas",
-    pattern: "{area=Guest}/{controller=GuestHome}/{action=Index}/{id?}");
+    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();

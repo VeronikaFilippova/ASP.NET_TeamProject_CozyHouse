@@ -11,7 +11,7 @@ namespace CozyHouse.Infrastructure.Helpers
         public static async Task SeedRolesAsync(IServiceProvider serviceProvider)
         {
             RoleManager<ApplicationRole> roleManager = serviceProvider.GetRequiredService<RoleManager<ApplicationRole>>();
-            string[] roles = { Roles.Guest.ToString(), Roles.User.ToString(), Roles.Manager.ToString() };
+            string[] roles = { Roles.User.ToString(), Roles.Manager.ToString() };
             foreach (string role in roles)
             {
                 if (await roleManager.RoleExistsAsync(role) == false)
