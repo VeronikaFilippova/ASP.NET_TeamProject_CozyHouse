@@ -9,11 +9,17 @@ namespace CozyHouse.Infrastructure.Database
     {
         public ApplicationDbContext(DbContextOptions options): base(options) {}
 
-        public DbSet<Pet> Pets { get; set; }
-        public DbSet<Listing> Listings { get; set; }
-        public DbSet<Request> Requests { get; set; }
-        public DbSet<UserPet> UserPets { get; set; }
-        public DbSet<UserListing> UserListings { get; set; }
-        public DbSet<UserRequest> UserRequests { get; set; }
+        public virtual DbSet<ShelterPetPublication> ShelterPetPublications { get; set; }
+        public virtual DbSet<UserPetPublication> UserPetPublications { get; set; }
+        public virtual DbSet<ShelterAdoptionRequest> ShelterAdoptionRequests { get; set; }
+        public virtual DbSet<UserAdoptionRequest> UserAdoptionRequests { get; set; }
+        public virtual DbSet<PetImage> PetImages { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+            builder.Entity<UserAdoptionRequest>().HasOne(r => r.Adopter).WithMany().HasForeignKey(r => r.AdopterId).OnDelete(DeleteBehavior.Restrict);
+            builder.Entity<UserAdoptionRequest>().HasOne(r => r.Owner).WithMany().HasForeignKey(r => r.OwnerId).OnDelete(DeleteBehavior.Restrict);
+        }
     }
 }

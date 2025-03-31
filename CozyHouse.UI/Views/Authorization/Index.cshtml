@@ -1,0 +1,74 @@
+﻿@model AuthorizationDTO
+@{
+    ViewBag.Title = "Authorization";
+}
+
+<link rel="stylesheet" href="~/css/authorization/authorization.css" asp-append-version="true" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<div class="tabs">
+    <div class="tab" onclick="showLogin()">LOGIN</div>
+    <div class="tab" onclick="showRegister()">REGISTER</div>
+</div>
+<div class="form-container" id="RegistrationForm">
+    <form method="post" asp-area="Guest" asp-controller="Authorization" asp-action="RegisterCommand" class="form">
+        <input type="text" placeholder="Login" asp-for="RegisterDTO.Login">
+        <span asp-validation-for="RegisterDTO.Login" class="text-danger"></span>
+        
+        <input type="number" placeholder="Age (from 18)" asp-for="RegisterDTO.Age" min="0">
+        <span asp-validation-for="RegisterDTO.Age" class="text-danger"></span>
+        
+        <input type="text" placeholder="Location" asp-for="RegisterDTO.Location">
+        <span asp-validation-for="RegisterDTO.Location" class="text-danger"></span>
+
+        <input placeholder="Phone number" asp-for="RegisterDTO.PhoneNumber">
+        <span asp-validation-for="RegisterDTO.PhoneNumber" class="text-danger"></span>
+
+        <input type="email" placeholder="E-mail" asp-for="RegisterDTO.Email">
+        <span asp-validation-for="RegisterDTO.Email" class="text-danger"></span>
+
+        <input type="password" placeholder="Password" asp-for="RegisterDTO.Password">
+        <span asp-validation-for="RegisterDTO.Password" class="text-danger"></span>
+
+        <input type="password" placeholder="Confirm password" asp-for="RegisterDTO.ConfirmPassword">
+        <span asp-validation-for="RegisterDTO.ConfirmPassword" class="text-danger"></span>
+
+        <button type="submit">Register</button>
+    </form>
+</div>
+
+<div class="form-container" id="LoginForm">
+    <form method="post" asp-area="Guest" asp-controller="Authorization" asp-action="LoginCommand" class="form">
+        <input type="text" placeholder="E-mail" asp-for="LoginDTO.UserEmail" required>
+        <span asp-validation-for="LoginDTO.UserEmail" class="text-danger"></span>
+
+        <input type="password" placeholder="Password" asp-for="LoginDTO.UserPassword" required>
+        <span asp-validation-for="LoginDTO.UserPassword" class="text-danger"></span>
+
+        <button type="submit">Login</button>
+    </form>
+</div>
+
+<div class="google-btn">
+    <i class="fab fa-google"></i>  Continue with  <b>Google</b>
+</div>
+<br />
+<br />
+
+<script>
+    const registrationForm = document.getElementById('RegistrationForm');
+    const loginForm = document.getElementById('LoginForm');
+    loginForm.style.display = "none";
+
+    function showLogin() {
+        loginForm.style.display = "flex";
+        registrationForm.style.display = "none";
+    }
+    function showRegister() {
+        loginForm.style.display = "none";
+        registrationForm.style.display = "flex";
+    }
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>

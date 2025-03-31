@@ -1,0 +1,25 @@
+﻿@model IEnumerable<ShelterAdoptionRequest>
+@{
+    ViewBag.Title = "See Requests";
+}
+<link rel="stylesheet" href="~/css/content/EditForm.css" asp-append-version="true" />
+
+<h1>Adoption Requests</h1>
+@{
+    foreach (ShelterAdoptionRequest request in Model)
+    {
+        <form method="post" asp-area="Manager" asp-controller="Home" asp-action="CloseRequest" asp-route-id="@request.Id">
+            <div>
+                <br />
+                <div>
+                    <h2>Adopter: @request.Adopter.UserName</h2>
+                    <h2>Phone Number: @request.Adopter.PhoneNumber</h2>
+                    <h3>Pet: @request.PetPublication.PetName</h3>
+
+                    <button type="submit">Close Request</button>
+                </div>
+                <br />
+            </div>
+        </form>
+    }
+}

@@ -1,0 +1,26 @@
+﻿@model List<ShelterPetPublication>
+@{
+    ViewBag.Title = "Publications";
+}
+<link rel="stylesheet" href="~/css/content/Listing.css" asp-append-version="true" />
+
+<div class="listing-container">
+    <h1>Your Listings</h1>
+    <div class="create">
+        <a asp-area="Manager" asp-controller="PetPublication" asp-action="Create" class="listing-card-button">Create New Listing</a>
+    </div>
+
+    @foreach (ShelterPetPublication publication in Model)
+    {
+        <div class="listing-card">
+            <label>@publication.PublicationTitle</label>
+            <img src="@publication.Images[0].ImageUrl" />
+            <label>@publication.Summary</label>
+            <a asp-area="Manager" asp-controller="PetPublication" asp-action="Edit" asp-route-id="@publication.Id" class="listing-card-button">Edit Listing</a>
+
+            <form method="post" asp-area="Manager" asp-controller="PetPublication" asp-action="Delete" asp-route-id="@publication.Id">
+                <button type="submit" class="listing-card-button">Delete!!!</button>
+            </form>
+        </div>
+    }
+</div>

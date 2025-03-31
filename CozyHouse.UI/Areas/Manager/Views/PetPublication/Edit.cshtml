@@ -1,0 +1,47 @@
+﻿@model ShelterPetPublication
+@{
+    ViewBag.Title = "Edit";
+    Guid userId = Guid.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value!);
+}
+
+<link rel="stylesheet" href="~/css/content/EditForm.css" asp-append-version="true" />
+<form method="post" enctype="multipart/form-data" asp-area="Manager" asp-controller="PetPublication" asp-action="Edit">
+    <input asp-for="Id" hidden />
+    <h1>Pet Publication Creation</h1>
+
+    <div><input type="text" placeholder="Listing Title" asp-for="PublicationTitle" /></div>
+    <div><input placeholder="Summary" asp-for="Summary" /></div>
+    <div><input placeholder="Location" asp-for="Location" /></div>
+
+
+    <div><input placeholder="Pet Name" asp-for="PetName" /></div>
+    <div><input placeholder="Pet Age" asp-for="PetAge" /></div>
+    <div><textarea placeholder="Short Description" asp-for="Summary"></textarea></div>
+
+    <div>
+        <select asp-for="PetType">
+            @{
+                foreach (Species species in Enum.GetValues(typeof(Species)))
+                {
+                    <option value="@species">@species.ToString()</option>
+                }
+            }
+        </select>
+    </div>
+    <div>
+        <label>Is Vaccinated?:</label>
+        <input type="checkbox" asp-for="IsVaccinated" />
+    </div>
+
+    <div>
+        <label>Is Sterilized?:</label>
+        <input type="checkbox" asp-for="IsSterilized" />
+    </div>
+
+    <div>
+        <label>Select pet image:</label>
+        <input type="file" name="petImage" />
+    </div>
+
+    <div><button type="submit">Edit!!!</button></div>
+</form>
