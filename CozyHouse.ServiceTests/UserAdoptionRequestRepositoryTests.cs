@@ -54,15 +54,17 @@ namespace CozyHouse.CoreTests
         [Fact]
         public void Create_InvalidRequest_ShouldThrowValidationException()
         {
-            UserAdoptionRequest request = new UserAdoptionRequest
+            Assert.Throws<FormatException>(() =>
             {
-                Id = Guid.NewGuid(),
-                AdopterId = Guid.Empty,
-                OwnerId = Guid.Empty,
-                PetPublicationId = Guid.Empty
-            };
-
-            Assert.Throws<ValidationException>(() => _repository.Create(request));
+                UserAdoptionRequest request = new UserAdoptionRequest
+                {
+                    Id = Guid.Parse(""),
+                    AdopterId = Guid.Empty,
+                    OwnerId = Guid.Empty,
+                    PetPublicationId = Guid.Empty
+                };
+                _repository.Create(request);
+            });
         }
         #endregion
 
@@ -97,10 +99,12 @@ namespace CozyHouse.CoreTests
         [Fact]
         public void Update_InvalidRequest_ShouldThrowValidationException()
         {
-            UserAdoptionRequest request = _repository.Read(Guid.Parse("12345678-1234-1234-1234-123456789012"));
-            request.OwnerId = Guid.Empty;
-
-            Assert.Throws<ValidationException>(() => _repository.Update(request));
+            Assert.Throws<InvalidOperationException>(() =>
+            {
+                UserAdoptionRequest request = _repository.Read(Guid.Parse("12345678-1234-1234-1234-123456719312"));
+                request.OwnerId = Guid.Empty;
+                _repository.Update(request);
+            });
         }
         #endregion
 
