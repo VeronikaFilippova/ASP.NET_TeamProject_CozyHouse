@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Xunit;
 
-namespace CozyHouse.CoreTests.EntitiesTests
+namespace CozyHouse.CoreTests.EntitieTests
 {
     public class PetImageTests
     {

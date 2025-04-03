@@ -5,7 +5,7 @@ using CozyHouse.Infrastructure.Repositories;
 using CozyHouse.Core.Domain.Entities;
 using System.ComponentModel.DataAnnotations;
 
-namespace CozyHouse.CoreTests
+namespace CozyHouse.CoreTests.RepositoryTests
 {
     public class UserPetPublicationRepositoryTests
     {
@@ -150,7 +150,7 @@ namespace CozyHouse.CoreTests
 
         #region GetAll
         [Fact]
-        public void GetAll_ShouldReturnAllPublications()
+        public void GetAll_ShouldReturnSinglePublication()
         {
             var publications = _repository.GetAll();
             Assert.Single(publications);

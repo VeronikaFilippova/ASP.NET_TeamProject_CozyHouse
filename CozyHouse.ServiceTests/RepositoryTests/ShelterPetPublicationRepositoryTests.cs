@@ -6,7 +6,7 @@ using CozyHouse.Core.Domain.Entities;
 using CozyHouse.Core.Domain.Enums;
 using System.ComponentModel.DataAnnotations;
 
-namespace CozyHouse.CoreTests
+namespace CozyHouse.CoreTests.RepositoryTests
 {
     public class ShelterPetPublicationRepositoryTests
     {
@@ -60,7 +60,7 @@ namespace CozyHouse.CoreTests
             Assert.Equal(2, _repository.GetAll().Count());
         }
         [Fact]
-        public void Add_WrongArugments_ToBeValidationException()
+        public void Create_WrongArugments_ToBeValidationException()
         {
             ShelterPetPublication listing = new ShelterPetPublication()
             {
@@ -95,7 +95,7 @@ namespace CozyHouse.CoreTests
         }
 
         [Fact]
-        public void GetAll_ToBeEqualOne()
+        public void GetAll_NoArguments_ToBeEqualOne()
         {
             Assert.Single(_repository.GetAll());
         }

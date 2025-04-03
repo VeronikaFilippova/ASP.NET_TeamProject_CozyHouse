@@ -5,7 +5,7 @@ using CozyHouse.Infrastructure.Repositories;
 using CozyHouse.Core.Domain.Entities;
 using System.ComponentModel.DataAnnotations;
 
-namespace CozyHouse.CoreTests
+namespace CozyHouse.CoreTests.RepositoryTests
 {
     public class PetImageRepositoryTests
     {

@@ -5,7 +5,7 @@ using CozyHouse.Infrastructure.Repositories;
 using CozyHouse.Core.Domain.Entities;
 using System.ComponentModel.DataAnnotations;
 
-namespace CozyHouse.CoreTests
+namespace CozyHouse.CoreTests.RepositoryTests
 {
     public class UserAdoptionRequestRepositoryTests
     {
@@ -125,7 +125,7 @@ namespace CozyHouse.CoreTests
 
         #region GetAll
         [Fact]
-        public void GetAll_ShouldReturnAllRequests()
+        public void GetAll_ShouldReturnSingleRequest()
         {
             var requests = _repository.GetAll();
             Assert.Single(requests);

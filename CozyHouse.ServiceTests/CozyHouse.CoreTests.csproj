@@ -21,6 +21,7 @@
   <ItemGroup>
     <ProjectReference Include="..\CozyHouse.Core\CozyHouse.Core.csproj" />
     <ProjectReference Include="..\CozyHouse.Infrastructure\CozyHouse.Infrastructure.csproj" />
+    <ProjectReference Include="..\CozyHouse.UI\CozyHouse.UI.csproj" />
   </ItemGroup>
 
   <ItemGroup>

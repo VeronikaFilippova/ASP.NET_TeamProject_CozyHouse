@@ -6,7 +6,7 @@ using CozyHouse.Core.Domain.Entities;
 using System.ComponentModel.DataAnnotations;
 
 
-namespace CozyHouse.CoreTests
+namespace CozyHouse.CoreTests.EntitieTests
 {
     public class UserAdoptionRequestEntitieTest
     {

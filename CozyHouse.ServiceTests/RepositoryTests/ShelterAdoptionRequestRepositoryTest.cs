@@ -6,7 +6,7 @@ using CozyHouse.Core.Domain.Entities;
 using CozyHouse.Core.Domain.Enums;
 using System.ComponentModel.DataAnnotations;
 
-namespace CozyHouse.CoreTests
+namespace CozyHouse.CoreTests.RepositoryTests
 {
     public class ShelterAdoptionRequestRepositoryTests
     {
