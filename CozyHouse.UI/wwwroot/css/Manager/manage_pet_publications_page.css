@@ -1,56 +1,47 @@
-﻿
+﻿/*Це частина, яка була в PetsCard.css*/
 
-/*h1 {
+/*This file is used by pages where user/manager manage publications*/
+h1 {
     font-family: 'Georgia', serif;
     color: #333;
-    font-size: 36px;*/ /* Робимо більшим */
-    /*font-weight: bold;*/ /* Жирний */
-    /*text-align: center;*/ /* Центруємо */
-    /*margin-bottom: 20px;
-}*/
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
 
-
-/*МАЄ БУТИ В ІНШОМУ ФАЙЛІ*/
-/* Центруємо контейнер заголовка і кнопки */
-/*.header-container {
+.header-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
     margin-bottom: 20px;
-}*/
+}
 
-/* Стилізація кнопки "Add New Pet" */
-/*.add-pet-button {
+.add-publication-button {
     display: inline-block;
     padding: 10px 20px;
     font-size: 14px;
     color: #b0855b;
     border: 2px solid #b0855b;
-    border-radius: 20px;
-    text-decoration: none;
+    border-radius: 5px;
     background: transparent;
     cursor: pointer;
     transition: 0.3s ease;
     text-align: center;
-}*/
+}
 
-/*.add-pet-button:hover {
+.add-publication-button:hover {
     background: #b0855b;
     color: white;
-}*/
+}
 
-
-
-
-
-/*.pets-buttons {
+.pets-buttons {
     display: flex;
     flex-direction: column;
     gap: 10px;
     margin-top: 10px;
-}*/
+}
 
-/*.pets-buttons a, .pets-buttons button {
+.pets-buttons a, .pets-buttons button {
     display: inline-block;
     padding: 10px 20px;
     font-size: 14px;
@@ -61,11 +52,9 @@
     background: transparent;
     cursor: pointer;
     transition: 0.3s ease;
-}*/
+}
 
-/*.pets-buttons a:hover, .pets-buttons button:hover {
+.pets-buttons a:hover, .pets-buttons button:hover {
     background: #b0855b;
     color: white;
-}*/
-
-
+}

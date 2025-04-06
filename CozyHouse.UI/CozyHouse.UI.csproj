@@ -38,7 +38,6 @@
   <ItemGroup>
     <Folder Include="wwwroot\css\Guest\" />
     <Folder Include="wwwroot\css\main\" />
-    <Folder Include="wwwroot\css\Manager\" />
     <Folder Include="wwwroot\css\User\" />
     <Folder Include="wwwroot\PetImages\" />
   </ItemGroup>
