@@ -1,36 +1,6 @@
-/* Fonts Import */
-@font-face {
-    font-family: 'Georgia';
-    src: url(./fonts/georgia/georgia-regular.ttf);
-}
 
-@font-face {
-    font-family: 'Arial-regular';
-    src: url(./fonts/arial/arial-regular.ttf);
-}
 
-@font-face {
-    font-family: 'Arial-italic';
-    src: url(./fonts/arial/arial-italic.ttf);
-}
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    padding-top: 100px; /* Adjust based on header height + margin */
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center; /* Centers content horizontally */
-    align-items: center; /* Centers content vertically */
-    min-height: 100vh; /* Ensures full height of viewport */
-    margin: 0; /* Removes default margin */
-    line-height: 1;
-    flex-direction: column;
-}
 
 /*HEADER CONFIGURATIONS*/
 
@@ -48,16 +18,9 @@ header {
     background-position: center;
     background-repeat: no-repeat;
     padding: 0 20px;
-    z-index: 1000; /* Ensures header stays on top */
+    z-index: 1000;
 }
 
-/* Remove default underline for all links */
-a {
-    text-decoration: none;
-    font-family: Georgia;
-}
-
-/* Logo Styling */
 .logo {
     flex-direction: column;
     text-align: center;
@@ -81,7 +44,6 @@ a {
     letter-spacing: 1.3px;
 }
 
-/* Navigation Menu */
 .nav-menu ul {
     display: flex;
     gap: 20px;
@@ -101,7 +63,7 @@ padding: 5px 10px;
 transition: color 0.3s ease-in-out;
 }
 .nav-menu ul li a:hover {
-    color: #F1CDB3; /* Highlight on hover */
+    color: #F1CDB3;
 }
 
 /* FOOTER CONFIGURATIONS */

@@ -3,25 +3,25 @@
     ViewBag.Title = "Pets";
 }
 
-<link rel="stylesheet" href="~/css/content/PetsCard.css" asp-append-version="true" />
-<h1>Our Pets</h1>
-
-<div class="pets-container">
+<link rel="stylesheet" href="~/css/Shared/pet_cards.css" asp-append-version="true" />
+<div class="card-container">
 @{
     foreach (ShelterPetPublication publication in Model)
     {
-        <div>
-        <br />
-            <div class="listing-container">
+        <div class="publication">
+            <div class="top-part">
+                <h2>@publication.PetType</h2>
                 <h1>@publication.PublicationTitle</h1>
-                <br />
-                <div>
-                    <img src="@publication.Images[0].ImageUrl" />
-                </div>
-                <h3>Name: @publication.PublicationTitle; Age: @publication.PetAge</h3>
-                <h4>@publication.Summary</h4>
             </div>
-        <br />
+
+            <div class="middle-part">
+                <img src="@publication.Images[0].ImageUrl" />
+                <h3>@publication.Summary</h3>
+            </div>
+
+            <div class="bottom-part">
+                <h2>Location: @publication.Location</h2>
+            </div>
         </div>
     }
 }
