@@ -1,8 +1,6 @@
 ﻿using CozyHouse.Core.Domain.Entities;
 using CozyHouse.Core.RepositoryInterfaces;
 using CozyHouse.Infrastructure.Database;
-using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations;
 
 namespace CozyHouse.Infrastructure.Repositories
 {
@@ -16,8 +14,6 @@ namespace CozyHouse.Infrastructure.Repositories
 
         public void Create(PetImage image)
         {
-            var context = new ValidationContext(image, serviceProvider: null, items: null);
-            Validator.ValidateObject(image, context, validateAllProperties: true);
             _db.PetImages.Add(image);
             _db.SaveChanges();
         }
@@ -29,9 +25,6 @@ namespace CozyHouse.Infrastructure.Repositories
 
         public void Update(PetImage image)
         {
-            var context = new ValidationContext(image, serviceProvider: null, items: null);
-            Validator.ValidateObject(image, context, validateAllProperties: true);
-
             _db.PetImages.Update(image);
             _db.SaveChanges();
         }
