@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace CozyHouse.Core.Extended_Classes
+namespace CozyHouse.Core.Helpers
 {
     public class ExtendedSignInResult
     {

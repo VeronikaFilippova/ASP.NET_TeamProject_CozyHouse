@@ -1,13 +1,12 @@
-﻿using CozyHouse.Core.ServiceContracts;
-using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 
-namespace CozyHouse.Core.Services
+namespace CozyHouse.Core.Helpers
 {
-    public class ImageService : IImageService
+    public class PublicationImageHelper : IPublicationImageHelper
     {
         IWebHostEnvironment _webHostEnvironment;
-        public ImageService(IWebHostEnvironment webHostEnvironment)
+        public PublicationImageHelper(IWebHostEnvironment webHostEnvironment)
         {
             _webHostEnvironment = webHostEnvironment;
         }

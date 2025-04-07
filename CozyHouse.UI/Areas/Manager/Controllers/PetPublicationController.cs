@@ -1,4 +1,5 @@
 ﻿using CozyHouse.Core.Domain.Entities;
+using CozyHouse.Core.Helpers;
 using CozyHouse.Core.RepositoryInterfaces;
 using CozyHouse.Core.ServiceContracts;
 using Microsoft.AspNetCore.Authorization;
@@ -11,21 +12,14 @@ namespace CozyHouse.UI.Areas.Manager.Controllers
     [Area("Manager")]
     public class PetPublicationController : Controller
     {
-        IShelterPetPublicationRepository _petPublicationRepository;
-        IPetImageRepository _petImageRepository;
-        IImageService _imageService;
-        public PetPublicationController(IShelterPetPublicationRepository petPublicationRepository, IPetImageRepository petImageRepository, IImageService imageService)
+        IShelterPetPublicationService _publicationService;
+        public PetPublicationController(IShelterPetPublicationService publicationService)
         {
-            _petPublicationRepository = petPublicationRepository;
-            _petImageRepository = petImageRepository;
-            _imageService = imageService;
+            _publicationService = publicationService;
         }
         public IActionResult Index()
         {
-            Guid userId = Guid.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value!);
-
-            List<ShelterPetPublication> userListings = _petPublicationRepository.GetAll().ToList();
-            return View(userListings);
+            return View(_publicationService.GetAll());
         }
         public IActionResult Create()
         {
@@ -33,34 +27,28 @@ namespace CozyHouse.UI.Areas.Manager.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(ShelterPetPublication publication, IFormFile petImage)
+        public IActionResult Create(ShelterPetPublication publication, IFormFile[] petImages)
         {
-            _petPublicationRepository.Create(publication);
-            string route = _imageService.SaveImage(petImage);
-            _petImageRepository.Create(new PetImage()
-            {
-                ImageUrl = route,
-                PetPublicationId = publication.Id
-            });
+            _publicationService.Add(publication, petImages);
             return RedirectToAction("Index");
         }
 
         public IActionResult Edit(Guid id)
         {
-            return View(_petPublicationRepository.Read(id));
+            return View(_publicationService.Get(id));
         }
 
         [HttpPost]
         public IActionResult Edit(ShelterPetPublication publication)
         {
-            _petPublicationRepository.Update(publication);
+            _publicationService.Update(publication);
             return RedirectToAction("Index");
         }
 
         [HttpPost]
         public IActionResult Delete(Guid id)
         {
-            _petPublicationRepository.Delete(id);
+            _publicationService.Delete(id);
             return RedirectToAction("Index");
         }
     }

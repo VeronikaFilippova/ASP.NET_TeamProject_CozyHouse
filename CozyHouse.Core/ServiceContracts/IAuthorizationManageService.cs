@@ -1,5 +1,5 @@
 ﻿using CozyHouse.Core.Domain.IdentityEntities;
-using CozyHouse.Core.Extended_Classes;
+using CozyHouse.Core.Helpers;
 using Microsoft.AspNetCore.Identity;
 
 namespace CozyHouse.Core.ServiceContracts

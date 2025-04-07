@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 
-namespace CozyHouse.Core.ServiceContracts
+namespace CozyHouse.Core.Helpers
 {
-    public interface IImageService
+    public interface IPublicationImageHelper
     {
         string SaveImage(IFormFile file);
         void DeleteImage(string? imagePath);
