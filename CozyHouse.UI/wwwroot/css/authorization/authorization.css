@@ -1,6 +1,4 @@
 ﻿/*LOGIN*/
-
-
 body {
     margin: 0;
     padding: 0;
@@ -32,9 +30,9 @@ body {
     border-bottom: 2px solid transparent;
 }
 
-    .tab.active {
-        border-bottom: 2px solid #D8A48F;
-    }
+.tab.active {
+    border-bottom: 2px solid #D8A48F;
+}
 
 input {
     width: 100%;
@@ -45,48 +43,43 @@ input {
 }
 .tabs .tab {
     font-family: 'Your Font Name', serif; 
-    font-size: 20px; /* Розмір шрифту */
+    font-size: 20px;
     font-style: italic; 
     font-weight: 700; 
     letter-spacing: 2px; 
-    text-transform: capitalize; /* Робить першу літеру в слові великою */
+    text-transform: capitalize;
     color: #333; 
 }
 
-    .tabs .tab:hover {
-        color: #C4876A; 
-        font-style: normal; /* При наведенні прибирає курсив */
-        text-decoration: underline; /* Додає підкреслення */
-    }
-
-/* Поля вводу */
-input:hover {
-    border: 2px solid #C4876A; /* Змінює колір рамки при наведенні */
-    background-color: #f9e7dd; /* Додає світлий фон при наведенні */
-    transition: 0.3s; /* Згладжує ефект при наведенні */
+.tabs .tab:hover {
+    color: #C4876A; 
+    font-style: normal;
+    text-decoration: underline;
 }
 
-/* Кнопки */
+input:hover {
+    border: 2px solid #C4876A;
+    background-color: #f9e7dd;
+    transition: 0.3s;
+}
+
 button:hover {
-    background-color: #C4876A; /* Змінює фон кнопки при наведенні */
-    color: white; /* Зберігає білий колір тексту */
+    background-color: #C4876A;
+    color: white;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); 
     transition: 0.3s; 
 }
 
-/* Загальний стиль для посилань */
 .forgot-link:hover, .google-btn:hover {
-    color: #C4876A; /* Змінює колір тексту при наведенні */
-    text-decoration: underline; /* Підкреслює текст */
-    cursor: pointer; /* Додає ефект курсора */
+    color: #C4876A; 
+    text-decoration: underline;
+    cursor: pointer;
 }
 
-/* Контейнер при наведенні */
 .form-container:hover {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
     transition: 0.3s; 
 }
-
 
 button {
     width: 100%;
@@ -100,8 +93,7 @@ button {
 }
 
 
-
-    .google-btn {
+.google-btn {
     margin-top: 10px;
     display: flex;
     align-items: center;
@@ -113,7 +105,6 @@ button {
 }
 
 /*REGISTRATION*/
-
 .container {
     background: white;
     padding: 20px;
@@ -137,10 +128,10 @@ button {
     font-weight: bold;
 }
 
-    .tab.active {
-        border-bottom: 3px solid #d9a38a;
-        color: black;
-    }
+.tab.active {
+    border-bottom: 3px solid #d9a38a;
+    color: black;
+}
 
 .form input {
     width: 100%;
@@ -162,9 +153,9 @@ button {
     font-size: 16px;
 }
 
-    .form button:hover {
-        background-color: #c4876a;
-    }
+.form button:hover {
+    background-color: #c4876a;
+}
 
 .google-login {
     margin-top: 20px;
@@ -184,9 +175,9 @@ button {
     gap: 4px;
 }
 
-    .google-btn strong {
-        margin-left: 5px;
-    }
+.google-btn strong {
+    margin-left: 5px;
+}
 
 .text-danger {
     color: darkred;
