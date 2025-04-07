@@ -2,25 +2,37 @@
 @{
     ViewBag.Title = "Publications";
 }
-<link rel="stylesheet" href="~/css/content/Listing.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/Shared/pet_cards.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/Shared/manage_pet_publications_page.css" asp-append-version="true" />
 
-<div class="listing-container">
-    <h1>Your Listings</h1>
-    <div class="create">
-        <a asp-area="User" asp-controller="PetPublication" asp-action="Create" class="listing-card-button">Create New Listing</a>
-    </div>
+<div class="header-container">
+    <h1>Manage Shelter Pets</h1>
+    <a asp-area="User" asp-controller="PetPublication" asp-action="Create" class="add-publication-button">Create New Listing</a>
+</div>
 
+<div class="card-container">
     @foreach (UserPetPublication publication in Model)
     {
-        <div class="listing-card">
-            <label>@publication.PublicationTitle</label>
-            <img src="@publication.Images.FirstOrDefault()?.ImageUrl" />
-            <label>@publication.Summary</label>
-            <a asp-area="User" asp-controller="PetPublication" asp-action="Edit" asp-route-id="@publication.Id" class="listing-card-button">Edit Listing</a>
+        <div class="publication">
+            <div class="top-part">
+                <h2>@publication.PetType</h2>
+                <h1>@publication.PublicationTitle</h1>
+            </div>
 
-            <form method="post" asp-area="User" asp-controller="PetPublication" asp-action="Delete" asp-route-id="@publication.Id">
-                <button type="submit" class="listing-card-button">Delete!!!</button>
-            </form>
+            <div class="middle-part">
+                <img src="@publication.Images[0].ImageUrl" />
+                <h3>@publication.Summary</h3>
+                <h3>Name: @publication.PetName; Age: @publication.PetAge; Type: @publication.PetType</h3>
+                <h3>IsAdopted: @publication.IsAdopted; IsVaccinated: @publication.IsVaccinated; IsSterialized: @publication.IsSterilized</h3>
+                <h3> Description: @publication.Description</h3>
+                <h3> Location: @publication.Location</h3>
+            </div>
+            <div class="pets-buttons">
+                <a asp-area="User" asp-controller="PetPublication" asp-action="Edit" asp-route-id="@publication.Id" class="listing-card-button">Edit</a>
+                <form method="post" asp-area="User" asp-controller="PetPublication" asp-action="Delete" asp-route-id="@publication.Id">
+                    <button type="submit" class="listing-card-button">Delete</button>
+                </form>
+            </div>
         </div>
     }
 </div>

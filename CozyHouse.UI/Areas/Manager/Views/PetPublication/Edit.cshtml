@@ -4,15 +4,14 @@
     Guid userId = Guid.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value!);
 }
 
-<link rel="stylesheet" href="~/css/Manager/PetPublications/create_edit.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/Shared/PetPublications/create_edit.css" asp-append-version="true" />
 
 <form class="top-button">
     <button asp-area="Manager" asp-controller="PetPublication" asp-action="Index">Back</button>
 </form>
 
 <div class="form-container">
-    <form method="post" enctype="multipart/form-data" asp-area="Manager" asp-controller="PetPublication" asp-action="Edit"
-    class="main-form">
+    <form method="post" enctype="multipart/form-data" asp-area="Manager" asp-controller="PetPublication" asp-action="Edit" class="main-form">
         <h1>Edit Pet Publication</h1>
 
         <h2>Publication Information</h2>

@@ -4,45 +4,70 @@
     Guid userId = Guid.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value!);
 }
 
-<link rel="stylesheet" href="~/css/content/EditForm.css" asp-append-version="true" />
-<form method="post" enctype="multipart/form-data" asp-area="User" asp-controller="PetPublication" asp-action="Edit">
-    <input asp-for="OwnerId" value="@userId" hidden />
-    <input asp-for="Id" hidden />
-    <h1>Pet Publication Creation</h1>
+<link rel="stylesheet" href="~/css/Shared/PetPublications/create_edit.css" asp-append-version="true" />
 
-    <div><input type="text" placeholder="Listing Title" asp-for="PublicationTitle" /></div>
-    <div><input placeholder="Summary" asp-for="Summary" /></div>
-    <div><input placeholder="Location" asp-for="Location" /></div>
-
-
-    <div><input placeholder="Pet Name" asp-for="PetName" /></div>
-    <div><input placeholder="Pet Age" asp-for="PetAge" /></div>
-    <div><textarea placeholder="Short Description" asp-for="Summary"></textarea></div>
-
-    <div>
-        <select asp-for="PetType">
-            @{
-                foreach (Species species in Enum.GetValues(typeof(Species)))
-                {
-                    <option value="@species">@species.ToString()</option>
-                }
-            }
-        </select>
-    </div>
-    <div>
-        <label>Is Vaccinated?:</label>
-        <input type="checkbox" asp-for="IsVaccinated" />
-    </div>
-
-    <div>
-        <label>Is Sterilized?:</label>
-        <input type="checkbox" asp-for="IsSterilized" />
-    </div>
-
-    <div>
-        <label>Select pet image:</label>
-        <input type="file" name="petImage" />
-    </div>
-
-    <div><button type="submit">Edit!!!</button></div>
+<form class="top-button">
+    <button asp-area="User" asp-controller="PetPublication" asp-action="Index">Back</button>
 </form>
+
+<div class="form-container">
+    <form method="post" enctype="multipart/form-data" asp-area="User" asp-controller="PetPublication" asp-action="Edit" class="main-form">
+        <input asp-for="OwnerId" value="@userId" hidden />
+        <input asp-for="Id" hidden />
+        <h1>Edit Pet Publication</h1>
+
+        <h2>Publication Information</h2>
+        <div>
+            <input type="text" placeholder="Title" asp-for="PublicationTitle" />
+        </div>
+        <div>
+            <textarea placeholder="Summary" asp-for="Summary"></textarea>
+        </div>
+        <div>
+            <textarea placeholder="Description" asp-for="Description"></textarea>
+        </div>
+        <div>
+            <input placeholder="Location" asp-for="Location" />
+        </div>
+
+        <h2>Pet Information</h2>
+        <div>
+            <input placeholder="Pet Name" asp-for="PetName" />
+        </div>
+        <div>
+            <input placeholder="Pet Age" asp-for="PetAge" />
+        </div>
+
+        <div>
+            <select asp-for="PetType">
+                @{
+                    foreach (Species species in Enum.GetValues(typeof(Species)))
+                    {
+                        <option value="@species">@species.ToString()</option>
+                    }
+                }
+            </select>
+        </div>
+        <div>
+            <input placeholder="Breed" asp-for="Breed" />
+        </div>
+
+        <div class="checkbox-with-label">
+            <label for="IsVaccinated">Is Vaccinated?</label>
+            <input type="checkbox" asp-for="IsVaccinated" name="IsVaccinated" />
+        </div>
+        <div class="checkbox-with-label">
+            <label for="IsSterilized">Is Sterilized?</label>
+            <input type="checkbox" asp-for="IsSterilized" name="IsSterilized" />
+        </div>
+
+        <div>
+            <label>Select pet image:</label>
+            <input type="file" name="petImage" required />
+        </div>
+
+        <div>
+            <button type="submit">Update</button>
+        </div>
+    </form>
+</div>

@@ -4,7 +4,7 @@
     ViewBag.Title = "Create";
     Guid userId = Guid.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value!);
 }
-<link rel="stylesheet" href="~/css/Manager/PetPublications/create_edit.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/Shared/PetPublications/create_edit.css" asp-append-version="true" />
 
 <form class="top-button">
     <button asp-area="Manager" asp-controller="PetPublication" asp-action="Index">Back</button>
