@@ -31,9 +31,17 @@ namespace CozyHouse.UI.Areas.Manager.Controllers
             return RedirectToAction("Index", "Home", new {area = ""});
         }
         [HttpPost]
-        public IActionResult CloseRequest(Guid id)
+        public IActionResult Approve(Guid id)
         {
-            _requestsRepository.Delete(id);
+            // TODO: IMPLEMENT FUNCTION
+            // Delete pet publication, inform user, change status of request, ... Not sure yet
+            return RedirectToAction("SeeRequests");
+        }
+        [HttpPost]
+        public IActionResult Reject(Guid id)
+        {
+            // TODO: IMPLEMENT FUNCTION
+            // Delete request, inform user, ... Not sure yet
             return RedirectToAction("SeeRequests");
         }
     }

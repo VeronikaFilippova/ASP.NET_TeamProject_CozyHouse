@@ -35,7 +35,8 @@ namespace CozyHouse.Infrastructure.Repositories
         }
         public IEnumerable<ShelterAdoptionRequest> GetAll()
         {
-            return _db.ShelterAdoptionRequests.Include(r => r.Adopter).Include(r => r.PetPublication);
+            return _db.ShelterAdoptionRequests.Include(r => r.Adopter).Include(r => r.PetPublication)
+                .Include(i => i.PetPublication.Images);
         }
     }
 }
