@@ -34,7 +34,7 @@ namespace CozyHouse.CoreTests.RepositoryTests
             _repository = new PetImageRepository(context);
         }
 
-        #region Add
+        #region Create
         [Fact]
         public void Create_RightArguments_ToBeSuccessful()
         {
@@ -66,7 +66,7 @@ namespace CozyHouse.CoreTests.RepositoryTests
         }
         #endregion
 
-        #region Get
+        #region Read
         [Fact]
         public void Read_RightId_ToBeNotNull()
         {
