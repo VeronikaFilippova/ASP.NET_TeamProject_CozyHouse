@@ -15,7 +15,7 @@ namespace CozyHouse.Core.RepositoryInterfaces
         /// </summary>
         /// <param name="Id">Id of the adoption request to return.</param>
         /// <returns>Found adoption request.</returns>
-        public ShelterAdoptionRequest Read(Guid Id);
+        public ShelterAdoptionRequest? Read(Guid Id);
 
         /// <summary>
         /// Updates adoption request in data storage.

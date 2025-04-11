@@ -27,6 +27,7 @@ builder.Services.AddScoped<IShelterAdoptionRequestRepository, ShelterAdoptionReq
 builder.Services.AddScoped<IUserAdoptionRequestRepository, UserAdoptionRequestRepository>();
 builder.Services.AddScoped<IPetImageRepository, PetImageRepository>();
 
+builder.Services.AddScoped<IShelterAdoptionRequestService, ShelterAdoptionRequestService>();
 builder.Services.AddScoped<IShelterPetPublicationService, ShelterPetPublicationService>();
 builder.Services.AddScoped<IAuthorizationManageService, AuthorizationManageService>();
 builder.Services.AddScoped<IPublicationImageHelper, PublicationImageHelper>();

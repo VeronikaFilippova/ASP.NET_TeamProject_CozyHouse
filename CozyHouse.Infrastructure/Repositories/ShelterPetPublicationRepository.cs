@@ -19,9 +19,9 @@ namespace CozyHouse.Infrastructure.Repositories
             _db.SaveChanges();
         }
 
-        public ShelterPetPublication Read(Guid publicationId)
+        public ShelterPetPublication? Read(Guid publicationId)
         {
-            return _db.ShelterPetPublications.Include(pub => pub.Images).First(publication => publication.Id == publicationId);
+            return _db.ShelterPetPublications.Include(pub => pub.Images).FirstOrDefault(publication => publication.Id == publicationId);
         }
 
         public void Update(ShelterPetPublication publication)

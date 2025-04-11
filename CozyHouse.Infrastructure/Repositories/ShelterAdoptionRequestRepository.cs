@@ -18,9 +18,9 @@ namespace CozyHouse.Infrastructure.Repositories
             _db.ShelterAdoptionRequests.Add(request);
             _db.SaveChanges();
         }
-        public ShelterAdoptionRequest Read(Guid Id)
+        public ShelterAdoptionRequest? Read(Guid Id)
         {
-            return _db.ShelterAdoptionRequests.Include(r => r.Adopter).Include(r => r.PetPublication).First(request => request.Id == Id);
+            return _db.ShelterAdoptionRequests.Include(r => r.Adopter).Include(r => r.PetPublication).FirstOrDefault(request => request.Id == Id);
         }
         public void Update(ShelterAdoptionRequest request)
         {

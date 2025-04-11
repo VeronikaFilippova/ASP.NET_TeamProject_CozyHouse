@@ -15,7 +15,7 @@ namespace CozyHouse.Core.RepositoryInterfaces
         /// </summary>
         /// <param name="petId">Id of the publication to return.</param>
         /// <returns>Found publication.</returns>
-        public ShelterPetPublication Read(Guid petId);
+        public ShelterPetPublication? Read(Guid petId);
         
         /// <summary>
         /// Updates publication in data storage.
