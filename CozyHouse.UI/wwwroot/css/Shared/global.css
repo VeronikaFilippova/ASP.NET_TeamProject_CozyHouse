@@ -1,0 +1,34 @@
+﻿/* Fonts Import */
+@font-face {
+    font-family: 'Georgia';
+    src: url(./fonts/georgia/georgia-regular.ttf);
+}
+
+@font-face {
+    font-family: 'Arial-regular';
+    src: url(./fonts/arial/arial-regular.ttf);
+}
+
+@font-face {
+    font-family: 'Arial-italic';
+    src: url(./fonts/arial/arial-italic.ttf);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    font-size: 100%;
+    text-decoration: none;
+    box-sizing: border-box;
+    vertical-align: baseline;
+}
+
+a {
+    font-family: Georgia;
+}
+
+body {
+    flex-direction: column;
+}

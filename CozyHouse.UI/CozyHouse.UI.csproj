@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\css\main\**" />
+    <Content Remove="wwwroot\css\main\**" />
+    <EmbeddedResource Remove="wwwroot\css\main\**" />
+    <None Remove="wwwroot\css\main\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Program.cs~RF43bb65b.TMP" />
   </ItemGroup>
 
@@ -36,6 +43,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="wwwroot\css\Guest\" />
+    <Folder Include="wwwroot\css\User\" />
     <Folder Include="wwwroot\PetImages\" />
   </ItemGroup>
 

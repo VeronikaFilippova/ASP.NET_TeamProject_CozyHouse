@@ -13,7 +13,7 @@ namespace CozyHouse.Core.Domain.Entities
 
         [Required]
         [ForeignKey(nameof(PetPublication))]
-        public Guid PetPublicationId { get; set; }
+        public required Guid PetPublicationId { get; set; }
         public virtual PetPublicationBase PetPublication { get; set; } = null!;
     }
 }

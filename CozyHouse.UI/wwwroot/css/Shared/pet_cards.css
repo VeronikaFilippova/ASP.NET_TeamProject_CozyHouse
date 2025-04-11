@@ -1,0 +1,39 @@
+﻿/*This css file is responsible for displaying pet cards*/
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.publication {
+    width: 250px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    padding: 20px;
+    margin: 10px;
+}
+
+.middle-part img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.top-part h1 {
+    font-size: 20px;
+    color: #333;
+    margin: 5px 0;
+}
+
+.publication h3 {
+    font-size: 14px;
+    color: #333;
+    margin: 5px 0;
+}
+
+.publication h2 {
+    font-size: 14px;
+    color: #777;
+}

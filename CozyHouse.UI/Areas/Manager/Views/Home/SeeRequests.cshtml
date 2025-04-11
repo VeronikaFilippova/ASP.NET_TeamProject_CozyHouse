@@ -2,24 +2,32 @@
 @{
     ViewBag.Title = "See Requests";
 }
-<link rel="stylesheet" href="~/css/content/EditForm.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/Manager/adoption_requests.css" asp-append-version="true" />
 
 <h1>Adoption Requests</h1>
-@{
-    foreach (ShelterAdoptionRequest request in Model)
-    {
-        <form method="post" asp-area="Manager" asp-controller="Home" asp-action="CloseRequest" asp-route-id="@request.Id">
-            <div>
-                <br />
+<div class="request-container">
+    @{
+        foreach (ShelterAdoptionRequest request in Model)
+        {
+            <div class="request-card">
                 <div>
-                    <h2>Adopter: @request.Adopter.UserName</h2>
-                    <h2>Phone Number: @request.Adopter.PhoneNumber</h2>
-                    <h3>Pet: @request.PetPublication.PetName</h3>
-
-                    <button type="submit">Close Request</button>
+                    <h2>Email: @request.Adopter.UserName</h2>
+                    <h2>Phone number: @request.Adopter.PhoneNumber</h2>
+                    <h2>Person name: @request.Adopter.PersonName</h2>
+                    <h2>Request was made: @request.RequestDate</h2>
+                    <h2>Status: @request.Status</h2>
+                    <h2>Publication title: @request.PetPublication.PublicationTitle</h2>
+                    <h2>Pet Name: @request.PetPublication.PetName</h2>
                 </div>
-                <br />
+
+                <form method="post" asp-area="Manager" asp-controller="Home" asp-action="Approve" asp-route-id="@request.Id">
+                    <button type="submit">Approve</button>
+                </form>
+
+                <form method="post" asp-area="Manager" asp-controller="Home" asp-action="Reject" asp-route-id="@request.Id">
+                    <button type="submit">Reject</button>
+                </form>
             </div>
-        </form>
+        }
     }
-}
+</div>

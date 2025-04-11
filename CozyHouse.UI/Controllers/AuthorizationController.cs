@@ -1,4 +1,6 @@
 ﻿using CozyHouse.Core.Domain.IdentityEntities;
+using CozyHouse.Core.Helpers;
+using CozyHouse.Core.ServiceContracts;
 using CozyHouse.UI.DTO;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -9,12 +11,10 @@ namespace CozyHouse.UI.Areas.Guest.Controllers
     [AllowAnonymous]
     public class AuthorizationController : Controller
     {
-        UserManager<ApplicationUser> _userManager;
-        SignInManager<ApplicationUser> _signInManager;
-        public AuthorizationController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
+        IAuthorizationManageService _authorizationService;
+        public AuthorizationController(IAuthorizationManageService authorizationService)
         {
-            _userManager = userManager;
-            _signInManager = signInManager;
+            _authorizationService = authorizationService;
         }
         public IActionResult Index(AuthorizationDTO authorization)
         {
@@ -33,12 +33,10 @@ namespace CozyHouse.UI.Areas.Guest.Controllers
                 Location = data.RegisterDTO.Location,
             };
 
-            IdentityResult result = await _userManager.CreateAsync(user, data.RegisterDTO.Password);
-            await _userManager.AddToRoleAsync(user, "User");
-
+            IdentityResult result = await _authorizationService.RegisterWithRoleAsync(user, data.RegisterDTO.Password, "User");
             if (result.Succeeded == true)
             {
-                await _signInManager.SignInAsync(user, false);
+                await _authorizationService.LoginAsync(user.UserName, data.RegisterDTO.Password);
                 return RedirectToAction("Index", "Home", new { area = "User" });
             }
             return RedirectToAction("Index", data);
@@ -47,21 +45,11 @@ namespace CozyHouse.UI.Areas.Guest.Controllers
         [HttpPost]
         public async Task<IActionResult> LoginCommand(AuthorizationDTO data)
         {
-            var result = await _signInManager.PasswordSignInAsync(data.LoginDTO.UserEmail, data.LoginDTO.UserPassword, false, false);
+            ExtendedSignInResult result = await _authorizationService.LoginAsync(data.LoginDTO.UserEmail, data.LoginDTO.UserPassword);
+            if (result.Result.Succeeded == false) return RedirectToAction("Index", data);
 
-            if (result.Succeeded)
-            {
-                ApplicationUser? user = await _userManager.FindByNameAsync(data.LoginDTO.UserEmail);
-                if (await _userManager.IsInRoleAsync(user!, "User"))
-                {
-                    return RedirectToAction("Index", "Home", new { area = "User" });
-                }
-                else
-                {
-                    return RedirectToAction("Index", "Home", new { area = "Manager" });
-                }
-            }
-            return RedirectToAction("Index", data);
+            if (User.IsInRole("User")) return RedirectToAction("Index", "Home", new { area = "User" });
+            else return RedirectToAction("Index", "Home", new { area = "Manager" });
         }
     }
 }

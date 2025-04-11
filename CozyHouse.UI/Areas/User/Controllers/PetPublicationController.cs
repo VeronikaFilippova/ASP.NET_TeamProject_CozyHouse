@@ -1,6 +1,6 @@
 ﻿using CozyHouse.Core.Domain.Entities;
+using CozyHouse.Core.Helpers;
 using CozyHouse.Core.RepositoryInterfaces;
-using CozyHouse.Core.ServiceContracts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
@@ -13,8 +13,8 @@ namespace CozyHouse.UI.Areas.User.Controllers
     {
         IUserPetPublicationRepository _userPetPublicationRepository;
         IPetImageRepository _petImageRepository;
-        IImageService _imageService;
-        public PetPublicationController(IUserPetPublicationRepository petPublicationRepository, IPetImageRepository petImageRepository, IImageService imageService)
+        IPublicationImageHelper _imageService;
+        public PetPublicationController(IUserPetPublicationRepository petPublicationRepository, IPetImageRepository petImageRepository, IPublicationImageHelper imageService)
         {
             _userPetPublicationRepository = petPublicationRepository;
             _petImageRepository = petImageRepository;

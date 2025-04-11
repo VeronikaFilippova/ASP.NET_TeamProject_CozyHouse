@@ -2,7 +2,6 @@
 using CozyHouse.Core.RepositoryInterfaces;
 using CozyHouse.Infrastructure.Database;
 using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations;
 
 namespace CozyHouse.Infrastructure.Repositories
 {
@@ -16,8 +15,6 @@ namespace CozyHouse.Infrastructure.Repositories
 
         public void Create(ShelterAdoptionRequest request)
         {
-            var context = new ValidationContext(request, serviceProvider: null, items: null);
-            Validator.ValidateObject(request, context, validateAllProperties: true);
             _db.ShelterAdoptionRequests.Add(request);
             _db.SaveChanges();
         }
@@ -27,9 +24,6 @@ namespace CozyHouse.Infrastructure.Repositories
         }
         public void Update(ShelterAdoptionRequest request)
         {
-            var context = new ValidationContext(request, serviceProvider: null, items: null);
-            Validator.ValidateObject(request, context, validateAllProperties: true);
-
             _db.ShelterAdoptionRequests.Update(request);
             _db.SaveChanges();
         }
@@ -41,7 +35,8 @@ namespace CozyHouse.Infrastructure.Repositories
         }
         public IEnumerable<ShelterAdoptionRequest> GetAll()
         {
-            return _db.ShelterAdoptionRequests.Include(r => r.Adopter).Include(r => r.PetPublication);
+            return _db.ShelterAdoptionRequests.Include(r => r.Adopter).Include(r => r.PetPublication)
+                .Include(i => i.PetPublication.Images);
         }
     }
 }
