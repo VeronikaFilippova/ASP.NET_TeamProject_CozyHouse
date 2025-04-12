@@ -47,5 +47,13 @@ namespace CozyHouse.Core.Services
             await _userManager.AddToRoleAsync(user, role);
             return IdentityResult.Success;
         }
+        
+        public async Task<ApplicationUser> GetUserAsync(Guid userId)
+        {
+            ApplicationUser? user = await _userManager.FindByIdAsync(userId.ToString());
+            if (user == null) throw new ArgumentNullException();
+
+            return user;
+        }
     }
 }

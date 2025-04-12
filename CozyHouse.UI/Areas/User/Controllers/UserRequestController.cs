@@ -1,7 +1,7 @@
-﻿using CozyHouse.Core.RepositoryInterfaces;
+﻿using CozyHouse.Core.Helpers;
+using CozyHouse.Core.ServiceContracts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
 
 namespace CozyHouse.UI.Areas.User.Controllers
 {
@@ -9,21 +9,26 @@ namespace CozyHouse.UI.Areas.User.Controllers
     [Area("User")]
     public class UserRequestController : Controller
     {
-        IUserAdoptionRequestRepository _userAdoptionRequestRepository;
-        public UserRequestController(IUserAdoptionRequestRepository requests)
+        IUserAdoptionRequestService _userAdoptionRequestService;
+        public UserRequestController(IUserAdoptionRequestService requests)
         {
-            _userAdoptionRequestRepository = requests;
+            _userAdoptionRequestService = requests;
         }
         public IActionResult Index()
         {
-            Guid userGuid = Guid.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value!);
-            var requests = _userAdoptionRequestRepository.GetAll().Where(request => request.OwnerId == userGuid);
+            var requests = _userAdoptionRequestService.GetAll().Where(request => request.OwnerId == User.GetUserId());
             return View(requests);
         }
         [HttpPost]
-        public IActionResult CloseRequest(Guid id)
+        public IActionResult Approve(Guid id)
         {
-            _userAdoptionRequestRepository.Delete(id);
+            _userAdoptionRequestService.Approve(id);
+            return RedirectToAction("Index");
+        }
+        [HttpPost]
+        public IActionResult Reject(Guid id)
+        {
+            _userAdoptionRequestService.Reject(id);
             return RedirectToAction("Index");
         }
     }

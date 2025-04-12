@@ -1,8 +1,9 @@
 ﻿using CozyHouse.Core.Domain.Entities;
+using CozyHouse.Core.Helpers;
 using CozyHouse.Core.RepositoryInterfaces;
+using CozyHouse.Core.ServiceContracts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
 
 namespace CozyHouse.UI.Areas.User.Controllers
 {
@@ -10,42 +11,26 @@ namespace CozyHouse.UI.Areas.User.Controllers
     [Authorize(Roles = "User")]
     public class AdoptionController : Controller
     {
-        IShelterAdoptionRequestRepository _shelterRequestRepository;
-        IUserAdoptionRequestRepository _userRequestRepository;
-        IUserPetPublicationRepository _userPetRepository;
-        public AdoptionController(IShelterAdoptionRequestRepository shelterRequests, IUserAdoptionRequestRepository userRequests, IUserPetPublicationRepository userPets)
+        IShelterAdoptionRequestService _shelterRequestService;
+        IUserAdoptionRequestService _userRequestService;
+        IUserPetPublicationRepository _userPublicationRepository;
+        public AdoptionController(IShelterAdoptionRequestService shelterRequests, IUserAdoptionRequestService userRequests, IUserPetPublicationRepository userPets)
         {
-            _shelterRequestRepository = shelterRequests;
-            _userRequestRepository = userRequests;
-            _userPetRepository = userPets;
+            _shelterRequestService = shelterRequests;
+            _userRequestService = userRequests;
+            _userPublicationRepository = userPets;
         }
         [HttpPost]
-        public IActionResult AdoptFromShelter(Guid id)
+        public async Task<IActionResult> AdoptFromShelterAsync(Guid id)
         {
-            string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value!;
-            ShelterAdoptionRequest request = new ShelterAdoptionRequest()
-            {
-                AdopterId = Guid.Parse(userId),
-                PetPublicationId = id,
-            };
-
-            _shelterRequestRepository.Create(request);
+            await _shelterRequestService.CreateAsync(id, User.GetUserId());
             return RedirectToAction("Index", "Home", new { area = "User" });
         }
         [HttpPost]
-        public IActionResult AdoptFromUser(Guid id)
+        public async Task<IActionResult> AdoptFromUserAsync(Guid id)
         {
-            string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value!;
-
-            UserPetPublication publication = _userPetRepository.Read(id);
-            UserAdoptionRequest request = new UserAdoptionRequest()
-            {
-                AdopterId = Guid.Parse(userId),
-                PetPublicationId = id,
-                OwnerId = publication.OwnerId,
-            };
-
-            _userRequestRepository.Create(request);
+            UserPetPublication publication = _userPublicationRepository.Read(id)!;
+            await _userRequestService.CreateAsync(publication.Id, User.GetUserId(), publication.OwnerId);
             return RedirectToAction("Index", "Home", new { area = "User" });
         }
     }

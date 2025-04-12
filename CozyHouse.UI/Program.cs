@@ -22,13 +22,18 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 });
 
 builder.Services.AddScoped<IShelterPetPublicationRepository, ShelterPetPublicationRepository>();
-builder.Services.AddScoped<IUserPetPublicationRepository, UserPetPublicationRepository>();
-builder.Services.AddScoped<IShelterAdoptionRequestRepository, ShelterAdoptionRequestRepository>();
-builder.Services.AddScoped<IUserAdoptionRequestRepository, UserAdoptionRequestRepository>();
-builder.Services.AddScoped<IPetImageRepository, PetImageRepository>();
-
-builder.Services.AddScoped<IShelterAdoptionRequestService, ShelterAdoptionRequestService>();
 builder.Services.AddScoped<IShelterPetPublicationService, ShelterPetPublicationService>();
+
+builder.Services.AddScoped<IUserPetPublicationRepository, UserPetPublicationRepository>();
+builder.Services.AddScoped<IUserPetPublicationService, UserPetPublicationService>();
+
+builder.Services.AddScoped<IShelterAdoptionRequestRepository, ShelterAdoptionRequestRepository>();
+builder.Services.AddScoped<IShelterAdoptionRequestService, ShelterAdoptionRequestService>();
+
+builder.Services.AddScoped<IUserAdoptionRequestRepository, UserAdoptionRequestRepository>();
+builder.Services.AddScoped<IUserAdoptionRequestService, UserAdoptionRequestService>();
+
+builder.Services.AddScoped<IPetImageRepository, PetImageRepository>();
 builder.Services.AddScoped<IAuthorizationManageService, AuthorizationManageService>();
 builder.Services.AddScoped<IPublicationImageHelper, PublicationImageHelper>();
 

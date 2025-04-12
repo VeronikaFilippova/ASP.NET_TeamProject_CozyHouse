@@ -1,10 +1,7 @@
 ﻿using CozyHouse.Core.Domain.Entities;
-using CozyHouse.Core.Helpers;
-using CozyHouse.Core.RepositoryInterfaces;
 using CozyHouse.Core.ServiceContracts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
 
 namespace CozyHouse.UI.Areas.Manager.Controllers
 {

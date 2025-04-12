@@ -1,7 +1,6 @@
 ﻿@model UserPetPublication
 @{
     ViewBag.Title = "Edit";
-    Guid userId = Guid.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value!);
 }
 
 <link rel="stylesheet" href="~/css/Shared/PetPublications/create_edit.css" asp-append-version="true" />
@@ -12,7 +11,7 @@
 
 <div class="form-container">
     <form method="post" enctype="multipart/form-data" asp-area="User" asp-controller="PetPublication" asp-action="Edit" class="main-form">
-        <input asp-for="OwnerId" value="@userId" hidden />
+        <input asp-for="OwnerId" value="@User.GetUserId()" hidden />
         <input asp-for="Id" hidden />
         <h1>Edit Pet Publication</h1>
 

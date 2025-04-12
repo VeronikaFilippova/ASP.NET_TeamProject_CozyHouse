@@ -2,7 +2,6 @@
 @inject IUserPetPublicationRepository _petPublicationRepository
 @{
     ViewBag.Title = "Create";
-    Guid userId = Guid.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value!);
 }
 <link rel="stylesheet" href="~/css/Shared/PetPublications/create_edit.css" asp-append-version="true" />
 
@@ -12,7 +11,7 @@
 
 <div class="form-container">
     <form method="post" enctype="multipart/form-data" asp-area="User" asp-controller="PetPublication" asp-action="Create" class="main-form">
-        <input asp-for="OwnerId" value="@userId" hidden />
+        <input asp-for="OwnerId" value="@User.GetUserId()" hidden />
         <h1>New Pet Publication</h1>
 
         <h2>Publication Information</h2>
@@ -62,7 +61,7 @@
 
         <div>
             <label>Select pet image:</label>
-            <input type="file" name="petImage" required />
+            <input type="file" name="petImages" multiple required />
         </div>
 
         <div>

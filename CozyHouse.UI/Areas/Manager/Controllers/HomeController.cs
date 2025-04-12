@@ -23,18 +23,18 @@ namespace CozyHouse.UI.Areas.Manager.Controllers
         }
         public IActionResult SeeRequests()
         {
-            return View(_requestService.GetAllRequests());
+            return View(_requestService.GetAll());
         }
         [HttpPost]
         public IActionResult Approve(Guid id)
         {
-            _requestService.ApproveRequest(id);
+            _requestService.Approve(id);
             return RedirectToAction("SeeRequests");
         }
         [HttpPost]
         public IActionResult Reject(Guid id)
         {
-            _requestService.RejectRequest(id);
+            _requestService.Reject(id);
             return RedirectToAction("SeeRequests");
         }
         public async Task<IActionResult> LogoutCommand()

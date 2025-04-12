@@ -9,6 +9,7 @@ namespace CozyHouse.Core.ServiceContracts
         Task<ExtendedSignInResult> LoginAsync(string username, string password);
         Task LogoutAsync();
         Task<IdentityResult> RegisterWithRoleAsync(ApplicationUser user, string password, string role);
+        Task<ApplicationUser> GetUserAsync(Guid userId);
         Task<IdentityResult> DeleteAsync(Guid userId);
     }
 }

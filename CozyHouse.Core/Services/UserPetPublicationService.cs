@@ -7,24 +7,23 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CozyHouse.Core.Services
 {
-    public class ShelterPetPublicationService : IShelterPetPublicationService
+    public class UserPetPublicationService : IUserPetPublicationService
     {
-        private readonly IShelterPetPublicationRepository _shelterPublicationRepository;
+        private readonly IUserPetPublicationRepository _userPublicationRepository;
         private readonly IPetImageRepository _petImageRepository;
         private readonly IPublicationImageHelper _imageSaveHelper;
-        public ShelterPetPublicationService(IShelterPetPublicationRepository publicationRepository, IPetImageRepository imageRepository, IPublicationImageHelper helper)
+        public UserPetPublicationService(IUserPetPublicationRepository publicationRepository, IPetImageRepository imageRepository, IPublicationImageHelper helper)
         {
-            _shelterPublicationRepository = publicationRepository;
+            _userPublicationRepository = publicationRepository;
             _petImageRepository = imageRepository;
             _imageSaveHelper = helper;
         }
-
-        public bool Add(ShelterPetPublication publication, IFormFile[] files)
+        public bool Add(UserPetPublication publication, IFormFile[] files)
         {
             bool isValid = Validator.TryValidateObject(publication, new ValidationContext(publication), null);
             if (isValid == false) return false;
 
-            _shelterPublicationRepository.Create(publication);
+            _userPublicationRepository.Create(publication);
             foreach (IFormFile file in files)
             {
                 string filePath = _imageSaveHelper.SaveImage(file);
@@ -34,35 +33,35 @@ namespace CozyHouse.Core.Services
             return true;
         }
 
-        public ShelterPetPublication? Get(Guid publicationId)
+        public UserPetPublication? Get(Guid publicationId)
         {
-            return _shelterPublicationRepository.Read(publicationId);
+            return _userPublicationRepository.Read(publicationId);
         }
 
-        public bool Update(ShelterPetPublication publication)
+        public bool Update(UserPetPublication publication)
         {
             bool isValid = Validator.TryValidateObject(publication, new ValidationContext(publication), null);
             if (isValid == false) return false;
-            _shelterPublicationRepository.Update(publication);
+            _userPublicationRepository.Update(publication);
             return true;
         }
 
         public bool Delete(Guid id)
         {
-            ShelterPetPublication? publication = _shelterPublicationRepository.Read(id);
+            UserPetPublication? publication = _userPublicationRepository.Read(id);
             if (publication == null) return false;
 
             foreach (PetImage image in publication.Images)
             {
                 _imageSaveHelper.DeleteImage(image.ImageUrl);
             }
-            _shelterPublicationRepository.Delete(id);
+            _userPublicationRepository.Delete(id);
             return true;
         }
 
         public bool AddImage(Guid publicationId, IFormFile file)
         {
-            ShelterPetPublication? publication = _shelterPublicationRepository.Read(publicationId);
+            UserPetPublication? publication = _userPublicationRepository.Read(publicationId);
             if (publication == null) return false;
 
             string filePath = _imageSaveHelper.SaveImage(file);
@@ -79,9 +78,10 @@ namespace CozyHouse.Core.Services
             _petImageRepository.Delete(imageId);
             return true;
         }
-        public IEnumerable<ShelterPetPublication> GetAll()
+
+        public IEnumerable<UserPetPublication> GetAll()
         {
-            return _shelterPublicationRepository.GetAll();
+            return _userPublicationRepository.GetAll();
         }
     }
 }
