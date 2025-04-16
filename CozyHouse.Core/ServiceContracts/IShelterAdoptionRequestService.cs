@@ -8,5 +8,6 @@ namespace CozyHouse.Core.ServiceContracts
         bool Approve(Guid requestId);
         bool Reject(Guid requestId);
         IEnumerable<ShelterAdoptionRequest> GetAll();
+        ShelterAdoptionRequest? Get(Guid requestId);
     }
 }

@@ -8,13 +8,19 @@ namespace CozyHouse.UI.Areas.Guest.Controllers
     public class PetsController : Controller
     {
         IShelterPetPublicationRepository _petPublicationRepository;
-        public PetsController(IShelterPetPublicationRepository petPublicationRepository)
+        IUserPetPublicationRepository _userPetPublicationRepository;
+        public PetsController(IShelterPetPublicationRepository petPublicationRepository, IUserPetPublicationRepository userPetPublicationRepository)
         {
             _petPublicationRepository = petPublicationRepository;
+            _userPetPublicationRepository = userPetPublicationRepository;
         }
         public IActionResult Index()
         {
             return View(_petPublicationRepository.GetAll());
+        }
+        public IActionResult UserPets()
+        {
+            return View(_userPetPublicationRepository.GetAll());
         }
     }
 }

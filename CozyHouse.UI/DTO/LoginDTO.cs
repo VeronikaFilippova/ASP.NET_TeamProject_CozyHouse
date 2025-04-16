@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace CozyHouse.UI.DTO
 {
@@ -6,9 +7,11 @@ namespace CozyHouse.UI.DTO
     {
         [Required]
         [EmailAddress]
+        [DisplayName("Email")]
         public string? UserEmail { get; set; }
 
         [Required]
+        [DisplayName("Password")]
         public string? UserPassword { get; set; }
     }
 }

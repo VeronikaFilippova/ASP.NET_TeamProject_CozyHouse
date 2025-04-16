@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace CozyHouse.UI.DTO
 {
@@ -13,6 +14,7 @@ namespace CozyHouse.UI.DTO
 
         [Required]
         [Phone(ErrorMessage = "Phone number is incorrect")]
+        [DisplayName("Phone Number")]
         public string PhoneNumber { get; set; }
 
         [Required]
@@ -27,6 +29,7 @@ namespace CozyHouse.UI.DTO
 
         [Required]
         [Compare(nameof(Password), ErrorMessage = "Passwords do not match")]
+        [DisplayName("Confirm Password")]
         public string ConfirmPassword { get; set; }
     }
 }

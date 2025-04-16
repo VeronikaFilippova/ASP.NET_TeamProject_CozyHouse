@@ -1,0 +1,29 @@
+﻿@model IEnumerable<UserPetPublication>
+@{
+    ViewBag.Title = "Pets";
+}
+
+<link rel="stylesheet" href="~/css/Shared/pet_cards.css" asp-append-version="true" />
+<div class="card-container">
+    @{
+        foreach (UserPetPublication publication in Model)
+        {
+            <div class="publication">
+                <div class="top-part">
+                    <h2>@publication.PetType</h2>
+                    <h1>@publication.PublicationTitle</h1>
+                </div>
+
+                <div class="middle-part">
+                    <img src="@publication.Images[0].ImageUrl" />
+                    <h3>@publication.Summary</h3>
+                </div>
+
+                <div class="bottom-part">
+                    <h2>Location: @publication.Location</h2>
+                </div>
+            </div>
+        }
+    }
+</div>
+

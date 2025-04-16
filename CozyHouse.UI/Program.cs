@@ -36,6 +36,7 @@ builder.Services.AddScoped<IUserAdoptionRequestService, UserAdoptionRequestServi
 builder.Services.AddScoped<IPetImageRepository, PetImageRepository>();
 builder.Services.AddScoped<IAuthorizationManageService, AuthorizationManageService>();
 builder.Services.AddScoped<IPublicationImageHelper, PublicationImageHelper>();
+builder.Services.AddScoped<IUserStatsService, UserStatsService>();
 
 builder.Services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
 {

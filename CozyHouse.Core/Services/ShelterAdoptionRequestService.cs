@@ -62,5 +62,10 @@ namespace CozyHouse.Core.Services
         {
             return _requestRepository.GetAll();
         }
+
+        public ShelterAdoptionRequest? Get(Guid requestId)
+        {
+            return _requestRepository.Read(requestId);
+        }
     }
 }

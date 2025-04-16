@@ -10,5 +10,7 @@ namespace CozyHouse.Core.Domain.IdentityEntities
         public int Age { get; set; }
         [Required]
         public required string Location { get; set; }
+        public uint PetsAdopted { get; set; }
+        public uint PublicationsCreated { get; set; }
     }
 }

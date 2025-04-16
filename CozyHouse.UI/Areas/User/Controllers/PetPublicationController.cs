@@ -11,9 +11,11 @@ namespace CozyHouse.UI.Areas.User.Controllers
     public class PetPublicationController : Controller
     {
         IUserPetPublicationService _publicationService;
-        public PetPublicationController(IUserPetPublicationService publicationService)
+        IUserStatsService _userStatsService;
+        public PetPublicationController(IUserPetPublicationService publicationService, IUserStatsService userStatsService)
         {
             _publicationService = publicationService;
+            _userStatsService = userStatsService;
         }
 
         public IActionResult Index()
@@ -29,7 +31,9 @@ namespace CozyHouse.UI.Areas.User.Controllers
         [HttpPost]
         public IActionResult Create(UserPetPublication publication, IFormFile[] petImages)
         {
-            _publicationService.Add(publication, petImages);
+            bool result = _publicationService.Add(publication, petImages);
+            if (result == true) _userStatsService.IncreasePublicationsCreatedCounterAsync(User.GetUserId(), 1);
+
             return RedirectToAction("Index");
         }
 
@@ -48,7 +52,9 @@ namespace CozyHouse.UI.Areas.User.Controllers
         [HttpPost]
         public IActionResult Delete(Guid id)
         {
-            _publicationService.Delete(id);
+            bool result = _publicationService.Delete(id);
+            if (result == true) _userStatsService.DecreasePublicationsCreatedCounterAsync(User.GetUserId(), 1);
+
             return RedirectToAction("Index");
         }
     }

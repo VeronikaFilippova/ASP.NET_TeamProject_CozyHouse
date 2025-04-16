@@ -1,6 +1,12 @@
-﻿@{
+﻿@model IEnumerable<ApplicationUser>
+@{
     ViewBag.Title = "Home";
 }
 
 <h1 style="font-size:28px;">Welcome, Manager @User.Identity?.Name</h1>
-<p style="font-size:28px;">This is default content of manager page.</p>
+@{
+    foreach (ApplicationUser user in Model)
+    {
+        <h2>(@user.UserName) Pets Adopted: @user.PetsAdopted; Publications Created: @user.PublicationsCreated</h2>
+    }
+}

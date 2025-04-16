@@ -1,4 +1,5 @@
-﻿using CozyHouse.Core.Domain.IdentityEntities;
+﻿using CozyHouse.Core.Domain.Entities;
+using CozyHouse.Core.Domain.IdentityEntities;
 using CozyHouse.Core.ServiceContracts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -12,14 +13,16 @@ namespace CozyHouse.UI.Areas.Manager.Controllers
     {
         SignInManager<ApplicationUser> _signInManager;
         IShelterAdoptionRequestService _requestService;
-        public HomeController(SignInManager<ApplicationUser> signInManager, IShelterAdoptionRequestService requestService)
+        IUserStatsService _userStatsService;
+        public HomeController(SignInManager<ApplicationUser> signInManager, IShelterAdoptionRequestService requestService, IUserStatsService userStatsService)
         {
             _signInManager = signInManager;
             _requestService = requestService;
+            _userStatsService = userStatsService;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> IndexAsync()
         {
-            return View();
+            return View((IEnumerable<ApplicationUser>) await _signInManager.UserManager.GetUsersInRoleAsync("User"));
         }
         public IActionResult SeeRequests()
         {
@@ -28,7 +31,11 @@ namespace CozyHouse.UI.Areas.Manager.Controllers
         [HttpPost]
         public IActionResult Approve(Guid id)
         {
-            _requestService.Approve(id);
+            ShelterAdoptionRequest? request = _requestService.Get(id);
+            bool result = _requestService.Approve(id);
+
+            if (result == true && request != null) _userStatsService.IncreasePetsAdoptedCounterAsync(request.AdopterId, 1);
+
             return RedirectToAction("SeeRequests");
         }
         [HttpPost]
