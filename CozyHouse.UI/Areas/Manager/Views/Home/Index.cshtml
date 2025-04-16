@@ -3,10 +3,53 @@
     ViewBag.Title = "Home";
 }
 
+<link href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet" />
+
 <h1 style="font-size:28px;">Welcome, Manager @User.Identity?.Name</h1>
-@{
-    foreach (ApplicationUser user in Model)
-    {
-        <h2>(@user.UserName) Pets Adopted: @user.PetsAdopted; Publications Created: @user.PublicationsCreated</h2>
-    }
-}
+
+
+<div style="padding: 50px;">
+    <h1 style="font-size:25px; font-weight: bold;">User Statistics</h1>
+
+    <table id="table" class="display">
+        <thead>
+            <tr>
+                <th>User Email</th>
+                <th>Person Name</th>
+                <th>Age</th>
+                <th>Location</th>
+                <th>Pets Adopted</th>
+                <th>Publications Created</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (ApplicationUser user in Model)
+                {
+                    <tr>
+                        <td>@user.UserName</td>
+                        <td>@user.PersonName</td>
+                        <td>@user.Age</td>
+                        <td>@user.Location</td>
+                        <td>@user.PetsAdopted</td>
+                        <td>@user.PublicationsCreated</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#table').DataTable({
+            paging: true,
+            searching: true,
+            ordering: true,
+            lengthChange: false
+        });
+    });
+</script>
