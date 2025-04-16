@@ -1,17 +1,17 @@
-﻿@model IEnumerable<ApplicationUser>
+﻿@model UserManagerViewModel
 @{
     ViewBag.Title = "Home";
 }
 
 <link href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet" />
 
-<h1 style="font-size:28px;">Welcome, Manager @User.Identity?.Name</h1>
+<h1 style="font-size:28px;">Logged Manager: "@User.Identity?.Name"</h1>
 
 
 <div style="padding: 50px;">
     <h1 style="font-size:25px; font-weight: bold;">User Statistics</h1>
 
-    <table id="table" class="display">
+    <table id="userTable" class="display">
         <thead>
             <tr>
                 <th>User Email</th>
@@ -24,7 +24,7 @@
         </thead>
         <tbody>
             @{
-                foreach (ApplicationUser user in Model)
+                foreach (ApplicationUser user in Model.Users)
                 {
                     <tr>
                         <td>@user.UserName</td>
@@ -40,12 +40,47 @@
     </table>
 </div>
 
+<div style="padding: 50px;">
+    <h1 style="font-size:25px; font-weight: bold;">Manager Statistics</h1>
+
+    <table id="managerTable" class="display">
+        <thead>
+            <tr>
+                <th>Manager Email</th>
+                <th>Manager Name</th>
+                <th>Publications Created</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (ApplicationUser user in Model.Managers)
+                {
+                    <tr>
+                        <td>@user.UserName</td>
+                        <td>@user.PersonName</td>
+                        <td>@user.PublicationsCreated</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
 
 <script>
     $(document).ready(function () {
-        $('#table').DataTable({
+        $('#userTable').DataTable({
+            paging: true,
+            searching: true,
+            ordering: true,
+            lengthChange: false
+        });
+    });
+
+    $(document).ready(function () {
+        $('#managerTable').DataTable({
             paging: true,
             searching: true,
             ordering: true,

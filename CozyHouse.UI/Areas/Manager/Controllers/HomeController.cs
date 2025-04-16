@@ -1,6 +1,7 @@
 ﻿using CozyHouse.Core.Domain.Entities;
 using CozyHouse.Core.Domain.IdentityEntities;
 using CozyHouse.Core.ServiceContracts;
+using CozyHouse.UI.DTO;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -22,7 +23,9 @@ namespace CozyHouse.UI.Areas.Manager.Controllers
         }
         public async Task<IActionResult> IndexAsync()
         {
-            return View((IEnumerable<ApplicationUser>) await _signInManager.UserManager.GetUsersInRoleAsync("User"));
+            IEnumerable<ApplicationUser> users = await _signInManager.UserManager.GetUsersInRoleAsync("User");
+            IEnumerable<ApplicationUser> managers = await _signInManager.UserManager.GetUsersInRoleAsync("Manager");
+            return View(new UserManagerViewModel() { Users = users, Managers = managers});
         }
         public IActionResult SeeRequests()
         {
