@@ -3,7 +3,6 @@ using CozyHouse.Core.Helpers;
 using CozyHouse.Core.ServiceContracts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
 
 namespace CozyHouse.UI.Areas.User.Controllers
 {
@@ -12,36 +11,16 @@ namespace CozyHouse.UI.Areas.User.Controllers
     public class HomeController : Controller
     {
         IAuthorizationManageService _authorizationService;
-        IShelterPetPublicationService _shelterPetPublicationService;
-        IUserPetPublicationService _userPetPublicationService;
+
         public HomeController(IAuthorizationManageService authorizationService, IShelterPetPublicationService shelterPublications, IUserPetPublicationService userPublications)
         {
             _authorizationService = authorizationService;
-            _shelterPetPublicationService = shelterPublications;
-            _userPetPublicationService = userPublications;
-            
         }
         public IActionResult Index()
         {
             return View();
         }
-        public IActionResult SeeShelterPublications()
-        {
-            return View(_shelterPetPublicationService.GetAll());
-        }
-        public IActionResult SeeUserPublications()
-        {
-            Guid userId = Guid.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value!);
-            return View(_userPetPublicationService.GetAll().Where(publication => publication.OwnerId != userId));
-        }
-        public IActionResult SeeMoreShelterPublication(Guid id)
-        {
-            return View(_shelterPetPublicationService.Get(id));
-        }
-        public IActionResult SeeMoreUserPublication(Guid id)
-        {
-            return View(_userPetPublicationService.Get(id));
-        }
+        
         public async Task<IActionResult> LogoutCommand()
         {
             await _authorizationService.LogoutAsync();

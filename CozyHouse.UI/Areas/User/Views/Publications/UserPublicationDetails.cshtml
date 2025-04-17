@@ -1,10 +1,10 @@
-﻿@model ShelterPetPublication
+﻿@model UserPetPublication
 @{
     ViewBag.Title = "Pet listing";
 }
 
 <link rel="stylesheet" href="~/css/content/EditForm.css" asp-append-version="true" />
-<form method="post" asp-area="User" asp-controller="Adoption" asp-action="AdoptFromShelter" asp-route-id="@Model.Id">
+<form method="post" asp-area="User" asp-controller="Adoption" asp-action="AdoptFromUser" asp-route-publicationId="@Model.Id">
     <h1>@Model.PublicationTitle</h1>
 
     <h2>@Model.Summary</h2>

@@ -8,21 +8,25 @@
     @{
         foreach (UserPetPublication publication in Model)
         {
-            <div class="publication">
-                <div class="top-part">
-                    <h2>@publication.PetType</h2>
-                    <h1>@publication.PublicationTitle</h1>
-                </div>
+            <form method="post" asp-area="" asp-controller="Pets" asp-action="UserPublicationDetails" asp-route-publicationId="@publication.Id">
+                <button>
+                    <div class="publication">
+                        <div class="top-part">
+                            <h2>@publication.PetType</h2>
+                            <h1>@publication.PublicationTitle</h1>
+                        </div>
 
-                <div class="middle-part">
-                    <img src="@publication.Images[0].ImageUrl" />
-                    <h3>@publication.Summary</h3>
-                </div>
+                        <div class="middle-part">
+                            <img src="@publication.Images[0].ImageUrl" />
+                            <h3>@publication.Summary</h3>
+                        </div>
 
-                <div class="bottom-part">
-                    <h2>Location: @publication.Location</h2>
-                </div>
-            </div>
+                        <div class="bottom-part">
+                            <h2>Location: @publication.Location</h2>
+                        </div>
+                    </div>
+                </button>
+            </form>
         }
     }
 </div>

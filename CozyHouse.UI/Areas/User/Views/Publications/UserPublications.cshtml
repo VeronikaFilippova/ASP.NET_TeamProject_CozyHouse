@@ -1,0 +1,33 @@
+﻿@model IEnumerable<UserPetPublication>
+@{
+    ViewBag.Title = "Pets in need of home";
+}
+
+<link rel="stylesheet" href="~/css/Shared/pet_cards.css" asp-append-version="true" />
+
+<div class="card-container">
+    @foreach (UserPetPublication publication in Model)
+    {
+        <form method="post" asp-area="User" asp-controller="Publications" asp-action="UserPublicationDetails" asp-route-publicationId="@publication.Id">
+            <button type="submit">
+                <div class="publication">
+                    <div class="top-part">
+                        <h2>@publication.PetType</h2>
+                        <h1>@publication.PublicationTitle</h1>
+                    </div>
+
+                    <div class="middle-part">
+                        <img src="@publication.Images[0].ImageUrl" />
+                        <h3>@publication.Summary</h3>
+                        <h3>Name: @publication.PetName; Age: @publication.PetAge; Type: @publication.PetType</h3>
+                        <h3>IsAdopted: @publication.IsAdopted; IsVaccinated: @publication.IsVaccinated; IsSterialized: @publication.IsSterilized</h3>
+                        <h3> Description: @publication.Description</h3>
+                        <h3> Location: @publication.Location</h3>
+                    </div>
+                    <div class="pets-buttons">
+                    </div>
+                </div>
+            </button>
+        </form>
+    }
+</div>

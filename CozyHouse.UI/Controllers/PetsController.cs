@@ -14,13 +14,21 @@ namespace CozyHouse.UI.Areas.Guest.Controllers
             _petPublicationRepository = petPublicationRepository;
             _userPetPublicationRepository = userPetPublicationRepository;
         }
-        public IActionResult Index()
+        public IActionResult ShelterPets()
         {
             return View(_petPublicationRepository.GetAll());
         }
         public IActionResult UserPets()
         {
             return View(_userPetPublicationRepository.GetAll());
+        }
+        public IActionResult ShelterPublicationDetails(Guid publicationId)
+        {
+            return View(_petPublicationRepository.Read(publicationId));
+        }
+        public IActionResult UserPublicationDetails(Guid publicationId)
+        {
+            return View(_userPetPublicationRepository.Read(publicationId));
         }
     }
 }

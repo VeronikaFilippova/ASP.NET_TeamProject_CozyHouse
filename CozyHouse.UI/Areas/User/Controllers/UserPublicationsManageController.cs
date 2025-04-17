@@ -8,11 +8,11 @@ namespace CozyHouse.UI.Areas.User.Controllers
 {
     [Authorize]
     [Area("User")]
-    public class PetPublicationController : Controller
+    public class UserPublicationsManageController : Controller
     {
         IUserPetPublicationService _publicationService;
         IUserStatsService _userStatsService;
-        public PetPublicationController(IUserPetPublicationService publicationService, IUserStatsService userStatsService)
+        public UserPublicationsManageController(IUserPetPublicationService publicationService, IUserStatsService userStatsService)
         {
             _publicationService = publicationService;
             _userStatsService = userStatsService;
@@ -22,7 +22,6 @@ namespace CozyHouse.UI.Areas.User.Controllers
         {
             return View(_publicationService.GetAll().Where(pub => pub.OwnerId == User.GetUserId()));
         }
-
         public IActionResult Create()
         {
             return View();

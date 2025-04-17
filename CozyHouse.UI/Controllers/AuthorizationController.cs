@@ -16,36 +16,40 @@ namespace CozyHouse.UI.Areas.Guest.Controllers
         {
             _authorizationService = authorizationService;
         }
-        public IActionResult Index(AuthorizationDTO authorization)
+        public IActionResult Register(RegisterDTO DTO)
         {
-            return View(authorization);
+            return View(DTO);
+        }
+        public IActionResult Login(LoginDTO DTO)
+        {
+            return View(DTO);
         }
 
         [HttpPost]
-        public async Task<IActionResult> RegisterCommand(AuthorizationDTO data)
+        public async Task<IActionResult> RegisterCommand(RegisterDTO data)
         {
             ApplicationUser user = new ApplicationUser()
             {
-                UserName = data.RegisterDTO.Email,
-                PersonName = data.RegisterDTO.Login,
-                PhoneNumber = data.RegisterDTO.PhoneNumber,
-                Age = data.RegisterDTO.Age,
-                Location = data.RegisterDTO.Location,
+                UserName = data.Email,
+                PersonName = data.Login,
+                PhoneNumber = data.PhoneNumber,
+                Age = data.Age,
+                Location = data.Location,
             };
 
-            IdentityResult result = await _authorizationService.RegisterWithRoleAsync(user, data.RegisterDTO.Password, "User");
+            IdentityResult result = await _authorizationService.RegisterWithRoleAsync(user, data.Password, "User");
             if (result.Succeeded == true)
             {
-                await _authorizationService.LoginAsync(user.UserName, data.RegisterDTO.Password);
+                await _authorizationService.LoginAsync(user.UserName, data.Password);
                 return RedirectToAction("Index", "Home", new { area = "User" });
             }
             return RedirectToAction("Index", data);
         }
 
         [HttpPost]
-        public async Task<IActionResult> LoginCommand(AuthorizationDTO data)
+        public async Task<IActionResult> LoginCommand(LoginDTO data)
         {
-            ExtendedSignInResult result = await _authorizationService.LoginAsync(data.LoginDTO.UserEmail, data.LoginDTO.UserPassword);
+            ExtendedSignInResult result = await _authorizationService.LoginAsync(data.UserEmail, data.UserPassword);
             if (result.Result.Succeeded == false) return RedirectToAction("Index", data);
 
             if (User.IsInRole("User")) return RedirectToAction("Index", "Home", new { area = "User" });
