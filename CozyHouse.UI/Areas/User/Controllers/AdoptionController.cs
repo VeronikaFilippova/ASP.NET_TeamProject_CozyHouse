@@ -21,15 +21,15 @@ namespace CozyHouse.UI.Areas.User.Controllers
             _userPublicationRepository = userPets;
         }
         [HttpPost]
-        public async Task<IActionResult> AdoptFromShelterAsync(Guid id)
+        public async Task<IActionResult> AdoptFromShelterAsync(Guid publicationId)
         {
-            await _shelterRequestService.CreateAsync(id, User.GetUserId());
+            await _shelterRequestService.CreateAsync(publicationId, User.GetUserId());
             return RedirectToAction("Index", "Home", new { area = "User" });
         }
         [HttpPost]
-        public async Task<IActionResult> AdoptFromUserAsync(Guid id)
+        public async Task<IActionResult> AdoptFromUserAsync(Guid publicationId)
         {
-            UserPetPublication publication = _userPublicationRepository.Read(id)!;
+            UserPetPublication publication = _userPublicationRepository.Read(publicationId)!;
             await _userRequestService.CreateAsync(publication.Id, User.GetUserId(), publication.OwnerId);
             return RedirectToAction("Index", "Home", new { area = "User" });
         }

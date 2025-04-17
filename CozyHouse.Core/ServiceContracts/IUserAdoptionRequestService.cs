@@ -38,5 +38,14 @@ namespace CozyHouse.Core.ServiceContracts
         /// </summary>
         /// <returns>An enumerable collection of <see cref="UserAdoptionRequest"/> objects.</returns>
         IEnumerable<UserAdoptionRequest> GetAll();
+
+        /// <summary>
+        /// Retrieves a specific adoption request by its unique identifier.
+        /// </summary>
+        /// <param name="requestId">The ID of the request to retrieve.</param>
+        /// <returns>
+        /// The <see cref="UserAdoptionRequest"/> if found; otherwise, <c>null</c>.
+        /// </returns>
+        UserAdoptionRequest Get(Guid requestId);
     }
 }
