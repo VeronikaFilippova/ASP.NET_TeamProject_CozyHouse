@@ -1,0 +1,53 @@
+﻿body {
+    font-family: "Georgia", serif;
+    background-color: white;
+    text-align: center;
+}
+
+h1 {
+    color: #000; /* Чорний колір */
+    font-size: 32px; /* Ще трохи більший шрифт */
+    font-weight: bold;
+    margin-top: 25px; /* Трохи вище */
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.user-info {
+    background-color: #f3e7d3; /* Бежевий тон */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    text-align: left;
+    width: 250px;
+}
+
+form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    width: 300px;
+    margin: auto;
+}
+
+button {
+    background-color: transparent; /* Прозорий фон */
+    color: #d8b793; /* Колір тексту бежевий */
+    padding: 12px 25px;
+    border: 2px solid #d8b793; /* Бежевий бордер */
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s; /* Плавна зміна кольору */
+}
+
+    button:hover {
+        background-color: #d8b793; /* Бежевий фон при наведенні */
+        color: white; /* Білий текст при наведенні */
+    }
