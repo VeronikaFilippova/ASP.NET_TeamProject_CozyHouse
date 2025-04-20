@@ -1,4 +1,11 @@
-﻿h1 {
+﻿body {
+    background-image: url("/img/manager-statistics-background.gif");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+h1 {
     font-family: 'Georgia', serif;
     color: #333;
     font-size: 36px;
@@ -14,6 +21,14 @@ h2 {
     font-weight: bold;
     text-align: center;
     margin-bottom: 20px;
+}
+
+.bg-white{
+    background-color: white;
+}
+
+table{
+    background-color: white;
 }
 
 .table-container {
