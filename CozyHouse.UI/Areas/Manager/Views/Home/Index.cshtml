@@ -14,7 +14,6 @@
         <thead>
             <tr>
                 <th>User Email</th>
-                <th>Person Name</th>
                 <th>Age</th>
                 <th>Location</th>
                 <th>Pets Adopted</th>
@@ -24,9 +23,8 @@
         <tbody>
             @foreach (ApplicationUser user in Model.Users)
             {
-                <tr>
+                <tr data-user='@Html.Raw(Json.Serialize(user))' onclick="showDetails(this)">
                     <td>@user.UserName</td>
-                    <td>@user.PersonName</td>
                     <td>@user.Age</td>
                     <td>@user.Location</td>
                     <td>@user.PetsAdopted</td>
@@ -44,16 +42,14 @@
         <thead>
             <tr>
                 <th>Manager Email</th>
-                <th>Manager Name</th>
                 <th>Publications Created</th>
             </tr>
         </thead>
         <tbody>
             @foreach (ApplicationUser user in Model.Managers)
             {
-                <tr>
+                <tr data-user='@Html.Raw(Json.Serialize(user))' onclick="showDetails(this)">
                     <td>@user.UserName</td>
-                    <td>@user.PersonName</td>
                     <td>@user.PublicationsCreated</td>
                 </tr>
             }
